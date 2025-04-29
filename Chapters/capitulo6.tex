@@ -1,0 +1,799 @@
+\chapterimage{blue24.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{FUNCIONES GENERATRICES}
+
+Las series de Taylor y Maclaurin son herramientas fundamentales en el estudio de funciones matemáticas. Estas representaciones permiten expresar funciones como sumas infinitas de términos. Esto nos será de gran ayuda para este capítulo.
+
+\section{Preliminares: Series de Taylor y Maclaurin}
+
+Como preliminar, consideremos una función de variable real expresada como una serie de potencias
+$$f(x) = \sum_{n=0}^{\infty} A_n(x-c)^n,$$
+para $A_n$, $c \in \RR$. Entonces
+$$f(x) = A_0 + A_1(x-c) + A_2(x-c)^2 + A_3(x-c) + \cdots.$$
+Sabemos que $f(c)=A_0$. Tenemos que
+$$f'(x)=A_1+2A_2(x-c)+3A_3(x-c)^2+\cdots +nA_n(x-c)^{n-1}.$$
+Luego $f'(c)=A_1$. Ahora tenemos que
+$$f''(x)=2A_2+(2)3A_3(x-c)+(3)4A_4(x-c)^2+\cdots +(n-1)nA_n(x-c)^{n-2}.$$
+Luego $f''(c)=2A_2 \dots$. Siguiendo este proceso, obtenemos
+\begin{align*}
+    A_0 &=f(c) \\
+    A_1 &=f'(c) \\
+    2!A_2 &=f''(c) \\
+    3!A_3 &=f'''(c) \\
+    & \vdots \\
+    n!A_n &=f^{(n)}(c)
+\end{align*}
+Entonces
+\begin{align*}
+    A_0 &=f(c) \\
+    A_1 &=f'(c) \\
+    A_2 &=\frac{f''(c)}{2!} \\
+    A_3 &=\frac{f'''(c)}{3!} \\
+    & \vdots \\
+    A_n &=\frac{f^{(n)}(c)}{n!}
+\end{align*}
+Por lo tanto
+$$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}}{n!}(x-c)^n =f(c)+f'(c)(x-c)+\frac{f''(c)}{2!}(x-c)^2+\cdots +\frac{f^{(n)}(c)}{n!}(x-c)^n.$$
+A este desarrollo se le conoce como fórmula de Taylor. Si $c = 0$, se obtiene la serie de Maclaurin
+$$\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}x^n.$$
+
+\begin{myexample}
+    Sea $f(x) = e^x$. Evaluando en $x = 0$, obtenemos que $f(0) = 1$. Luego
+    $$f'(x) = e^x,$$
+    evaluando en $x = 0$, obtenemos $f'(0) = 1$. Luego
+    $$f''(x) = e^x,$$
+    evaluando en $x = 0$, obtenemos $f''(0) = 1$. Luego
+    $$f^{(3)}(x) = e^x,$$
+    evaluando en $x = 0$, obtenemos $f^{(3)}(0) = 1$. Siguiendo con este proceso, se sigue que
+    \begin{align*}
+        f(0) & = 1 \\
+        f'(0) & = 1 \\
+        f''(0) & = 1 \\
+        f^{(3)}(0) & = 1 \\
+        \vdots & \\
+        f^{(n)}(0) & = 1,
+    \end{align*}
+    y sustituyendo en la definición de serie de Maclaurin, se obtiene que
+    $$\sum_{n=0}^{\infty} \frac{1}{n!} x^n.$$
+\end{myexample}
+
+\begin{myexample}
+    Sea $f(x) = \sen(x)$. Evaluando en $x = 0$, obtenemos que $f(0) = 0$. Luego
+    $$f'(x) = \cos(x),$$
+    evaluando en $x = 0$, obtenemos $f'(0) = 1$. Luego
+    $$f''(x) = -\sen(x),$$
+    evaluando en $x = 0$, obtenemos $f''(0) = 0$. Luego
+    $$f^{(3)}(x) = -\cos(x),$$
+    evaluando en $x = 0$, obtenemos $f^{(3)}(0) = -1$. Luego
+    $$f^{(4)}(x) = \sen(x),$$
+    evaluando en $x = 0$, obtenemos $f^{(4)}(0) = 0$. Luego
+    $$f^{(5)}(x) = \cos(x),$$
+    evaluando en $x = 0$, obtenemos $f^{(5)}(0) = 1$. Luego
+    $$f^{(6)}(x) = -\sen(x),$$
+    evaluando en $x = 0$, obtenemos $f^{(6)}(0) = 0$. Luego
+    $$f^{(7)}(x) = -\cos(x),$$
+    evaluando en $x = 0$, obtenemos $f^{(7)}(0) = -1$. Siguiendo con este proceso, se sigue que
+    \begin{align*}
+        f(0) & = 1 \\
+        f'(0) & = 0 \\
+        f''(0) & = 1 \\
+        f^{(3)}(0) & = -1 \\
+        f^{(4)}(0) & = 0 \\
+        f^{(5)}(0) & = 1 \\
+        f^{(6)}(0) & = 0 \\
+        f^{(7)}(0) & = -1 \\
+        \vdots & \\
+        f^{(n)}(0) & = \sen\left(\frac{n\pi}{2}\right),
+    \end{align*}
+    y sustituyendo en la definición de serie de Maclaurin, se obtiene que
+    $$\sum_{n=0}^{\infty} \frac{\displaystyle \sen\left(\frac{n\pi}{2}\right)}{n!} x^n = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}x^{2n+1}.$$
+\end{myexample}
+
+\section{Ejemplos introductorios}
+
+En lugar de definir en este punto una función generatriz, examinaremos algunos ejemplos para derivar la idea a partir de ellos. Veremos que ya hemos tratado este concepto en situaciones anteriores.
+
+\begin{myexample}
+    Una ama de casa va a repartir 12 billetes idénticos entre sus tres hijos: Geraldine, Michelle, Fernando. ¿De cuántas formas puede ella distribuir los billetes de tal forma que Geraldine obtenga al menos cuatro billetes; y que Michelle y Fernando obtengan al menos dos billetes; pero que Fernando no obtenga más de cinco billetes?
+
+    \tcblower
+    \begin{minipage}[c]{0.62\textwidth}
+        \textbf{\color{jblueleft} Solución:} Sean
+        \begin{align*}
+            c_1 & : \text{ el número de billetes para Geraldine} \\
+            c_2 & : \text{ el número de billetes para Michelle} \\
+            c_3 & : \text{ el número de billetes para Fernando}
+        \end{align*}
+        Entonces se busca el número de soluciones enteras para la ecuación $c_1 + c_2 + c_3 = 12$ con las siguientes condiciones:
+        $$4 \leq c_1 \leq 8, \quad 3 \leq c_2 \leq 6, \quad 2 \leq c_3 \leq 5.$$
+        En la tabla \ref{HEJFREJFGJHJFHGJHJGHRT} se muestran las posibles distribuciones. Es decir, hay 14 formas de distribuir los billetes. Pero se puede obtener el número de distribuciones al modelar con polinomios como sigue: \vspace{-0.3cm}
+        \begin{align*}
+            \text{Geraldine} & : x^{4} + x^{5} + x^{6} + x^{7} + x^{8} \\
+            \text{Michelle} & : x^{2} + x^{3} + x^{4} + x^{5} + x^{6} \\
+            \text{Fernando} & : x^{2} + x^{3} + x^{4} + x^{5}
+        \end{align*}
+    \end{minipage}~
+    \begin{minipage}[r]{0.25\textwidth}
+        \begin{center}
+            \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccc}
+            \CodeBefore
+            \rowcolor{jblueleft!80}{1}
+            \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+            \Body
+            \RowStyle[color=white]{}
+                Geraldine & Michelle & Fernando \\
+                4 & 3 & 5 \\
+                4 & 4 & 4 \\
+                4 & 5 & 3 \\
+                4 & 6 & 2 \\
+                5 & 2 & 5 \\
+                5 & 3 & 4 \\
+                5 & 4 & 3 \\
+                5 & 5 & 2 \\
+                6 & 2 & 4 \\
+                6 & 3 & 3 \\
+                6 & 4 & 2 \\
+                7 & 2 & 3 \\
+                7 & 3 & 2 \\
+                8 & 2 & 2
+            \end{NiceTabular}
+            \captionof{table}{~\hspace{-2cm}~}\label{HEJFREJFGJHJFHGJHJGHRT}
+        \end{center}
+    \end{minipage}
+    ~\\
+
+    \noindent
+    Se forma la función generatriz, con el producto de los factores
+    $$f(x) = \left( x^{4} + x^{5} + x^{6} + x^{7} + x^{8} \right) \left( x^{2} + x^{3} + x^{4} + x^{5} + x^{6} \right) \left( x^{2} + x^{3} + x^{4} + x^{5} \right).$$
+    La suma de los exponentes en los términos $x^{i} x^{j} x^{k} = x^{i+j+k}$ se pueden hacer correspondientes con la suma $c_1 + c_2 + c_3 = 12$. Por ejemplo, si $c_1 = 4$, $c_2 = 3$, $c_3 = 5$ corresponde con
+    $$x^{4} x^{3} x^{5} = x^{4+3+5} = x^{12}.$$
+    Para $c_1 = 5$, $c_2 = 3$, $c_3 = 4$ corresponde con
+    $$x^{5} x^{3} x^{4} = x^{5+3+4} = x^{12}.$$
+    Para $c_1 = 8$, $c_2 = 2$, $c_3 = 2$ corresponde con
+    $$x^{8} x^{2} x^{2} = x^{8+2+2} = x^{12}.$$
+    Entonces el coeficiente de $x^{12}$ en la función generatriz
+    $$f(x) = \sum_{j=8}^{19} a_j x^{j},$$
+    es igual al número de distribuciones
+    $$f(x) = \sum_{j=8}^{11} a_j x^{j} + 14x^{12} + \sum_{j=13}^{19} a_j x^{j}.$$
+\end{myexample}
+
+\begin{myexample}
+    Si existe un número ilimitado (o al menos 24 de cada color) de dulces de jalea de color rojo, verde, blanco y negro, ¿de cuántas formas puede seleccionar un niño 24 de estos dulces de tal manera que tenga un número par de dulces blancos y al menos seis dulces negros?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Mostremos los polinomios asociados con esta distribución
+    \begin{align*}
+        \text{rojo} & : x^0 + x^1 + x^2 + \cdots + x^{24} \\
+        \text{verde} & : x^0 + x^1 + x^2 + \cdots + x^{24} \\
+        \text{blanco} & : x^0 + x^2 + x^4 + \cdots + x^{24} \\
+        \text{negro} & : x^6 + x^7 + x^8 + \cdots + x^{24}
+    \end{align*}
+    Así obtenemos la función generatriz:
+    $$f(x) = \left( x^0 + x^1 + x^2 + \cdots + x^{24} \right)^2 \left( x^0 + x^2 + x^4 + \cdots + x^{24} \right) \left( x^6 + x^7 + x^8 + \cdots + x^{24} \right)$$
+    donde la respuesta es el coeficiente de $x^{24}$ en $f(x)$.
+\end{myexample}
+
+\begin{myexample}
+    ¿Cuántas soluciones enteras tiene la ecuación
+    $$c_1 + c_2 + c_3 + c_4 = 25$$
+    si $c_i \geq 0$ para $1 \leq i \leq 4$? Otra alternativa es preguntar de cuántas formas se pueden distribuir 25 monedas idénticas entre cuatro niños?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} En este caso, la función generatriz es
+    $$f(x) = \left( x^0 + x^1 + x^2 + \cdots + x^{25} \right)^4.$$
+    Entonces el número de distribuciones posibles es igual con el coeficiente de $x^{25}$ en
+    $$f(x) = \left[ \sum_{j=0}^{25} x^j \right]^4$$
+    y también la serie infinita
+    $$f(x) = \left[ \sum_{j=0}^{\infty} x^j \right]^4$$
+    dado que los términos de $x^j$ para $26 \leq j < \infty$ no cuentan para obtener el coeficiente de $x^{25}$.
+\end{myexample}
+
+\section{Técnicas de cálculo}
+
+\begin{definicion}{}{}
+    Una sucesión infinita es una función con dominio en los enteros mayores o iguales a un entero dado, cuyo codominio son los reales, es decir, $F: I \longrightarrow \RR$ con $I \subseteq \ZZ$ donde
+    $$F = \left\{ (n, \, y) \mid y = F(n), \text{ con } n \geq k \text{ donde } n, \, k \in \ZZ \right\}.$$
+\end{definicion}
+
+\begin{myexample}
+    Sea
+    $$F = \left\{ (n, \, y) \mid y = 3 + \frac{2}{n}, \; n \geq 1 \right\},$$
+    entonces los términos de dicha sucesión son:
+    $$(1, \, 3+2), \, (2, \, 3+1), \, \left(3, \, 3+\frac{2}{3}\right), \, \left(4, \, 3+\frac{2}{4}\right), \, \dots.$$
+\end{myexample}
+
+\begin{notation*}{}
+    La notación se puede simplificar a $\{F(n)\}$ con el dominio establecido. Los términos de la sucesión se puede ordenar como sigue:
+    $$F(k), \, F(k+1), \, F(k+2), \, F(k+3), \, \dots$$
+    donde también se utiliza $\{F(n)\} = \{a_n\}$ con los términos ordenados
+    $$a_k, \, a_{k+1}, \, a_{k+2}, \, a_{k+3}, \, \dots.$$
+\end{notation*}
+
+\begin{myexample}
+    Sea la sucesión $\displaystyle \left\{ \frac{1}{n} \right\}$ con $n \in \ZZ[+]$, entonces los términos de dicha sucesión son: $\displaystyle 1, \, \frac{1}{2}, \, \frac{1}{3}, \, \frac{1}{4}, \, \dots$.
+\end{myexample}
+
+\begin{definicion}{}{}
+    Sea $a_0$, $a_1$, $a_2$, $a_3$, $\dots$ una sucesión de números reales. La función
+    $$f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots = \sum_{j=0}^{\infty} a_jx^j$$
+    es la función generatriz ordinaria de la sucesión dada.
+\end{definicion}
+
+\begin{myexample}
+    Para cualquier $n \in \ZZ[+]$,
+    \begin{align*}
+        (1 + x)^n & = \sum_{j=0}^{n}\binom{n}{j} x^j \\
+        & = \binom{n}{0} x^0 + \binom{n}{1} x^1 + \binom{n}{2} x^2 + \cdots + \binom{n}{n-1} x^{n-1} + \binom{n}{n} x^n
+    \end{align*}
+    Es decir,
+    $$f(x) = (1+x)^n = \sum_{j=0}^{\infty} \binom{n}{j} x^j, \text{ con } \binom{n}{j} = 0, \; \forall j \geq n+1.$$
+    Entonces
+    $$f(x) = (1+x)^n$$
+    es función generatriz de la sucesión
+    $$\binom{n}{0}, \, \binom{n}{1}, \, \binom{n}{2}, \, \dots, \, \binom{n}{n-1}, \, \binom{n}{n}, \, 0, \, 0, \, 0, \, \dots.$$
+\end{myexample}
+
+\begin{myexample}
+    \begin{enumerate}[label=\alph*)]
+        \item Para $n \in \ZZ[+]$,
+        $$\left(1-x^{n+1}\right) = (1-x) \left(1+x+x^2+ \cdots + x^n \right),$$
+        ya que
+        \begin{align*}
+            (1-x) \left(1+x+x^2+ \cdots + x^n \right) & = 1+x+x^2+x^3 + \cdots +x^n - x -x^2 - x^3 - \cdots - x^n - x^{n+1} \\
+            & = 1-x^{n+1}.
+        \end{align*}
+        Así, tenemos que
+        \begin{align*}
+            f(x) & = \frac{1-x^{n+1}}{1-x} \\
+            & = \sum_{j=0}^n x^j \\
+            & = 1x^0 + 1x^1 + 1x^2 + \cdots + 1x^n,
+        \end{align*}
+        o también
+        $$f(x) = \frac{1-x^{n+1}}{1-x} = \sum_{j=0}^{\infty} x^j, \text{ con } a_j = 1 \text{ para } 0 \leq j \leq n \text{ y } a_j = 0, \, \forall n+1 \leq j < \infty$$
+        la cual, es función generatriz de la sucesión:
+        $$\underbrace{1, \, 1, \, 1, \, 1, \, \dots, \, 1}_{n+1 \text{ términos}}, \, 0, \, 0 , \, 0, \, \dots.$$
+        \item Si extendemos la idea de a),
+        \begin{align*}
+            1 & = (1-x)\left(1+x+x^2+x^3+x^4+\cdots\right) \\
+            & = (1-x) \sum_{j=0}^{\infty} x^j
+        \end{align*}
+        se obtiene la serie geométrica
+        $$\frac{1}{1-x} = \sum_{j=0}^{\infty}x^j, \text{ con } x \neq 1.$$
+        \begin{minipage}[c]{0.52\textwidth}
+            Notemos que esta serie es convergente para $|x| < 1$. Por ejemplo, si $\displaystyle x = \frac{1}{2}$, entonces
+            $$1+\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\cdots=\sum_{j=0}^{\infty} \left( \frac{1}{2} \right)^j = \frac{1}{\displaystyle 1-\frac{1}{2}} = 2.$$
+            Geométricamente, tenemos la figura \ref{ISISKSJKSJKSJKLLS}. Entonces
+            \begin{equation}
+                f(x) = \frac{1}{1-x} = \sum_{j=0}^{\infty} x^j \label{HJFDFDHGHGHFUHUGFH}
+            \end{equation}
+            es función generatriz de la sucesión
+        $$1, \, 1, \, 1, \, 1, \, \dots.$$
+        \end{minipage}~
+        \begin{minipage}[r]{0.4\textwidth}
+            \begin{center}
+                \begin{tikzpicture}[font=\small,scale=1.4]
+                    \filldraw[DodgerBlue3!15] (0,0) rectangle (4,4);
+                    \filldraw[jblueleft!80] (3.75,3.75) rectangle (4,4);
+                    \draw[thick] (0,0) rectangle (4,4);
+                    \draw (0,0) rectangle (2,4);
+                    \draw (2,0) rectangle (4,2);
+                    \draw (2,2) rectangle (3,4);
+                    \draw (3,2) rectangle (4,3);
+                    \draw (3,3) rectangle (3.5,4);
+                    \draw (3.5,3) rectangle (4,3.5);
+                    \draw (3.5,3.5) rectangle (3.75,4);
+                    \draw (3.75,3.5) rectangle (4,3.75);
+                    \node at (1,2) {$\displaystyle \frac{1}{2}$};
+                    \node at (3,1) {$\displaystyle \frac{1}{4}$};
+                    \node at (2.5,3) {$\displaystyle \frac{1}{8}$};
+                    \node at (3.5,2.5) {$\displaystyle \frac{1}{16}$};
+                    \node at (3.25,3.5) {$\displaystyle \frac{1}{32}$};
+                    \node at (3.77,3.25) {$\cdots$};
+                \end{tikzpicture}
+                \captionof{figure}{~}\label{ISISKSJKSJKSJKLLS}
+            \end{center}
+        \end{minipage}
+        \item Si tomamos la función \eqref{HJFDFDHGHGHFUHUGFH} obtenida del inciso anterior y derivamos de ambos; obtenemos por un lado
+        \begin{align*}
+            \dd[x] \left( \frac{1}{1-x} \right) & = \dd[x] (1-x)^{-1} \\
+            %& = (-1) \cdot (1-x)^{-1-1} \cdot (-1) \\
+            & = (1-x)^{-2} \\
+            & = \frac{1}{(1-x)^{2}}.
+        \end{align*}
+        Por otro lado,
+        \begin{align*}
+            \dd[x] \left( \sum_{j=0}^{\infty} x^j \right) & = \sum_{j=0}^{\infty} \dd[x] x^j \\
+            & = \sum_{j=0}^{\infty} jx^{j-1}.
+        \end{align*}
+        Se sigue entonces, que la función obtenida está dada por
+        \begin{equation}
+            \frac{1}{(1-x)^{2}} = \sum_{j=0}^{\infty} jx^{j-1}. \label{NHDBHBFBDFBHBB}
+        \end{equation}
+        Notemos que podemos reescribir la función como sigue:
+        $$f_1(x) = \frac{1}{(1-x)^{2}} = \sum_{j=0}^{\infty} a_j x^{j-1}, \text{ con } a_j = j+1 \text{ y } 0 \leq j < \infty.$$
+        Así, dicha función es generatriz de la sucesión: $\ZZ[+] = \left\{ 1, \, 2, \, 3, \, 4, \, \dots \right\}$. Si multiplicamos por $x$ la función \eqref{NHDBHBFBDFBHBB}, entonces
+        \begin{equation}
+            \frac{x}{(1-x)^{2}} = \sum_{j=0}^{\infty} jx^{j} = 0x^{0} + 1x^{1} + 2x^{2} + 3x^{3} + 4x^{4} + \cdots \label{BDSHBFHBDHFBHDBFB}
+        \end{equation}
+        la cual es generatriz de la sucesión: $\ZZ[+] \cup \{0\}= \left\{0, \,  1, \, 2, \, 3, \, 4, \, \dots \right\}$.
+        \item Tomemos la función \eqref{BDSHBFHBDHFBHDBFB}, y derivemos por ambos lados nuevamente; por un lado
+        \begin{align*}
+            \dd[x] \left( \frac{x}{(1-x)^{2}} \right) & = \frac{(1-x)^{2}+2x-2x^{2}}{(1-x)^{4}} \\
+            & = \frac{1+x}{(1-x)^{3}}.
+        \end{align*}
+        Por otro lado,
+        \begin{align*}
+            \dd[x] \left( \sum_{j=0}^{\infty} jx^{j} \right) & = \sum_{j=0}^{\infty} \dd[x] jx^{j} \\
+            & = \sum_{j=0}^{\infty} j^{2} x^{j-1}.
+        \end{align*}
+        Se sigue entonces, que la función obtenida está dada por
+        \begin{equation}
+            \frac{1+x}{(1-x)^{3}} = \sum_{j=0}^{\infty} j^{2} x^{j-1}. \label{EFGFJHGFGERHGFRH}
+        \end{equation}
+        Notemos que podemos reescribir la función como sigue:
+        $$f_2(x) = \frac{1+x}{(1-x)^{3}} = \sum_{j=0}^{\infty} (j+1)^{2} x^{j}.$$
+        Así, dicha función es generatriz de la sucesión: $1^{2}$, $2^{2}$, $3^{2}$, $4^{2}$, $\dots$. Si multiplicamos por $x$ la función \eqref{EFGFJHGFGERHGFRH}, entonces
+        $$\frac{x(1+x)}{(1-x)^{3}} = \sum_{j=0}^{\infty} j^{2} x^{j}$$
+        produce la siguiente sucesión: $0^{2}$, $1^{2}$, $2^{2}$, $3^{2}$, $4^{2}$, $\dots$.
+    \end{enumerate}
+\end{myexample}
+
+\begin{BOX}
+    Vamos a obtener una expresión para $\displaystyle \binom{-n}{r}$ con $n$, $r \in \ZZ[+]$ donde $n \geq r > 0$. Recordemos que
+    \begin{align*}
+        \binom{n}{r} & = \frac{n!}{r!(n-r)!} \\
+        & = \frac{n(n-1)(n-2)(n-3) \cdots (n-r+1)(n-r)(n-r-1) \cdots (3)(2)(1)}{r!(n-r)!} \\
+        & = \frac{n(n-1)(n-2)(n-3) \cdots (n-r+1)(n-r)!}{r!(n-r)!} \\
+        & = \frac{n(n-1)(n-2)(n-3) \cdots (n-r+1)}{r!}.
+    \end{align*}
+    En base a esta expresión, obtengamos
+    \begin{align*}
+        \binom{-n}{r} & = \frac{-n(-n-1)(-n-2)(-n-3) \cdots \big(-n-(r-1)\big)}{r!} \\
+        & = (-1)^r \frac{n(n+1)(n+2)(n+3) \cdots \big(n+(r-1)\big)}{r!} \\
+        & = (-1)^r \frac{(n+1)!n(n+1)(n+2)(n+3) \cdots \big(n+(r-1)\big)}{(n+1)!r!} \\
+        & = (-1)^r \frac{(n+r-1)!}{r!(n-1)!} \\
+        & = (-1)^r \binom{n+r-1}{r}.
+    \end{align*}
+    Finalmente, para cualquier $n \in \RR$, se define $\displaystyle \binom{n}{0} = 1$.
+\end{BOX}
+
+\begin{obs}{}{}
+    La expresión precedente también se puede entender intuitivamente. Imagina que tienes una lista de $n$ elementos, y deseas seleccionar $0$ elementos de esa lista. No importa cuántos elementos haya en la lista; simplemente no eliges ninguno. Por lo tanto, siempre hay una única manera de hacer esto, lo que se refleja en el resultado $\displaystyle \binom{n}{0} = 1$.
+\end{obs}
+
+\newpage
+
+\begin{myexample}
+    Para $n \in \ZZ[+]$, obtengamos el desarrollo en serie de Maclaurin de $f(x) = (1+x)^{-n}$. Evaluando en $x = 0$, obtenemos que $f(0) = 1$. Luego
+    $$f'(x) = -n(1 + x)^{-n-1},$$
+    evaluando en $x = 0$, obtenemos $f'(0) = -n$. Luego
+    $$f''(x) = -n(-n - 1)(1 + x)^{-n-2},$$
+    evaluando en $x = 0$, obtenemos $f''(0) = -n(-n-1)$. Luego
+    $$f^{(3)}(x) = -n(-n - 1)(-n - 2)(1 + x)^{-n-3},$$
+    evaluando en $x = 0$, obtenemos $f^{(3)}(0) = -n(-n - 1)(-n - 2)$. Luego
+    $$f^{(4)}(x) = -n(-n - 1)(-n - 2)(-n - 3)(1 + x)^{-n-3},$$
+    evaluando en $x = 0$, obtenemos $f^{(4)}(0) = -n(-n - 1)(-n - 2)(-n - 3)$. Así pues
+    \begin{align*}
+        (1 + x)^{-n} & = 1 + \frac{-n}{1!} x^1 + \frac{-n(-n-1)}{2!} x^2 \\
+        & \quad\quad\quad + \frac{-n(-n-1)(-n-2)}{3!} x^3 + \frac{-n(-n-1)(-n-2)(-n-3)}{4!} x^4 + \cdots \\
+        & = 1 + \sum_{j=0}^{\infty} \frac{(-n)(-n-1)(-n-2)(-n-3) \cdots (-n-j-1)}{j!} x^j \\
+        & = 1 + \sum_{j=1}^{\infty} (-1)^j \frac{(n-1)!(n)(n+1)(n+2)(n+3) \cdots (n+j-1)}{j!(n-1)!} x^j \\
+        & = 1 + \sum_{j=1}^{\infty} (-1)^j \frac{(n+j-1)!}{j!(n-1)!} x^j \\
+        & = 1 + \sum_{j=1}^{\infty} \binom{n+j-1}{j} x^j.
+    \end{align*}
+    Por tanto,
+    $$(1 + x)^{-n} = \sum_{j=0}^{\infty} (-1)^j \binom{n+j-1}{j} x^j.$$
+    Además,
+    $$(1 + x)^{-n} = \binom{-n}{0} + \binom{-n}{1} x + \binom{-n}{2} x^2 + \binom{-n}{3} x^3 + \cdots = \sum_{j=0}^{\infty} \binom{-n}{j} x^j.$$
+    Esto generaliza el teorema del binomio de la sección \ref{sec:TEOREMADEBINOMIO} y muestra que
+    $$f(x) = (1 + x)^{-n}$$
+    es función generatriz de la sucesión:
+    $$\binom{-n}{0}, \, \binom{-n}{1}, \,  \binom{-n}{2}, \, \binom{-n}{3}, \, \dots.$$
+\end{myexample}
+
+\newpage
+
+\begin{theorem}{}{}
+    Si $\displaystyle f(x) = \sum_{j=0}^{\infty} a_j x^j$, $\displaystyle g(x) = \sum_{j=0}^{\infty} b_j x^j$ y $h(x) = f(x)g(x)$, entonces $\displaystyle h(x) = \sum_{j=0}^{\infty} c_j x^j$ en donde para cualquier $k \geq 0$, $\displaystyle c_k = \sum_{j=0}^{\infty} a_h b_{k-j}$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Demostración:} Mostremos la identidad con suma finita. Sea
+    $$f(x) = \sum_{j=0}^{3} a_j x^j = a_0x^0 + a_1x^1 + a_2x^2 + a_3x^3$$
+    y
+    $$g(x) = \sum_{j=0}^{3} b_j x^j = b_0x^0 + b_1x^1 + b_2x^2 + b_3x^3,$$
+    entonces
+	\begin{align*}
+		f(x) \cdot g(x) & = a_0 b_0 + a_0 b_1 x + a_0 b_2 x^2 + a_0 b_3 x^3 + a_1 b_0 x + a_1 b_1 x^2 + a_1 b_2 x^3 + a_1 b_3 x^4 \\
+		& \quad\quad + a_2 b_0 x^2 + a_2 b_1 x^3 + a_2 b_2 x^4 + a_2 b_3 x^5 + a_3 b_0 x^3 + a_3 b_1 x^4 + a_3 b_2 x^5 + a_3 b_3 x^6.
+	\end{align*}
+	Así
+	\begin{align*}
+		f(x) \cdot g(x) & = a_0 b_0 + (a_0b_1 + a_1 b_0 ) x + (a_0 b_2 + a_1 b_1 + a_2 b_0) x^2 + (a_0 b_3 + a_1 b_2 + a_2 b_1 + a_3 b_0) x^3 \\
+        & \quad\quad + (a_1 b_3 +a_2 b_2 + a_3 b_1) x^4 + (a_2 b_3 + a_3 b_2)x^5 + a_3 b_3 x^6.
+	\end{align*}
+	Entonces
+	\begin{align*}
+		c_0 & = \sum_{j=0}^{0}a_j b_{0-j} = a_0 b_0 \\
+		c_1 & = \sum_{j=0}^{1}a_j b_{1-j} = a_0 b_1 + a_1 b_0 \\
+		c_2 & = \sum_{j=0}^{2}a_j b_{2-j} = a_0b_2 + a_1b_1 + a_2b_0 \\
+		c_3 & = \sum_{j=0}^{3}a_j b_{3-j} = a_0b_3 + a_1b_2 + a_2b_1 + a_3b_0 \\
+		c_4 & = \sum_{j=0}^{4}a_j b_{4-j} = a_0b_4 + a_1b_3 + a_2b_2 + a_3b_1 + a_4b_0 = a_1b_3 + a_2b_2 + a_3b_1 \\
+		c_5 & = \sum_{j=0}^{5}a_j b_{5-j} = a_0b_5 + a_1b_4 + a_2b_3 + a_3b_2 + a_4b_1 + a_5b_0 = a_2 b_3 + a_3 b_2 \\
+		c_6 & = \sum_{j=0}^{6}a_j b_{6-j} = a_0b_6 + a_1b_5 + a_2b_4 + a_3b_3 + a_4b_2 + a_5b_1 + a_6b_0 = a_3 b_3.
+	\end{align*}
+\end{theorem}
+
+\begin{myexample}
+	\begin{enumerate}[label=\alph*)]
+	    \item Hállese el coeficiente de $x^5$ en $(1 - 2x)^7$
+        \item Hállese el coeficiente de $x^5$ en $(1 - 2x)^{-7}$.
+	\end{enumerate}
+    
+	\tcblower
+	\textbf{\color{jblueleft}Solución:}
+	\begin{enumerate}[label=\alph*)]
+		\item Apliquemos la identidad
+		$$(1 + ax)^n = \sum_{j=0}^{n} \binom{n}{j} (ax)^j.$$
+		Si $a = -2$
+		\begin{align*}
+			\big(1 + (-2)x\big)^7 & = \sum_{j=0}^{7} \binom{7}{j} (-2x)^j
+		\end{align*}
+		El coeficiente de $x^5$ es
+		\begin{align*}
+			\binom{7}{5} (-2)^5 & = - 672.
+		\end{align*}
+
+		\item Apliquemos la indentidad
+		$$\frac{1}{(1+y)^n} = \sum_{j=0}^{n} \binom{-n}{j} y^j.$$
+		Si $y = -2x$
+		\begin{align*}
+			(1 - 2x)^{-7} & = \sum_{j=0}^{7} \binom{7}{j} (-2x)^j \\
+			& = \sum_{j=0}^{\infty} (-1)^j \binom{7+j-1}{j} (-2)^jx^j
+		\end{align*}
+		El coeficiente de $x^5$ es
+		\begin{align*}
+			(-1)^j \binom{7+5-1}{5} (-2)^5 & = 14 \, 784.
+		\end{align*}
+	\end{enumerate}
+\end{myexample}
+
+\begin{myexample}
+	Para cualquier $n \in \RR$, encuentre el desarrollo en serie de Maclaurin de $f(x) = (1 + x)^n$.
+
+	\tcblower
+	\textbf{\color{jblueleft}Solución:} Sea $f(x) = (1 + x)^n$. Evaluando en $x = 0$, obtenemos que $f(0) = 1$. Luego
+	$$f'(x) = n(1 + x)^{n-1}.$$
+	Evaluando en $x = 0$, obtenemos $f'(0) = n$. Luego
+	$$f''(x) = n(n - 1)(1 + x)^{n-2}.$$
+	Evaluando en $x = 0$, obtenemos $f'(0) = n(n - 1)$. Luego
+	$$f^{(3)}(x) = n(n - 1)(n - 2)(1 + x)^{n-2}.$$
+	Evaluando en $x = 0$, obtenemos $f'(0) = n(n - 1)(n - 2)$. Así, tenemos
+	$$(1 + x)^n = 1 + nx + n(n-1) \frac{x^2}{2!} + n(n - 1)(n - 2) \frac{x^3}{3!} + n(n - 1)(n - 2)(n - 3) \frac{x^4}{4!} + \cdots.$$
+	O bien
+	\begin{align*}
+		(1 + x)^n = 1 + \sum_{j=1}^{\infty} \frac{n(n - 1)(n - 2) \cdots (n - j + 1)}{j!} x^j.
+	\end{align*}
+	Ahora nos preguntamos: ¿Qué sucesión genera la función $f(x) = (1 + 3x)^{-1/3}$? Para ello hagamos un cambio de variable como sigue:
+	\begin{align*}
+		(1 + 3x)^{-1/3} & = 1 + \sum_{j=1}^{\infty} \frac{\displaystyle \left(-\frac{1}{3}\right)\left(-\frac{1}{3} - 1\right)\left(-\frac{1}{3} - 2\right) \cdots \left(-\frac{1}{3} - j + 1\right)}{j!} (3x)^j \\
+		& = 1 + \sum_{j=1}^{\infty} \frac{\displaystyle \left(-\frac{1}{3}\right)\left(-\frac{4}{3}\right)\left(-\frac{7}{3}\right)\left(-\frac{10}{3}\right) \cdots \left(\frac{-3j-2}{3}\right)}{j!} 3^j x^j \\
+		& = 1 + \sum_{j=1}^{\infty} \left(- \frac{1}{3} \right)^j \frac{(1)(4)(7)(10) \cdots (3j - 2)}{j!} 3^j x^j \\
+		& = 1 + \sum_{j=1}^{\infty} (-1)^j \frac{(1)(4)(7)(10) \cdots (3j - 2)}{j!} x^j \\
+		& = 1 + \sum_{j=1}^{\infty} \frac{(-1)(-4)(-7)(-10) \cdots (2 - 3j)}{j!} x^j
+	\end{align*}
+	Entonces dicha función genera la siguiente sucesión:
+    $$1, \, -1, \, \frac{(-1)(-4)}{2!}, \, \frac{(-1)(-4)(-7)}{3!}, \, \dots, \, \frac{(-1)(-4)(-7)(-10) \cdots (2-3j)}{j!}, \, \dots.$$
+\end{myexample}
+
+Antes de continuar reuniremos las identidades que se muestran a continuación para referencias posteriores.
+
+\begin{BOX}
+    Para cualquier $m$, $n \in \ZZ[+]$, $a \in \RR$,
+    \begin{enumerate}
+        \item $\displaystyle (1 + x)^n = \sum_{j=0}^{n} \binom{n}{j} x^j$
+        \item $\displaystyle (1 + ax)^n = \sum_{j=0}^{n} \binom{n}{j} (ax)^j$
+        \item $\displaystyle \left(1 + x^m\right)^n = \sum_{j=0}^{n} \binom{n}{j} x^{mj}$
+        \item $\displaystyle \frac{1-x^{n+1}}{1-x} = \sum_{j=0}^n x^j$
+        \item $\displaystyle \frac{1}{1-x} = \sum_{j=0}^{\infty} x^j$
+        \item $\displaystyle \frac{1}{(1+x)^n} = \sum_{j=0}^{\infty} \binom{-n}{j}x^j = \sum_{j=0}^{\infty} (-1)^j \binom{n+j-1}{j} x^j$
+        \item $\displaystyle \frac{1}{(1-x)^n} = \sum_{j=0}^{\infty} \binom{-n}{j}(-x)^j = \sum_{j=0}^{\infty} \binom{n+j-1}{j}x^j$
+        \item Si $\displaystyle f(x) = \sum_{j=0}^{\infty} a_j x^j$, $\displaystyle g(x) = \sum_{j=0}^{\infty} b_j x^j$ y $h(x) = f(x)g(x)$, entonces $\displaystyle h(x) = \sum_{j=0}^{\infty} c_j x^j$ en donde para cualquier $k \geq 0$, $\displaystyle c_k = \sum_{j=0}^{\infty} a_h b_{k-j}$
+    \end{enumerate}
+\end{BOX}
+
+\begin{myexample}
+    Determinar el coeficiente de $x^{15}$ de $f(x) = \left( x^2 + x^3 + x^4 + \cdots \right)^4$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Tenemos
+    \begin{align*}
+        f(x) & = \big[ x^2 (1 + x + x^2 + x^3 + \cdots ) \big] \\
+        & = \left[ x^2 \left[ \sum_{j=0}^{\infty} x_j \right] \right]^4 \\
+        & = x^8 \left[ \sum_{j=0}^{\infty} x_j \right]^4 \\
+        & = x^8 \left[ \frac{1}{1-x} \right]^4 \\
+        & = x^8 \frac{1}{(1-x)^4} \\
+        & = x^8 \sum_{j=0}^{\infty} \binom{-4}{j} (-x)^j \\
+        & = x^8 \sum_{j=0}^{\infty} \binom{4+j-1}{j} x^j \\
+        & = x^8 \sum_{j=0}^{\infty} \binom{3+j}{j} x^j.
+    \end{align*}
+    Así, el coeficiente buscado es:
+    $$\binom{3+7}{7} = \binom{10}{7} = 120.$$
+    En general, para $n \in \ZZ[+]$, el coeficiente de $x^n$ en $f(x)$ es 0 si $0 \leq n \leq 7$. Para toda $n \geq 8$, el coeficiente de $x^n$ en $f(x)$ es el coeficiente de $x^{n-8}$ en $(1-x)^{-4}$, que es $\displaystyle \binom{-4}{n-8}(-1)^{n-8} = \binom{n-5}{n-8}$.
+\end{myexample}
+
+\begin{myexample}
+    ¿De cuántas formas se pueden distribuir 24 libros idénticos a 4 estudiantes de forma que cada uno de ellos reciba al menos 3 libros, pero no más de 8?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Para cada estudiante se tiene la función
+    $$x^3 + x^4 + x^5 + x^6 + x^7 + x^8.$$
+    Al considerar a los 4 estudiantes se tiene la función generatriz siguiente:
+    \begin{align*}
+        f(x) & = \left( x^3 + x^4 + x^5 + x^6 + x^7 + x^8 \right)^4 \\
+        & = \left[ x^3 \left( 1 + x + x^2 + x^3 + x^4 + x^5 \right)\right] \\
+        & = x^{12} \left[ \sum_{j=0}^5 x^j \right]^4 \\
+        & = x^{12} \left[ \frac{1-x^6}{1-x} \right]^4 \\
+        & = x^{12} \left( 1-x^6 \right)^4 (1-x)^{-4}.
+    \end{align*}
+    Buscamos el coeficiente de $x^{24}$ en $f(x)$, es decir, se busca el coeficiente de $x^{12}$ en $\left( 1-x^6 \right)^4 (1-x)^{-4}$. Se sigue que
+    $$\left( 1-x^6 \right)^4 = \sum_{j=0}^4 \binom{4}{j}(-x^6)^j$$
+    y
+    $$(1-x)^{-4} = \sum_{j=0}^{\infty} \binom{3+j}{j}x^j.$$
+    También, podemos expresar de la siguiente manera:
+    $$\left( 1-x^6 \right)^4 = \binom{4}{0} - \binom{4}{1}x^6 + \binom{4}{2}x^{12} + \binom{4}{3}x^{18} + \binom{4}{4}x^{24}$$
+    y
+    $$(1-x)^{-4} = \binom{3}{0} + \binom{4}{1}x + \binom{5}{2}x^{2} + \binom{6}{3}x^{3} + \binom{7}{4}x^{4} + \binom{8}{5}x^{5} + \binom{9}{6}x^{6} + \cdots.$$
+    El coeficiente $x^{12}$ en
+    $$\left( 1-x^6 \right)^4 (1-x)^{-4}$$
+    es:
+    $$\binom{4}{0} \binom{2+12}{12} - \binom{4}{1} \binom{9}{6} + \binom{4}{2} \binom{3}{0} = 125.$$
+\end{myexample}
+
+\begin{myexample}
+    Verificar que para todo $n \in \ZZ[+]$, se cumple que:
+    $$\binom{2n}{n} = \sum_{j=0}^n \binom{n}{j}^2.$$
+
+    \newpage\noindent
+    \textbf{\color{jblueleft}Solución:} Tenemos que
+    $$(1 + x)^{2n} = \left[ (1 + x)^n \right].$$
+    El coeficiente de $x^n$ en
+    $$(1 + x)^{2n} = \sum_{j=0}^{2n}\binom{2n}{j}x^j$$
+    es $\displaystyle \binom{2n}{n}$. Por otro lado,
+    \begin{align*}
+        \left[ (1+x)^n \right]^2 & = \left[ \sum_{j=0}^{n}\binom{n}{j}x^j \right]^2 \\
+        & = \left[ \binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x^2 + \cdots + \binom{n}{n}x^n \right] \\
+        & \hspace{4cm} \left[ \binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x^2 + \cdots + \binom{n}{n}x^n \right] \\
+        & = \binom{n}{0} \binom{n}{n} + \binom{n}{1} \binom{n}{n-1} + \binom{n}{2} \binom{n}{n-2} + \cdots + \binom{n}{n} \binom{n}{0};
+    \end{align*}
+    pero sabemos que
+    $$\binom{n}{r} = \binom{n}{n-r},$$
+    así que
+    $$\binom{n}{0} \binom{n}{n} + \binom{n}{1} \binom{n}{n-1} + \binom{n}{2} \binom{n}{n-2} + \cdots + \binom{n}{n} \binom{n}{0} = \binom{n}{0}^2 + \binom{n}{1}^2 + \binom{n}{2}^2 + \cdots + \binom{n}{n}^2.$$
+    Así pues,
+    $$\binom{2n}{n} = \sum_{j=0}^{n} \binom{n}{j}^2.$$
+\end{myexample}
+
+\begin{myexample}
+    Determine el coeficiente de $x^8$ en $\displaystyle f(x) = \frac{1}{(x-3)(x-2)^2}$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Tenemos que
+    $$\frac{1}{x-a} = \left( - \frac{1}{a} \right) \left( \frac{1}{1-\displaystyle\frac{x}{a}} \right) = \left( - \frac{1}{a} \right) \left[ 1 + \left( \frac{x}{a} \right) + \left( \frac{x}{a} \right)^2 + \left( \frac{x}{a} \right)^3 + \cdots \right].$$
+    Se sigue pues
+    $$\frac{1}{x-3} = \left( -\frac{1}{3} \right) \left( \frac{1}{1-\displaystyle\frac{x}{3}} \right) = -\frac{1}{3} \sum_{j=0}^{\infty} \left(\frac{x}{3}\right)^{j}.$$
+    Por otro lado,
+    $$\frac{1}{(x-2)^{2}} = \frac{1}{\left[ -2 \left(1-\displaystyle\frac{x}{2}\right) \right]^{2}} = \frac{1}{4} \frac{1}{\left( 1-\displaystyle\frac{x}{2} \right)^{2}} = \frac{1}{4} \sum_{j=0}^{\infty} \binom{2+j-1}{j} \left( \frac{x}{2} \right)^{j} = \frac{1}{4} \sum_{j=0}^{\infty} \binom{2+j-1}{j}  2^{-j}x^{j}.$$
+    Buscamos el coeficiente de $x^{8}$ en:
+    \begin{align*}
+        \frac{1}{(x-3)(x-2)^2} & = \left( - \frac{1}{3} \right) \left[ 1 + 3^{-1}x + 3^{-2}x^{2} + 3^{-3}x^{3} + \cdots \right] \\
+        & \hspace{2.2cm} \left( \frac{1}{4} \right) \left[ 1 + \binom{2}{1}2^{-1}x + \binom{3}{2}2^{-2}x^{2} + \binom{4}{3}2^{-3}x^{3} \right]
+    \end{align*}
+    Así,
+    \begin{align*}
+        & \left( - \frac{1}{12} \right) \left[ \binom{9}{8} 2^{-8} + 3^{-1} \binom{8}{7} 2^{-7} +  3^{-2} \binom{7}{6} 2^{-6} + 3^{-3} \binom{6}{5} 2^{-5} + 3^{-4} \binom{5}{4} 2^{-4} \right. \\
+        & \hspace{5cm}\left. + 3^{-5} \binom{4}{3} 2^{-3} 3^{-6} \binom{3}{2} 2^{-2} + 3^{-7} \binom{2}{1} 2^{-1} + 3^{-8} \right]
+    \end{align*}
+\end{myexample}
+
+\begin{BOX}
+    Una técnica alternativa aplica la descomposición en fracciones parciales. Tomando el ejemplo anterior
+    \begin{align*}
+        \frac{1}{(x-3)(x-2)^2} & = \frac{A}{x-3} + \frac{B}{x-2} + \frac{C}{(x-2)^{2}} \\
+        & = \frac{A(x-2)^{2} + B(x-2)(x-3) + C(x-3)}{(x-3)(x-2)^{3}} \\
+        & = \frac{Ax^{2} - 4Ax + 4A + Bx^{2} - 5Bx + 6B + Cx -3C}{(x-3)(x-2)^{3}}.
+    \end{align*}
+    Está descomposición implica que:
+    $$Ax^{2} - 4Ax + 4A + Bx^{2} - 5Bx + 6B + Cx -3C = 1.$$
+    Factorizando, se sigue que
+    $$(A + B)x^{2} + (-4A -5B + C)x + (4A + 6B -3C) = 1.$$
+    Entonces se obtiene el siguiente sistema de ecuaciones:
+    \begin{align}
+        A + B & = 0 \label{DSHDGBHFGBJH}\\
+        -4A - 5B + C & = 0 \label{HYHGHYGU} \\
+        4A + 6B -3C & = 1 \label{HFGVHHVFHVFJHF}
+    \end{align}
+    Resolvamos el anterior sistema de ecuaciones por el método de sustitución. De la ecuación \eqref{DSHDGBHFGBJH}, se obtiene que $A = -B$. Sustituyendo en \eqref{HYHGHYGU} y \eqref{HFGVHHVFHVFJHF}, se sigue que
+    \begin{align}
+        -B + C & = 0 \label{JAJSJSKSKDJDK} \\
+        2B - 3C & = 1 \label{JAJSJKSKSKSJJUU}
+    \end{align}
+    Si multiplicamos por 2 la ecuación \eqref{JAJSJSKSKDJDK} y sumamos con \eqref{JAJSJKSKSKSJJUU}, se sigue que
+    $${
+    \extrarowheight = -0.5ex
+    \renewcommand{\arraystretch}{1.7}
+    + \begin{array}{rl}
+        -2B+2C = & \!\!\!\! 0 \\
+        2B-3C = & \!\!\!\! 1 \\
+        \hline
+        -C = & \!\!\!\! 1
+    \end{array}}$$
+    Por tanto, $C = -1$. Sustituyendo en \eqref{JAJSJSKSKDJDK}, se obtiene que $B = -1$ y sabemos que $A = -B$ por \eqref{DSHDGBHFGBJH}, por lo que $A = 1$.
+    
+    Regresando a la función, se sigue que
+    \begin{align*}
+        \frac{1}{(x-3)(x-2)^2} & = \frac{A}{x-3} + \frac{B}{x-2} + \frac{C}{(x-2)^{2}} \\
+        & = \frac{1}{x-3} + \frac{-1}{x-2} + \frac{-1}{(x-2)^{2}} \\
+        & = - \frac{1}{3} \frac{1}{1-\frac{x}{3}} + \frac{1}{2} \frac{1}{1-\frac{x}{2}} - \frac{1}{\left[ - 2 \left( 1-\frac{x}{2} \right) \right]^{2}} \\
+        & = -\frac{1}{3} \sum_{j=0}^{\infty} \left( \frac{x}{3} \right)^{j} + \frac{1}{2} \sum_{j=0}^{\infty} \left( \frac{x}{2} \right)^{j} - \frac{1}{4} \sum_{j=0}^{\infty} \binom{j+1}{j} \left( \frac{x}{2} \right)^{j}.
+    \end{align*}
+    Así, el coeficiente de $x^{8}$ es:
+    $$\left( - \frac{1}{3} \right) \left( \frac{1}{3} \right)^{8} + \left( \frac{1}{2} \right) \left( \frac{1}{2} \right)^{8} - \frac{1}{4} \binom{9}{8} \left( \frac{1}{2} \right)^{8} = - \left[ \left( \frac{1}{9} \right)^{9} + \left( \frac{1}{2} \right)^{10} \right] = - \frac{138 \, 805}{20 \, 155 \, 392}.$$
+\end{BOX}
+
+\begin{myexample}
+    Determinar la cantidad de subconjuntos de $S = \{ 1, \, 2, \, 3, \, \dots, \, 15 \}$ de 4 elementos que no contengan enteros consecutivos.
+    
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Mostremos un subconjuntos como ejemplo. El conjunto $\{1, \, 4, \, 8, \, 11 \}$ cumple que
+    $$1 \leq 1 < 4 <8 < 11 \leq 15.$$
+    Veamos la suma de las diferencias entre los consecutivos
+    $$1-1=0, \quad 4-1=3, \quad 8-4=4, \quad 11-8=3, \quad 15-11=4;$$
+    luego
+    $$0 + 3 + 4 + 3 + 4 = 14.$$
+    Así, podemos calcular el número de subconjuntos con el número de soluciones enteras de:
+    $$c_1 + c_2 + c_3 + c_4 + c_5 = 14$$
+    con $c_1$, $c_5 \geq 0$ y $c_2$, $c_3$, $c_4 \geq 2$. Así pues, mostremos los polinomios que forma la función generatriz
+    \begin{align*}
+        f(x) & = \left( x^{0} + x^{1} + x^{2} + x^{3} + \cdots \right)^{2} \left( x^{2} + x^{3} + x^{4} + \cdots \right)^{3} \\
+        & = \left( \sum_{j=0}^{\infty} x^{j} \right)^{2} \left[ x^{2} \left( \sum_{j=0}^{\infty} x^{j} \right) \right]^{3}
+    \end{align*}
+    Así
+    $$f(x) = \frac{1}{(1-x)^{2}} \frac{x^{6}}{(1-x)^{3}} = x^{6} \frac{1}{(1-x)^{5}}.$$
+    Como se busca el coeficiente de $x^{14}$ en $f(x)$; entonces busquemos el coeficiente de $x^{8}$ en $\displaystyle \frac{1}{(1-x)^{5}}$. Tenemos que
+    $$\frac{1}{(1-x)^{5}} = \sum_{j=0}^{\infty} \binom{5+j-1}{j} x^{j}$$
+    Así, el coeficiente de $x^{8}$ es:
+    $$\binom{5+8-1}{8} = \binom{12}{8} = \binom{12}{8} = 495.$$
+    También se puede resolver de la siguiente manera: Sea $S = \{ 1, \, 2, \, 3, \, \dots, \, 15 \}$, si tomamos $\{1, \, 4, \, 8, \, 11 \}$ cumple que
+    $$0 < 1 < 4 < 8 < 11 <16.$$
+    Veamos la suma de las diferencias entre los consecutivos
+    $$1-0=1, \quad 4-1=3, \quad 8-4=4, \quad 11-8=3, \quad 16-11=5;$$
+    luego
+    $$1 + 3 + 4 + 4 + 5 = 16.$$
+    El número de subconjuntos de $S$ se puede obtener con el número de soluciones de la ecuación
+    $$c_1 + c_2 + c_3 + c_4 + c_5 = 16,$$
+    con $0 < c_1$, $c_5$ y $c_2$, $c_3$, $c_4 \geq 2$. Hallemos el coeficiente de $x^{16}$ en la función generatriz
+    \begin{align*}
+        f(x) & = \left( x^{1} + x^{2} + x^{3} + \cdots \right)^{2} \left( x^{2} + x^{3} + x^{4} + \cdots \right)^{3} \\
+        & = \left( x \left( 1 + x + x^{2} + \cdots \right) \right)^{2} \left( x^{2} \left( 1 + x + x^{2} + \cdots \right) \right)^{3} \\
+        & = x^{2} \left[ \sum_{j=0}^{\infty} x^{j} \right]^{2} x^{6} \left[ \sum_{j=0}^{\infty} x^{j} \right]^{3} = x^{2} \frac{1}{(1-x)^{2}} x^{6} \frac{1}{(1-x)^{3}}
+    \end{align*}
+    Así
+    $$f(x) = x^{8} \frac{1}{(1-x)^{5}}.$$
+    La respuesta es el coeficiente de $x^{8}$ en $\displaystyle \frac{1}{(1-x)^{5}} = \sum_{j=0}^{\infty} \binom{5+j-1}{j} x^{j}$ el cual es
+    $$\binom{5+8-1}{8} = 495.$$
+\end{myexample}
+
+\begin{myexample}
+    Hallar el número de selecciones de tamaño $r$ con repetición tomadas a partir de un conjunto de tamaño $r$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} El número buscado es el coeficiente de $x^{r}$ en la función generatriz
+    \begin{align*}
+        f(x) & = \left( x^{0} + x^{1} + x^{2} + x^{3} + \cdots \right)^{n} = \left[ \sum_{j=0}^{\infty} x^{j} \right]^n = \frac{1}{(1-x)^{n}} = \sum_{j=0}^{\infty} \binom{n+j-1}{j} x^{j}.
+    \end{align*}
+    Así, el coeficiente de $x^{r}$ en la función, está dado por:
+    $$\binom{n+r-1}{r}.$$
+\end{myexample}
+
+\newpage
+
+\section{Función generatriz exponencial}
+
+\begin{BOX}
+    Consideremos la expresión
+    $${}_n C _n = \binom{n}{r} = C(n, \, r) = \frac{n!}{r!(n-r)!} \quad \text{ y } \quad {}_n P _n = P(n, \, r) = \frac{n!}{(n-r)!}.$$
+    Entonces
+    $$\binom{n}{r} = \frac{P(n, \, r)}{r!}.$$
+    Ahora, expresemos el desarrollo binomial
+    \begin{align*}
+        (1 + x)^{n} & = \sum_{j=0}^{n} \binom{n}{j} x^{j} = \sum_{j=0}^{n} \frac{P(n, \, j)}{j!} x^{j} \\
+        & = 1 + \frac{P(n, \, 0)}{0!} x^{0} + \frac{P(n, \, 1)}{1!} x^{1} + \frac{P(n, \, 2)}{2!} x^{2} + \frac{P(n, \, 3)}{3!} x^{3} + \frac{P(n, \, 4)}{4!} x^{4} + \cdots \\
+        & = P(n, \, 0) \frac{x^{0}}{0!} + P(n, \, 1) \frac{x^{1}}{1!} + P(n, \, 2) \frac{x^{2}}{2!} + P(n, \, 3) \frac{x^{3}}{3!} + P(n, \, 4) \frac{x^{4}}{4!} + \cdots 
+    \end{align*}
+    Con base en esto, tenemos la siguiente definición.
+\end{BOX}
+
+\begin{definicion}{}{}
+    Para una sucesión $a_0$, $a_1$, $a_2$, $a_3$, $\dots$. Sea
+    $$f(x) = a_0 \frac{x^{0}}{0!} + a_1 \frac{x^{1}}{1!} + a_2 \frac{x^{2}}{2!} + a_3 \frac{x^{3}}{3!} + a_4 \frac{x^{4}}{4!} + \cdots$$
+    se llama la función generatriz exponencial para la sucesión dada. Es decir, se define la función generatriz exponencial de la sucesión $a_0$, $a_1$, $a_2$, $a_3$, $\dots$
+    $$f(x) = \sum_{j=0}^{\infty} a_j \frac{x^{j}}{j!}.$$
+\end{definicion}
+
+\begin{obs}{}{}
+    El tipo de función generatriz con el que se ha trabajado se conoce como la función generatriz ordinaria, es decir, la función
+    $$f(x) = \sum_{j=0}^{\infty} a_j \frac{x^{j}}{j!}$$
+    se llama \textbf{generatriz ordinaria} de la sucesión $a_0$, $a_1$, $a_2$, $a_3$, $\dots$.
+\end{obs}
+
+\begin{obs}{}{}
+    Sea
+    $$e^{x} = \sum_{j=0}^{\infty} \frac{x^{j}}{j!}.$$
+    Notemos que es \textit{generatriz ordinaria} de la sucesión: $\displaystyle 1, \, 1, \, \frac{1}{2!}, \, \frac{1}{3!}, \, \frac{1}{4!}, \, \frac{1}{5!}, \, \dots$ y es \textit{generatriz exponencial} de la sucesión: $1, \, 1, \, 1, \, 1, \, 1, \, 1, \, \dots$.
+\end{obs}
+
+\begin{myexample}
+    Obtengamos algunas identidades a partir de $e^{x}$ y $e^{-x}$. Consideremos los desarrollos en serie de Maclaurin de $e^{x}$ y $e^{-x}$. Es decir,
+    $$e^{x} = \sum_{j=0}^{\infty} \frac{x^{j}}{j!} \quad \text{ y } \quad e^{-x} = \sum_{j=0}^{\infty} \frac{(-x)^{j}}{j!} = \sum_{j=0}^{\infty} (-1)^{j} \frac{x^{j}}{j!}.$$
+    Entonces
+    $$e^{x} = 1 + x + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots \quad \text{ y } \quad e^{-x} = 1 - x + \frac{x^{2}}{2!} - \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots.$$
+    Sumando ambas expresiones, se sigue que
+    $$e^{x} + e^{-x} = 2 \left[ 1 + \frac{x^{2}}{2!} + \frac{x^{4}}{4!} + \frac{x^{6}}{6!} + \cdots \right]$$
+    y dividiendo entre 2 ambos lados de la expresión,
+    $$\frac{e^{x} + e^{-x}}{2} = 1 + \frac{x^{2}}{2!} + \frac{x^{4}}{4!} + \frac{x^{6}}{6!} + \cdots.$$
+    Así pues,
+    $$\frac{e^{x} + e^{-x}}{2} = \sum_{j=0}^{\infty} \frac{x^{2j}}{(2j)!}.$$
+    De manera análoga, si restamos, se sigue que
+    $$e^{x} - e^{-x} = 2 \left[ x + \frac{x^{3}}{3!} + \frac{x^{5}}{5!} + \frac{x^{7}}{7!} + \cdots \right]$$
+    y dividiendo entre 2 ambos lados de la expresión,
+    $$\frac{e^{x} - e^{-x}}{2} = x + \frac{x^{3}}{3!} + \frac{x^{5}}{5!} + \frac{x^{7}}{7!} + \cdots.$$
+    Así pues,
+    $$\frac{e^{x} - e^{-x}}{2} = \sum_{j=0}^{\infty} \frac{x^{2j+1}}{(2j+1)!}.$$
+    A dichas expresiones se les conoce como serie de Maclaurin de $\cosh(x)$ y $\operatorname{senh}(x)$ respectivamente.
+\end{myexample}
+
+\begin{myexample}
+    Un barco lleva 48 banderas, 12 de cada color: rojo, blanco, azul y negro. 12 banderas se colocan en un mástil para enviar señales hacia otros barcos. ¿Cuántas de estas señales usan un número par de banderas azules y un número impar de banderas negras?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Resolvamos con la función generatriz exponencial. Mostremos las funciones por color
+    \begin{align*}
+        \text{Rojas :} & \quad 1 + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots &  \text{Azules :} & \quad 1 + \frac{x^{2}}{2!} + \frac{x^{4}}{4!} + \frac{x^{6}}{6!} + \cdots \\
+        \text{Blancas :} & \quad 1 + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots & \text{Negras :} & \quad x + \frac{x^{3}}{3!} + \frac{x^{5}}{5!} + \frac{x^{7}}{7!} + \cdots
+    \end{align*}
+    Así, podemos expresar la función generatriz con el producto
+    \begin{align*}
+        f(x) & = \left( 1 + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots \right)^{2} \left( 1 + \frac{x^{2}}{2!} + \frac{x^{4}}{4!} + \frac{x^{6}}{6!} + \cdots \right) \left( x + \frac{x^{3}}{3!} + \frac{x^{5}}{5!} + \frac{x^{7}}{7!} + \cdots \right) \\
+        & = \left( e^{x} \right)^{2} \left( \frac{e^{x} + e^{-x}}{2} \right) \left( \frac{e^{x} - e^{-x}}{2} \right) = e^{2x} \left[ \frac{e^{x2} - e^{-2x}}{4} \right] = \frac{e^{4x}-1}{4} = \frac{1}{4} \left[ e^{4x} - 1 \right] \\
+        & = \frac{1}{4} \left[ \left( \sum_{j=0}^{\infty} \frac{(4x)^{j}}{j!} \right) - 1 \right] = \frac{1}{4} \left[ -1 + 1 + 4x + \frac{(4x)^{2}}{2!} + \frac{(4x)^{3}}{3!} \right] = \frac{1}{4} \left[ \sum_{j=1}^{\infty} \frac{(4x)^{j}}{j!} \right]
+    \end{align*}
+    El número de señales que puede formarse con las restricciones dadas es el coeficiente de $\displaystyle \frac{x^{12}}{12!}$, el cual es:
+    $$\frac{1}{4} \left( 4^{12} \right) = 4^{11} = 4 \, 194 \, 304 \text{ señales.}$$
+\end{myexample}
+
+\begin{myexample}
+    Una compañía contrata 11 empleados nuevos. Cada empleado será asignado a uno de 4 departamentos: A, B, C y D; teniendo cada departamento un empleado nuevo al menos. ¿De cuántas formas pueden hacerse estas asignaciones?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Calcular el número de formas distintas de asignar es equivalente con el número de sucesiones con 11 letras. Por ejemplo, tenemos:
+    $$\begin{array}{l}
+        \text{AABBBCCCDDD} \\
+        \text{AAAABCCCCDD}
+    \end{array}$$
+    Mostremos la función generatriz,
+    \begin{align*}
+        f(x) & = \left( x + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \frac{x^{4}}{4!} + \cdots \right)^{4} = [e^{x} - 1]^{4} = e^{4x} - 4e^{3x} + 6e^{2x} - 4e^{x} + 1
+    \end{align*}
+    Así
+    $$f(x)  = \sum_{j=0}^{\infty} 4^{j} \frac{x^{j}}{j!} - 4 \sum_{j=0}^{\infty} 3^{j} \frac{x^{j}}{j!} + 6 \sum_{j=0}^{\infty} 2^{j} \frac{x^{j}}{j!} - 4 \sum_{j=0}^{\infty} \frac{x^{j}}{j!} + 1.$$
+    El resultado lo obtenemos con el coeficiente de $\displaystyle \frac{x^{11}}{11!}$; el cual es
+    $$4^{11} - 4(3)^{11} + 6(2)^{11} - 4 = \sum_{j=0}^{\infty} (-1)^{j} \binom{4}{j} (4-j)^{11} = 3 \, 498 \, 000.$$
+    La solución a este ejercicio es equivalente a calcular el número de funciones suprayectivas. Recordemos por la pág. \pageref{JEDHFHDJKHJFHGJGB} que el número de funciones suprayectivas de $A$ hacia $B$ con $|A| = m \geq n = |B|$ está dada por
+    $$\sum_{j=0}^{n} (-1)^j \binom{n}{n-j} (n-j)^m.$$
+    Así, si $n = 4$ (departamentos) y $m = 11$ (empleados), obtenemos
+    $$\sum_{j=0}^{4} (-1)^j \binom{4}{4-j} (4-j)^{11}.$$
+\end{myexample}

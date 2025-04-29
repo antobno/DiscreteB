@@ -1,0 +1,439 @@
+\chapterimage{blue19.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{EL USO DE LA COMPUTADORA}
+
+
+La computadora es una herramienta fundamental en la sociedad actual y tiene una amplia gama de aplicaciones en diversos campos, desde el ámbito empresarial y científico hasta el entretenimiento y la comunicación. El uso de la computadora ha revolucionado la forma en que trabajamos, nos comunicamos y nos entretenemos.
+
+
+
+Uno de los aspectos clave en el uso de las computadoras es la programación. Los lenguajes de programación son conjuntos de instrucciones que permiten a los desarrolladores comunicarse con las computadoras y crear software y aplicaciones. Existen muchos lenguajes de programación diferentes, cada uno con sus propias características y aplicaciones específicas. Algunos de los lenguajes de programación más populares incluyen:
+\begin{enumerate}
+\item Python: Es un lenguaje de programación versátil y fácil de aprender, que se utiliza ampliamente en campos como la ciencia de datos, la inteligencia artificial y el desarrollo web.
+\item Java: Es un lenguaje de programación de propósito general que se utiliza en una amplia variedad de aplicaciones, desde aplicaciones empresariales hasta desarrollo de Android.
+\item C++: Es un lenguaje de programación de bajo nivel que se utiliza en el desarrollo de sistemas, juegos y aplicaciones de alto rendimiento.
+\item JavaScript: Es un lenguaje de programación que se utiliza principalmente para desarrollar aplicaciones web interactivas y dinámicas.
+%\item Ruby: Es un lenguaje de programación conocido por su elegancia y facilidad de lectura, utilizado principalmente en el desarrollo web.
+\item C\#: Es un lenguaje de programación desarrollado por Microsoft, utilizado principalmente en el desarrollo de aplicaciones de Windows y juegos de Unity.
+\item PHP: Es un lenguaje de programación utilizado principalmente en el desarrollo de aplicaciones web y la creación de sitios dinámicos.
+\end{enumerate}
+
+
+Estos son solo algunos ejemplos, y existen muchos otros lenguajes de programación disponibles, cada uno con sus propias ventajas y desventajas. La elección del lenguaje de programación dependerá de los requisitos del proyecto, las preferencias del desarrollador y las características específicas que se necesiten. Considerando que las computadoras son herramientas muy importantes en nuestra actualidad, particularmente, para ahorrarnos tiempo y esfuerzo en el trabajo de calcular, proporcionaremos algunos programas escritos en lenguaje C++, para hacer el cálculo que en cada caso se indica.
+
+\newpage
+
+\section*{Programa para evaluar un número en la función suelo y techo}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+#include <cmath>
+
+int main() {
+    double numero;
+    std::cout << "Introduce un numero real: ";
+    std::cin >> numero;
+
+    double suelo = floor(numero);
+    double techo = ceil(numero);
+
+    std::cout << "El suelo de " << numero << " es: " << suelo << std::endl;
+    std::cout << "El techo de " << numero << " es: " << techo << std::endl;
+
+    system ("pause>null");
+    return 0;
+}
+\end{lstlisting}
+
+\section*{Programa que calcula las raíces de una ecuación de segundo grado}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+#include <cmath>
+
+int main() {
+    setlocale(LC_ALL, "");
+    double a, b, c;
+    double discriminante, raiz1, raiz2;
+
+    std::cout << "Ingrese los coeficientes de la ecuacion de segundo grado:" << std::endl;
+    std::cout << "a: ";
+    std::cin >> a;
+    std::cout << "b: ";
+    std::cin >> b;
+    std::cout << "c: ";
+    std::cin >> c;
+
+    discriminante = b * b - 4 * a * c;
+
+    if (discriminante > 0) {
+        raiz1 = (-b + sqrt(discriminante)) / (2 * a);
+        raiz2 = (-b - sqrt(discriminante)) / (2 * a);
+
+        std::cout << "Las raices son reales y diferentes:" << std::endl;
+        std::cout << "Raiz 1: " << raiz1 << std::endl;
+        std::cout << "Raiz 2: " << raiz2 << std::endl;
+    } else if (discriminante == 0) {
+        raiz1 = -b / (2 * a);
+
+        std::cout << "Las raices son reales e iguales:" << std::endl;
+        std::cout << "Raiz: " << raiz1 << std::endl;
+    } else {
+        double parteReal = -b / (2 * a);
+        double parteImaginaria = sqrt(-discriminante) / (2 * a);
+
+        std::cout << "Las raices son complejas conjugadas:" << std::endl;
+        std::cout << "Raiz 1: " << parteReal << " + " << parteImaginaria << "i" << std::endl;
+        std::cout << "Raiz 2: " << parteReal << " - " << parteImaginaria << "i" << std::endl;
+    }
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que calcula la suma de los primeros $\bm{n}$ números naturales}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "");
+    int n;
+    int suma = 0;
+
+    std::cout << "Ingrese el valor de N: ";
+    std::cin >> n;
+
+    for (int i = 1; i <= n; i++) {
+        suma += i;
+    }
+
+    std::cout << "La suma de los " << n << " primeros numeros naturales es: " << suma << std::endl;
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que calcula la suma de los primeros $\bm{n}$ números pares}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+int main() {
+    setlocale(LC_ALL, "");
+    int n;
+    int suma = 0;
+
+    std::cout << "Ingrese el valor de N: ";
+    std::cin >> n;
+
+    for (int i = 2; i <= n * 2; i += 2) {
+        suma += i;
+    }
+
+    std::cout << "La suma de los " << n << " primeros numeros pares es: " << suma << std::endl;
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que verifica si un número es primo}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+bool esPrimo(int numero) {
+    if (numero <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i * i <= numero; i++) {
+        if (numero % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+    int numero;
+
+    std::cout << "Ingrese un numero: ";
+    std::cin >> numero;
+
+    if (esPrimo(numero)) {
+        std::cout << numero << " es un numero primo." << std::endl;
+    } else {
+        std::cout << numero << " no es un numero primo." << std::endl;
+    }
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que calcula el MCD de dos números enteros}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+int calcularMCD(int num1, int num2) {
+    while (num2 != 0) {
+        int temp = num2;
+        num2 = num1 % num2;
+        num1 = temp;
+    }
+
+    return num1;
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+    int num1, num2;
+
+    std::cout << "Ingrese el primer numero: ";
+    std::cin >> num1;
+
+    std::cout << "Ingrese el segundo numero: ";
+    std::cin >> num2;
+
+    int mcd = calcularMCD(num1, num2);
+
+    std::cout << "El Maximo Comun Divisor (MCD) de " << num1 << " y " << num2 << " es: " << mcd << std::endl;
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que suma dos matrices}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+const int MAX_FILAS = 100;
+const int MAX_COLUMNAS = 100;
+
+void sumarMatrices(int matriz1[][MAX_COLUMNAS], int matriz2[][MAX_COLUMNAS], int resultado[][MAX_COLUMNAS], int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            resultado[i][j] = matriz1[i][j] + matriz2[i][j];
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+    int filas, columnas;
+    int matriz1[MAX_FILAS][MAX_COLUMNAS];
+    int matriz2[MAX_FILAS][MAX_COLUMNAS];
+    int resultado[MAX_FILAS][MAX_COLUMNAS];
+
+    std::cout << "Ingrese el numero de filas: ";
+    std::cin >> filas;
+    std::cout << "Ingrese el numero de columnas: ";
+    std::cin >> columnas;
+
+    std::cout << "Ingrese los elementos de la matriz 1:" << std::endl;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            std::cout << "Ingrese el elemento " << i+1 << "," << j+1 << ": ";
+            std::cin >> matriz1[i][j];
+        }
+    }
+
+    std::cout << "Ingrese los elementos de la matriz 2:" << std::endl;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            std::cout << "Ingrese el elemento " << i+1 << "," << j+1 << ": ";
+            std::cin >> matriz2[i][j];
+        }
+    }
+
+    sumarMatrices(matriz1, matriz2, resultado, filas, columnas);
+
+    std::cout << "La matriz resultado es:" << std::endl;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            std::cout << resultado[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+\section*{Programa que multiplica dos matrices}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+const int MAX_FILAS = 100;
+const int MAX_COLUMNAS = 100;
+
+void multiplicarMatrices(int matriz1[][MAX_COLUMNAS], int matriz2[][MAX_COLUMNAS], int resultado[][MAX_COLUMNAS], int filas1, int columnas1, int columnas2) {
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            resultado[i][j] = 0;
+            for (int k = 0; k < columnas1; k++) {
+                resultado[i][j] += matriz1[i][k] * matriz2[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+    int filas1, columnas1, filas2, columnas2;
+    int matriz1[MAX_FILAS][MAX_COLUMNAS];
+    int matriz2[MAX_FILAS][MAX_COLUMNAS];
+    int resultado[MAX_FILAS][MAX_COLUMNAS];
+
+    std::cout << "Ingrese el numero de filas de la matriz 1: ";
+    std::cin >> filas1;
+    std::cout << "Ingrese el numero de columnas de la matriz 1: ";
+    std::cin >> columnas1;
+    std::cout << "Ingrese el numero de filas de la matriz 2: ";
+    std::cin >> filas2;
+    std::cout << "Ingrese el numero de columnas de la matriz 2: ";
+    std::cin >> columnas2;
+
+    if (columnas1 != filas2) {
+        std::cout << "Error: Las matrices no se pueden multiplicar." << std::endl;
+        return 0;
+    }
+
+    std::cout << "Ingrese los elementos de la matriz 1:" << std::endl;
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas1; j++) {
+            std::cout << "Ingrese el elemento " << i+1 << "," << j+1 << ": ";
+            std::cin >> matriz1[i][j];
+        }
+    }
+
+    std::cout << "Ingrese los elementos de la matriz 2:" << std::endl;
+    for (int i = 0; i < filas2; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            std::cout << "Ingrese el elemento " << i+1 << "," << j+1 << ": ";
+            std::cin >> matriz2[i][j];
+        }
+    }
+
+    multiplicarMatrices(matriz1, matriz2, resultado, filas1, columnas1, columnas2);
+
+    std::cout << "La matriz resultante es:" << std::endl;
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            std::cout << resultado[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}
+
+%\newpage
+
+\section*{Programa que calcula la transpuesta de una matriz}
+
+\noindent
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdlib>
+#include <locale.h>
+
+const int MAX_FILAS = 100;
+const int MAX_COLUMNAS = 100;
+
+void obtenerMatrizTranspuesta(int matriz[MAX_FILAS][MAX_COLUMNAS], int filas, int columnas, int matrizTranspuesta[MAX_COLUMNAS][MAX_FILAS]) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matrizTranspuesta[j][i] = matriz[i][j];
+        }
+    }
+}
+
+void mostrarMatriz(int matriz[MAX_FILAS][MAX_COLUMNAS], int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            std::cout << matriz[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "");
+    int filas, columnas;
+    int matriz[MAX_FILAS][MAX_COLUMNAS];
+    int matrizTranspuesta[MAX_COLUMNAS][MAX_FILAS];
+
+    std::cout << "Ingrese el numero de filas de la matriz: ";
+    std::cin >> filas;
+    std::cout << "Ingrese el numero de columnas de la matriz: ";
+    std::cin >> columnas;
+
+    std::cout << "Ingrese los elementos de la matriz:" << std::endl;
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            std::cin >> matriz[i][j];
+        }
+    }
+
+    obtenerMatrizTranspuesta(matriz, filas, columnas, matrizTranspuesta);
+
+    std::cout << "Matriz original:" << std::endl;
+    mostrarMatriz(matriz, filas, columnas);
+
+    std::cout << "Matriz transpuesta:" << std::endl;
+    mostrarMatriz(matrizTranspuesta, columnas, filas);
+
+	system ("pause>null");
+	return 0;
+}
+
+\end{lstlisting}

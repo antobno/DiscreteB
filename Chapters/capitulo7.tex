@@ -1,0 +1,826 @@
+\chapterimage{blue16.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{RELACIONES DE RECURRENCIA}
+
+Las relaciones de recurrencia constituyen un pilar fundamental en la matemática discreta, extendiendo su influencia en diversas áreas, desde la teoría de números hasta la análisis de algoritmos. Uno de los modelos más comunes es la recurrencia lineal homogénea con coeficientes constantes. En esta forma, una secuencia \(a_n\) se define en función de sus predecesores, siguiendo la fórmula
+$$a_n = C_1 a_{n-1} + C_2 a_{n-2} + \cdots + C_k a_{n-k},$$
+donde $C_1$, $C_2$, $\dots$, $C_k$ son constantes. Resolver tales recurrencias implica hallar una fórmula explícita para \(a_n\) en términos de \(n\) y condiciones iniciales específicas.
+
+La resolución de recurrencias lineales homogéneas a menudo se aborda mediante la técnica característica. Se forma una ecuación característica asociada, cuyas raíces determinan la naturaleza de las soluciones generales. Casos distintos surgen según las raíces: raíces reales distintas, raíces reales repetidas o raíces complejas conjugadas. Cada escenario demanda una metodología específica para derivar la solución general.
+
+En paralelo, las recurrencias no homogéneas introducen un término no homogéneo en la ecuación, representando factores externos que influyen en la secuencia. La solución de estas recurrencias implica encontrar tanto la solución homogénea como una solución particular que satisface la ecuación completa. Este proceso a menudo involucra métodos como el método de variación de parámetros o el método de coeficientes indeterminados, según la naturaleza del término no homogéneo.
+
+Es crucial destacar la conexión intrínseca entre las relaciones de recurrencia y las series generadoras. Al utilizar funciones generatrices, se puede representar la secuencia como una serie de potencias, lo que facilita el análisis y la manipulación algebraica. Esto no solo simplifica la resolución de recurrencias, sino que también ofrece una perspectiva más amplia para entender el comportamiento asintótico de las secuencias.
+
+En resumen, las relaciones de recurrencia no solo son herramientas matemáticas abstractas, sino que también son indispensables para modelar fenómenos en evolución discreta. Su resolución demanda un enfoque analítico meticuloso, y su aplicación se extiende a campos como la teoría de números, la combinatoria y el análisis de algoritmos. Al profundizar en estas técnicas, se abre la puerta a la resolución eficiente de problemas complejos y a una comprensión más profunda de la estructura matemática subyacente.
+
+\section{La relación de recurrencia lineal de primer orden}
+
+Una progresión geométrica es una sucesión infinita de números, como
+$$5, \, 15, \, 45, \, 135, \, \dots ,$$
+donde el cociente de cualquier término (distinto del primero) entre su predecesor es una constante, llamada razón común. Para nuestra sucesión, esta razón común es
+$$\frac{15}{5} = \frac{45}{15} = \frac{135}{45} = \cdots = 3.$$
+
+En general para una sucesión
+$$a_0, \, a_1, \, a_2, \, a_3, \, \dots$$
+se tiene
+$$\frac{a_1}{a_0} = \frac{a_2}{a_1} = \frac{a_3}{a_2} = \cdots = \frac{a_{n+1}}{a_n} = \cdots = r,$$
+la razón común. En esta progresión geométrica particular, tenemos que
+$$a_{n+1} - 3a_n = 0.$$
+La relación de recurrencia $a_{n+1} - 3a_n = 0$, no define una única progresión geométrica. La sucesión
+$$7, \, 21, \, 63, \, 189, \, \dots$$
+también satisface la relación. Para distinguir la sucesión particular descrita por $a_{n+1} - 3a_n = 0$ necesitamos conocer uno de los términos de la sucesión. Por lo tanto,
+$$a_{n+1} - 3a_n = 0, \text{ donde } n \geq 0 \text{ y } a_0 = 5$$
+define en forma única la sucesión
+$$5, \, 15, \, 45, \, 135, \, \dots ,$$
+mientras que
+$$a_{n+1} - 3a_n = 0, \text{ donde } n \geq 0 \text{ y } a_1 = 21$$
+define en forma única a la sucesión
+$$7, \, 21, \, 63, \, 189, \, \dots.$$
+
+La ecuación $a_{n+1} - 3a_n = 0$ es una relación de recurrencia, ya que el valor de $a_{n+1}$ (considerando actual) depende de $a_n$ (considerando anterior). Como $a_{n+1}$ Sólo depende de su predecesor inmediato, decimos que la relación es de primer orden. En particular, ésta es una relación de recurrencia homogénea, lineal, de primer orden, con coeficientes constantes. La forma general de esa ecuación es $a_{n+1} = da_n$, $n \geq 0$, donde $d$ es una constante.
+
+Los valores como $a_0$ o $a_1$, que se dan además de la relación de recurrencia, se conocen como condiciones de frontera. La expresión $a_0 = A$, donde $A$ es una constante, también se conoce como condición inicial. Nuestros ejemplos muestran la importancia de la condición de frontera para determinar una única solución. \\
+
+Regresando a la relación de recurrencia
+$$a_{n+1} - 3a_n = 0, \text{ donde } n \geq 0.$$
+Consideremos $a_0 = 5$, entonces
+\begin{align*}
+    a_0 & = 5 \\
+    a_1 & = 3a_0 = 3(5) \\
+    a_2 & = 3a_1 = 3(3a_0) = 3^2 (5) \\
+    a_3 & = 3a_2 = 3(3a_1) = 3(3(3a_0)) = 3^{3} (5) \\
+    & \vdots \\
+    a_n & = 3^{n} (5) \\
+\end{align*}
+Por ejemplo, para $n = 10$,
+$$a_{10} = 3^{10}(5) = 295 \, 245.$$
+
+El ejemplo anterior nos conduce a lo siguiente (este resultado puede demostrarse por inducción matemática).
+
+\begin{BOX}
+    La solución general de la relación de recurrencia
+    $$a_{n+1} = da_n, \; n \geq 0$$
+    donde $d$ es una constante y $a_0 = A$, es única y está dada por
+    $$a_n = Ad^n, \; n \geq 0.$$
+\end{BOX}
+
+\begin{myexample}
+    Resolver la relación de recurrencia
+    $$a_n - 7a_{n-1} = 0, \text{ donde } n \geq 1 \text{ y } a_2 = 98.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Tenemos que
+    $$a_n = 7a_{n-1}.$$
+    Sea
+    $$n - 1 = m,$$
+    entonces
+    $$n = m + 1.$$
+    Así, obtenemos:
+    $$a_{m+1} = 7a_m, \text{ donde } m \geq 0 \text{ y } a_2 = 98.$$
+    Entonces , la solución es
+    $$a_m = a_0 7^{n}.$$
+    Así, se hereda que
+    $$a_2 = a_0 7^{2},$$
+    y sustituyendo $a_2 = 98$ en la anterior expresión, se sigue que
+    $$a_0 = 2.$$
+    Finalmente, la solución es:
+    $$a_m = 2(7)^{m}, m \geq 0.$$
+\end{myexample}
+
+\section{La relación de recurrencia lineal homogénea de segundo orden}
+
+Este tipo de relaciones tienen la forma
+$$C_n a_n + C_{n-1} a_{n-1} + C_{n-2} a_{n-2} = 0, \text{ donde } n \geq 2.$$
+Para resolverla, se propone una solución de la forma
+$$a_n = cr^{n}, \text{ donde } c \neq 0 \text{ y } r \neq 0.$$
+Al sustituir en la relación, se obtiene
+$$C_n(cr^{n}) + C_{n-1} (cr^{n-1}) + C_{n-2} (cr^{n-2}) = 0.$$
+Dividamos entre $cr^{n-2}$, así obtenemos
+$$C_n r^{2} + C_{n-1} r + C_{n-2} = 0,$$
+una ecuación cuadrática llamada \textit{ecuación característica}. Las raíces $r_1$, $r_2$ de esta ecuación están en alguno de los tres casos siguientes:
+\begin{enumerate}[label=\alph*)]
+    \item $r_1$, $r_2$ son números reales distintos.
+    \item $r_1$, $r_2$ son complejos conjugados.
+    \item $r_1$, $r_2$ son reales, pero $r_1 = r_2$.
+\end{enumerate}
+En todos los casos, $r_1$ y $r_2$ son las \textit{raíces características}.
+
+\subsection*{Caso A: Raíces reales distintas}
+
+\begin{myexample}
+    Resolver
+    $$a_n + a_{n-1} - 6a_{n-2}, \text{ donde } n \geq 2, \; a_0 = 1 \text{ y } a_1 = 2.$$
+    
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Sea $a_n = cr^{n}$ con $n \geq 2$. Al sustituir en la relación, se obtiene
+    $$cr^{n} + cr^{n-1} - 6cr^{n-2} = 0.$$
+    Dividiendo entre $cr^{n-2}$ se obtiene
+    $$r^{2} + r - 6 = 0$$
+    donde sus raíces son $r_1 = 2$ y $r_2 = -3$. Así, tenemos la solución
+    $$a_n = c_12^{n}, \quad a_n = c_2(-3)^{n}.$$
+    Ambas son linealmente independientes, así que solución se forma con la suma de ambas:
+    $$a_n = c_1 2^{n} + c_2 (-3)^{n}.$$
+    Al aplicar las condiciones iniciales, tenemos
+    $$a_0 = 1, \quad a_1 = 2$$
+    de donde se sigue que
+    \begin{align*}
+        a_0 & = 1 = c_1(2)^{0} + c_2(-3)^{0} \\
+        a_1 & = 2 = c_1(2)^{1} + c_2(-3)^{1}
+    \end{align*}
+    es decir, se obtiene el siguiente sistema
+    \begin{align*}
+        c_1 + c_2 & = 1 \\
+        2c_1 - 3c_2 & = 2
+    \end{align*}
+    Es claro que $c_1 = 1$ y $c_2 = 0$. Por tanto, la solución está dada por
+    $$a_n = 2^{n}.$$ Comprobemos este resultado, entonces
+    $$a_n + a_{n-1} - 6a_{n-2} = 0$$
+    se sigue que
+    $$2^{n} + 2^{n-1} - 6(2^{n-2}) = 0$$
+    dividiendo entre $2^{n-2}$ se obtiene
+    $$2^{2} + 2 - 6 = 0.$$
+\end{myexample}
+
+\begin{myexample}
+    Un banco paga el 6\% de interés anual sobre el ahorro y compone mensualmente el interés. Si alguien deposita \$1000 dólares un 1º de mayo. ¿Qué cantidad habrá en el deposito un año después?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Calculemos el interés mensual, es decir,
+    $$\frac{6\%}{12} = 0.005$$
+    Para $0 \leq n \leq 12$, sea $P_n$ el valor del depósito al cabo de $n$ meses. Entonces se establece la relación de recurrencia:
+    $$P_{n+1} = P_n + 0.005 P_n \text{ ~donde~ } 0 \leq n \leq 11 \text{ con } P_0 = 1000$$
+    que es el interés obtenido sobre $P_n$ durante el mes. Así, tenemos la relación de primer orden
+    $$P_{n+1} = (1.005)P_n, \text{ donde } P_0 = 1000.$$
+    Por lo que, la solución está dada por
+    $$P_n = 1000 (1.005)^{n}.$$
+    Por tanto, pasado un año ($n = 12$), el depósito tendrá un monto de
+    $$P_{12} = 1000 (1.005)^{12} = 1061.68.$$
+\end{myexample}
+
+\begin{myexample}
+    Consideremos los primeros números de la sucesión de Fibonacci
+    $$0, \, 1, \, 1, \, 2, \, 3, \, 5, \, 8, \, 13, \, 21, \, 34, \, 55, \, 89, \, 144, \, \dots.$$
+    Los coeficientes de dos términos sucesivos tiende hacia la llamada razón áurea:
+    $$\frac{55}{34} = 1.617647705 \dots, \quad \frac{89}{55} = 1.61818181\dots, \quad \frac{144}{89} = 1.617977528\dots.$$
+    Así,
+    $$F_{n+2} = F_{n+1} + F_n, \text{ donde } n \geq 0, \; F_0 = 0 \text{ y } F_1 = 1$$
+    Sea
+    $$F_n = cr^{n}, \, c, \, r \neq 0;$$
+    sustituyendo en
+    $$F_{n+2} - F_{n+1} - F_n = 0,$$
+    obtenemos
+    $$cr^{n+2} - cr^{n+1} - cr^{n} = 0,$$
+    y dividiendo entre $cr^{n}$ se sigue que
+    $$r^{2} - r -1 = 0.$$
+    Así, las soluciones a la anterior ecuación son
+    $$r_1 = \frac{1 + \sqrt{5}}{2} = 1.6180339887498948482045868343656381177203091798057628621 \dots$$
+    y
+    $$r_2 = \frac{1 - \sqrt{5}}{2} = - 0.6180339887498948482045868343656381177203091798057628621 \dots$$
+    Como las soluciones son linealmente independientes, entonces
+    $$F_{n_1} = c_1 \left( \frac{1 + \sqrt{5}}{2} \right)^{n}$$
+    y
+    $$F_{n_2} = c_2 \left( \frac{1 - \sqrt{5}}{2} \right)^{n}$$
+    Así, establecemos una solución con la combinación lineal de ambas:
+    $$F_n = c_1 \left( \frac{1 + \sqrt{5}}{2} \right)^{n} + c_2 \left( \frac{1 - \sqrt{5}}{2} \right)^{n}$$
+    Al aplicar las condiciones iniciales, $F_0 = 0 = c_1 + c_2$, donde se sigue que
+    $$F_1 = c_1 \left( \frac{1 + \sqrt{5}}{2} \right) + c_2 \left( \frac{1 - \sqrt{5}}{2} \right) = 1$$
+    Resolvamos el siguiente sistema:
+    $$\left.\begin{array}{rl}
+        c_1 + c_2 = & \!\!\!\! 0 \\
+        \displaystyle c_1 \left( \frac{1 + \sqrt{5}}{2} \right) + c_2 \left( \frac{1 - \sqrt{5}}{2} \right) = & \!\!\!\! 1
+    \end{array}\right\}$$
+    De la primer ecuación, tenemos que $c_2 = -c_1$. Sustituyendo en la segunda ecuación,
+    $$c_1 \left( \frac{1 + \sqrt{5}}{2} \right) - c_1 \left( \frac{1 - \sqrt{5}}{2} \right) = 1$$
+    de donde se obtiene que $\displaystyle c_2 = - \frac{1}{\sqrt{5}}$ y $\displaystyle c_1 = \frac{1}{\sqrt{5}}$. Así, obtenemos la solución de la sucesión de Fibonacci:
+    $$F_n = \frac{1}{\sqrt{5}} \left( \frac{1 + \sqrt{5}}{2} \right)^{n} - \frac{1}{\sqrt{5}} \left( \frac{1 - \sqrt{5}}{2} \right)^{n}.$$
+\end{myexample}
+
+\newpage
+
+\section*{Caso B: Raíces complejas}
+
+Sea $z=a+bi$ un número complejo y sea $r=|z|$. Si $z \neq 0$, considerando su representación geométrica, sea $\theta$ la medida del ángulo que forman el eje real positivo y el segmento que une el origen del plano complejo con el punto que representa a $z$, entonces se tiene que
+\begin{align*}
+    a &=r \cos \theta , \\ 
+    b &=r \sen \theta .
+\end{align*}
+En consecuencia
+\begin{align*}
+    z & = r \cos \theta + r i \sen \theta , \\ 
+    &=r \left( \cos \theta + i \sen \theta \right) .
+\end{align*}
+A $\theta$ se le llama la amplitud o argumento de $z$, y escribimos $\theta=\arg z$. Si $z=0$, entonces $r=0$, y por lo tanto $z=r(\cos \theta+i \sen \theta)$ para cualquier $\theta$.
+
+En consecuencia, todo complejo $z=a+b i$ puede expresarse como
+$$z=r(\cos \theta+i \sen \theta),$$
+donde $r=|z|$ y $\theta=\arg z$, llamada forma trigonométrica de $z$.
+
+\begin{center}
+    \begin{tikzpicture}
+        \coordinate (A) at (0,0);
+        \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+        \node[fill=white] at (1.5,1.5) {$\color{jblueleft}|z|$};
+            
+        \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+        
+        \draw[thick,-Stealth] (0,-2) -- (0,5);
+        \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+        \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z=a+bi$};
+            
+        \pic[draw, -, "$\theta$", angle eccentricity=1.5] {angle = B--A--C};
+    \end{tikzpicture}
+    \captionof{figure}{Forma trigonométrica de un número complejo}
+\end{center}
+
+Puesto que $\forall m \in \mathbb{Z}$
+$$\cos (2m\pi + \alpha ) = \cos (\alpha)$$
+y
+$$\sen (2m\pi + \alpha) = \sen (\alpha),$$
+entonces $\theta = \arg z$ puede tomar muchos valores, difiriendo cada dos por múltiplos de $2\pi$. Será conveniente elegir $\theta$ de modo que $-2\pi < \theta < 2\pi$.
+
+Dado $z=a+bi$, con $a \neq 0$ y $b \neq 0$, para determinar un argumento de $\theta$ de $z$ podemos emplear la función tangente, pues por definición
+$$\tan (\alpha) = \frac{\sen (\alpha)}{\cos (\alpha)},$$
+y las tablas trigonométricas, bajo las siguientes condiciones: Primero determinamos el ángulo agudo $\omega$ (positivo) por
+$$\omega = \tan^{-1} \frac{|b|}{|a|}$$
+y luego
+\begin{enumerate}[label=\roman*.]
+    \item Si $a>0$ y $b>0$, elegimos $\theta = \omega >0$ o $\theta = \omega - 2\pi<0$.
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+        
+            \draw[thick,-Stealth] (0,-2) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z=a+bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\omega - 2\pi$", angle eccentricity=2,angle radius=0.5cm] {angle = C--A--B};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    \item Si $a<0$ y $b<0$, elegimos $\theta = \omega + \pi >0$ o $\theta = \omega - \pi <0$.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+            \draw[DodgerBlue1] (0,0) -- (-3,-3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[DodgerBlue1,dash pattern=on 3pt off 3pt] (0,-3) node[right] {$-b$} -- (-3,-3) -- (-3,0) node[above] {$-a$};
+        
+            \draw[thick,-Stealth] (0,-5) -- (0,5);
+            \draw[thick,-Stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw[DodgerBlue1] (-3,-3) circle (2pt) node[left] {$z=-a-bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\quad\omega - \pi$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+            \pic[draw, -latex, "$\omega + \pi\quad$", angle eccentricity=1.6,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    \item Si $a>0$ y $b<0$, elegimos $\theta = 2\pi - \omega >0$ o $\theta = - \omega <0$.
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+            \draw[DodgerBlue1] (0,0) -- (3,-3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below right] {$a$};
+            \draw[DodgerBlue1,dash pattern=on 3pt off 3pt] (3,0) -- (3,-3) -- (0,-3) node[left] {$-b$};
+        
+            \draw[thick,-Stealth] (0,-5) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw[DodgerBlue1] (3,-3) circle (2pt) node[right] {$z=a-bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$-\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = D--A--B};
+            \pic[draw, -latex, "$2\pi - \omega$", angle eccentricity=2.4,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    
+    \item Si $a<0$ y $b>0$, elegimos $\theta = \pi - \omega >0$ o $\theta = -\pi - \omega <0$.
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+            \draw[DodgerBlue1] (0,0) -- (-3,3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[above right] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[DodgerBlue1,dash pattern=on 3pt off 3pt] (0,3) -- (-3,3) -- (-3,0) node[below] {$-a$};
+        
+            \draw[thick,-Stealth] (0,-3) -- (0,5);
+            \draw[thick,-Stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw[DodgerBlue1] (-3,3) circle (2pt) node[left] {$z=-a+bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, -latex, "$\pi - \omega\quad$", angle eccentricity=1.7,angle radius=0.4cm] {angle = B--A--D};
+            \pic[draw, latex-, "$-\pi - \omega\quad$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+\end{enumerate}
+
+\begin{theorem}{}{}
+    Sean $z_1=|z_1| \left( \cos \varphi _1+i \sen \varphi _1 \right), \, \dots, \, z_n=|z_n| \left( \cos \varphi _n+i \sen \varphi _n \right)$, entonces
+    $$z_1 \cdots z_n=|z_1|\cdots |z_n| \big( \cos (\varphi _1+\cdots +\varphi _n)+i \sen (\varphi _1+\cdots +\varphi _n) \big).$$
+\end{theorem}
+
+\begin{corollary}
+    Si $z=|z| (\cos \varphi +i \sen \varphi )$, entonces
+    $$z^n=|z|^n (\cos n \varphi +i \sen n \varphi).$$
+\end{corollary}
+
+\begin{corollary}
+    Si $z=|z| (\cos \varphi +i \sen \varphi )$, entonces
+    $$z^{-1}=|z|^{-1} \left(\cos \left(-\varphi \right)+i \sen \left( -\varphi \right) \right).$$
+\end{corollary}
+
+Se tiene que si $\text{arg} \, z=\varphi$, entonces $\text{arg} \, z^n=n\varphi$. Si $|z|=1$, es decir, si
+$$z=\cos \varphi +i \sen \varphi$$
+entonces
+$$z^n=\cos \left( n \varphi \right)+i \sen \left( n\varphi \right).$$
+Pero $z^n=\left[ \cos \varphi +i \sen \varphi \right]^n$, donde se sigue la identidad conocida como fórmula de De Moivre:
+$$\left[ \cos \varphi +i \sen \varphi \right]^n= \cos \left( n\varphi \right) +i \sen \left( n \varphi \right), \, \forall n \in \mathbb{N}.$$
+
+Consideremos los complejos en forma trigonométrica
+$$z_1=|z_1| \left( \cos \varphi _1+i \sen \varphi _1 \right)$$
+y
+$$z_2=|z_2| \left( \cos \varphi _2+i \sen \varphi _2 \right),$$
+con $z_2 \neq 0$, entonces
+\begin{align*}
+    \quad\quad\quad\frac{z_1}{z_2} &= \frac{|z_1| \left( \cos \varphi _1 +i \sen \varphi _1 \right)}{|z_2| \left( \cos \varphi _2 +i \sen \varphi _2 \right)} \\
+    &=\frac{|z_1| \left( \cos \varphi _1 +i \sen \varphi _1 \right)}{|z_2| \left( \cos \varphi _2 +i \sen \varphi _2 \right)} \cdot \frac{\cos \varphi _2 - i \sen \varphi _2}{\cos \varphi _2 -i \sen \varphi _2} \\
+    &= \frac{|z_1|}{|z_2|} \left[ \frac{ \left( \cos \varphi _1 \cos \varphi _2 + \sen \varphi _1 \sen \varphi _2 \right) + i \left( \sen \varphi _1 \cos \varphi _2 - \cos \varphi _1 \sen \varphi _2 \right)}{\cos ^2 \varphi _2 + \sen ^2 \varphi _2} \right] \\
+    &= \frac{|z_1|}{|z_2|} \left[ \cos \left( \varphi _1 - \varphi _2 \right) + i \sen \left( \varphi _1 - \varphi _2 \right) \right].
+\end{align*}
+
+Nótese que el módulo del cociente es el cociente de los módulos del dividendo y el divisor. Mientras tanto, el argumento del cociente es la diferencia de los argumentos del dividendo y el divisor.
+
+Si $z=\cos \varphi +i \sen \varphi $, entonces $z \neq 0$, y puesto que $1=\cos 0 +i \sen 0$, entonces
+$$\frac{1}{\cos \varphi +i \sen \varphi} = \cos \left( - \varphi \right)+i \sen \left( -\varphi \right),$$
+es decir:
+$$\left( \cos \varphi +i \sen \varphi \right)^{-1}=\cos \left( - \varphi \right)+i \sen \left( -\varphi \right).$$
+
+Sin pérdida de generalidad, $\forall n \in \mathbb{N}$
+$$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\left[ \left( \cos \varphi +i \sen \varphi \right)^{-1} \right]^n,$$
+y por la fórmula de De Moivre, se tiene que
+$$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\cos \left( -n \varphi \right) +i \sen \left( -n\varphi \right).$$
+
+En consecuencia, la fórmula de De Moivre también es válida para $\mathbb{Z}$. Es decir:
+$$\left( \cos \varphi +i \sen \varphi \right)^{m}=\cos \left( m \varphi \right) +i \sen \left( m \varphi \right), \, \forall m \in \mathbb{Z},$$
+ya que si $m=0$, cada miembro de la identidad anterior tiene valor 1.
+
+\begin{myexample}
+    Sea $z = 1 + i\sqrt{3}$, encuentre $z^{10}$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Primero, encontremos $r$, así
+    \begin{align*}
+        r & = \sqrt{(1)^2 + \left( \sqrt{3} \right)^2} \\
+        %& = \sqrt{1 + 3} \\
+        %& = \sqrt{4} \\
+        & = 2.
+    \end{align*}
+    Por lo tanto, $r = 2$. Ahora, encontremos $\theta$,
+    \begin{align*}
+        \theta & = \tan^{-1} \frac{\sqrt{3}}{1} \\
+        %& = \tan^{-1} \sqrt{3} \\
+        & = \frac{\pi}{3}
+    \end{align*}
+    Por tanto, $\theta = \pi/3$. De  manera gráfica, tenemos:
+    \begin{center}
+    \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,4) coordinate (C);
+            \node[fill=white] at (1.5,2) {$\color{jblueleft}2$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,4) node[left] {$\sqrt{3}$} -- (3,4) -- (3,0) node[below] {$1$};
+        
+            \draw[thick,-Stealth] (0,-2) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,4) circle (2pt) node[right] {$z=1+\sqrt{3}$};
+            
+            \pic[draw, -, "$\pi/3$", angle eccentricity=1.8] {angle = B--A--C};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    Se sigue entonces que
+    \begin{align*}
+        z^{10} & = 2^{10} \left[ \cos \left(\frac{10\pi}{3}\right) + i \sen \left(\frac{10\pi}{3}\right) \right] \\
+        & = 2^{10} \left[ \cos \left(\frac{4\pi}{3}+2\pi\right) + i \sen \left(\frac{4\pi}{3}+2\pi\right) \right] \\
+        & = 2^{10} \left[ \cos \left(\frac{4\pi}{3}\right) + i \sen \left(\frac{4\pi}{3}\right) \right] \\
+        & = -512 - 512 i \sqrt{3}
+    \end{align*}
+\end{myexample}
+
+\begin{myexample}
+    Resolver la relación de recurrencia
+    $$a_n = 2(a_{n-1} - a_{n-2}), \text{ donde } n \geq 2, \; a_0 = 1 \text{ y } a_1 = 2$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Resolvamos
+    $$a_n - 2a_{n-1} +2 a_{n-2} = 0.$$
+    Sea $a_n = cr^{n}$ con $c, \, r \neq 0$. Al sustituir en la relación, obtenemos
+    $$cr^{n} - 2cr^{n-1} + 2cr^{n-2} = 0,$$
+    y dividiendo entre $cr^{n-2}$ se sigue que
+    $$r^{2} - 2r + 2 = 0$$
+    donde sus raíces están dadas por $z_1 = 1 + i$ y $z_2 = 1 - i$. De manera gráfica, tenemos que
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \draw[jblueleft] (0,0) -- (3,3) coordinate (C);
+            \draw[DodgerBlue1] (0,0) -- (3,-3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[jblueleft,dash pattern=on 3pt off 3pt] (0,3) node[left] {$1$} -- (3,3) -- (3,0) node[below right] {$1$};
+            \draw[DodgerBlue1,dash pattern=on 3pt off 3pt] (3,0) -- (3,-3) -- (0,-3) node[left] {$-1$};
+        
+            \draw[thick,-Stealth] (0,-5) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw[jblueleft] (3,3) circle (2pt) node[right] {$z_1 = 1 + i$};
+            \filldraw[DodgerBlue1] (3,-3) circle (2pt) node[right] {$z_2 = 1 - i$};
+            
+            \pic[draw, -latex, "$\pi/4$", angle eccentricity=1.4,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$-\pi/4$", angle eccentricity=1.4,angle radius=1.1cm] {angle = D--A--B};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    Así
+    $$z_1 = \sqrt{2} \left[ \cos \left( \frac{\pi}{4} \right) + i \sen \left( \frac{\pi}{4} \right)\right] \quad \text{ y } \quad z_2 = \sqrt{2} \left[ \cos \left( -\frac{\pi}{4} \right) + i \sen \left( -\frac{\pi}{4} \right)\right].$$
+    Formando la combinación lineal de las soluciones
+    \begin{align*}
+        a_n & = c_1 \left( \sqrt{2} \left[ \cos \left( \frac{\pi}{4} \right) + i \sen \left( \frac{\pi}{4} \right)\right] \right)^{n} + c_2 \left( \sqrt{2} \left[ \cos \left( -\frac{\pi}{4} \right) + i \sen \left( -\frac{\pi}{4} \right)\right] \right)^{n} \\
+        & = c_1 \left( 2^{n/2} \left[ \cos \left( \frac{n\pi}{4} \right) + i \sen \left( \frac{n\pi}{4} \right)\right] \right) + c_2 \left( 2^{n/2} \left[ \cos \left( \frac{n\pi}{4} \right) - i \sen \left( \frac{n\pi}{4} \right)\right] \right) \\
+        & = 2^{n/2} \left[ (c_1 + c_2) \cos \left( \frac{n\pi}{4} \right) + i(c_1 - c_2) \sen \left( \frac{n\pi}{4} \right) \right]
+    \end{align*}
+    Sea $k_1 = c_1 + c_2$ y $k_2 = i (c_1 - c_2)$. Al aplicar las condiciones iniciales $a_0 = 1$ y $a_1 = 2$ se hereda que
+    \begin{align*}
+        a_n & = 2^{n/2} \left[ k_1 \cos \left( \frac{n\pi}{4} \right) + k_2 \sen \left( \frac{n\pi}{4} \right) \right]
+    \end{align*}
+    por lo que $a_0 = 1 = k_1$ y
+    \begin{align*}
+        a_1 = 2 & = \sqrt{2} \left[ \cos \left( \frac{\pi}{4} \right) + k_2 \sen \left( \frac{\pi}{4} \right) \right] \\
+        & = \sqrt{2} \left[ \frac{1}{\sqrt{2}} + k_2 \frac{1}{\sqrt{2}} \right] \\
+        & = 1 + k_2
+    \end{align*}
+    Así, obtenemos la solución
+    $$a_n = 2^{n/2} \left[ \cos \left( \frac{n\pi}{4} \right) + \sen \left( \frac{n\pi}{4} \right) \right]$$
+\end{myexample}
+
+\begin{myexample}
+    Para $b \in \RR[+]$, consideremos el siguiente determinante $n \times n$ dado por
+    $$\left| \begin{array}{ccccccccccccc}
+        b & b & 0 & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        b & b & b & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & b & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & 0 & b & b & b & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & b & b & b & \cdots & 0 & 0 & 0 & 0 \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & 0 & 0 & 0 & \cdots & b & b & b & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & \cdots & 0 & b & b & b \\
+        0 & 0 & 0 & 0 & 0 & 0 & \cdots & 0 & 0 & b & b
+    \end{array}\right|$$
+    Hallemos $a_n$, para ello, resolvamos el determinante por la primer fila
+    $$a_n = b \underbrace{\left| \begin{array}{cccccccccccc}
+        b & b & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        b & b & b & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & b & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & 0 & b & b & b & \cdots & 0 & 0 & 0 & 0 \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & 0 & 0 & \cdots & b & b & b & 0 \\
+        0 & 0 & 0 & 0 & 0 & \cdots & 0 & b & b & b \\
+        0 & 0 & 0 & 0 & 0 & \cdots & 0 & 0 & b & b
+    \end{array}\right|}_{a_{n-1}} - b \left| \begin{array}{cccccccccccc}
+        b & b & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & b & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & 0 & b & b & b & \cdots & 0 & 0 & 0 & 0 \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & 0 & 0 & \cdots & b & b & b & 0 \\
+        0 & 0 & 0 & 0 & 0 & \cdots & 0 & b & b & b \\
+        0 & 0 & 0 & 0 & 0 & \cdots & 0 & 0 & b & b
+    \end{array}\right|$$
+    Resolvamos el segundo determinante por la primer columna
+    $$-b^{2} \underbrace{\left| \begin{array}{ccccccccccc}
+        b & b & 0 & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & 0 & \cdots & 0 & 0 & 0 & 0 \\
+        0 & b & b & b & \cdots & 0 & 0 & 0 & 0 \\
+        \vdots & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots & \vdots \\
+        0 & 0 & 0 & 0 & \cdots & b & b & b & 0 \\
+        0 & 0 & 0 & 0 & \cdots & 0 & b & b & b \\
+        0 & 0 & 0 & 0 & \cdots & 0 & 0 & b & b
+    \end{array}\right|}_{a_{n-2}}$$
+    Así, obtenemos la relación de recurrencia
+    $$a_n = ba_{n-1} - b^{2} a_{n-2}, \text{ con } n \geq 3$$
+    de donde se obtiene que
+    $$a_1 = b, \quad a_2 = \begin{vmatrix}
+        b & b \\
+        b & b
+    \end{vmatrix} = 0.$$
+    Resolvamos la relación
+    $$a_n - ba_{n-1} + b^{2} a_{n-2} = 0.$$
+    Se propone la solución $a_n =cr^{n}$ con $c$, $r \neq 0$. Al sustituir, se obtiene que
+    $$cr^{n} - bcr_{n-1} + b^{2} cr_{n-2} = 0,$$
+    y al dividir entre $cr^{n-2}$ se sigue que
+    $$r^{2} - br + b^{2} = 0.$$
+    Aplicando la formula general se obtiene
+    $$r = \frac{b \pm \sqrt{b^{2}-4b^{2}}}{2},$$
+    es decir,
+    $$r = b \left( \frac{1}{2} \pm \frac{\sqrt{3}}{2}i \right).$$
+    Por tanto, las dos soluciones son
+    $$z_1 = b \left( \frac{1}{2} + \frac{\sqrt{3}}{2}i \right), \quad z_2 = b \left( \frac{1}{2} - \frac{\sqrt{3}}{2}i \right).$$
+    La solución se forma con una combinación lineal de ambas, es decir,
+    $$a_n = c_1 \left[ b \left( \frac{1}{2} + \frac{\sqrt{3}}{2}i \right) \right]^{n} + c_2 \left[ b \left( \frac{1}{2} - \frac{\sqrt{3}}{2}i \right) \right]^{n}.$$
+    Expresando la solución de forma trigonométrica, tenemos que
+    $$\frac{1}{2} + \frac{\sqrt{3}}{2} = \cos \left( \frac{\pi}{3} \right) + i \sen \left( \frac{\pi}{3} \right), \quad \frac{1}{2} - \frac{\sqrt{3}}{2} = \cos \left( \frac{\pi}{3} \right) - i \sen \left( \frac{\pi}{3} \right)$$
+    y al sustituir en $a_n$, se sigue que
+    $$a_n = c_1 \left[ b \left( \cos \left( \frac{\pi}{3} \right) + i \sen \left( \frac{\pi}{3} \right) \right) \right]^{n} + c_2 \left[ b \left( \cos \left( \frac{\pi}{3} \right) - i \sen \left( \frac{\pi}{3} \right) \right) \right]^{n}$$
+    Al aplicar la identidad de De Moivre, se sigue que
+    $$a_n = c_1 b^{n} \left( \cos \left( \frac{n\pi}{3} \right) + i \sen \left( \frac{n\pi}{3} \right) \right) + c_2 b^{n} \left( \cos \left( \frac{n\pi}{3} \right) - i \sen \left( \frac{n\pi}{3} \right) \right)$$
+    Al aplicar las soluciones iniciales
+    $$a_1 = b = c_1 b^{n} \left( \cos \left( \frac{\pi}{3} \right) + i \sen \left( \frac{\pi}{3} \right) \right) + c_2 b^{n} \left( \cos \left( \frac{\pi}{3} \right) - i \sen \left( \frac{\pi}{3} \right) \right)$$
+    se sigue que
+    $$b = c_1 b \left( \frac{1}{2} + i \frac{\sqrt{3}}{2} \right) + c_2 b \left( \frac{1}{2} - i \frac{\sqrt{3}}{2} \right)$$
+    es decir,
+    \begin{align*}
+        1 & = c_1 \left( \frac{1}{2} + i \frac{\sqrt{3}}{2} \right) + c_2 \left( \frac{1}{2} - i \frac{\sqrt{3}}{2} \right) \\
+        & = (c_1 + c_2) \frac{1}{2} + i (c_1 - c_2) \frac{\sqrt{3}}{2}
+    \end{align*}
+    Así, si $k_1 = c_1 + c_2$ y $k_2 = i(c_1 - c_2)$, obtenemos
+    $$k_1 \frac{1}{2} + k_2 \frac{\sqrt{3}}{2} = 1.$$
+    Por otro lado,
+    $$a_0 = 0 = b^{2} \left( \cos \left( \frac{2\pi}{3} \right) + i \sen \left( \frac{2\pi}{3} \right) \right) + c_2 b^{2} \left( \cos \left( \frac{2\pi}{3} \right) - i \sen \left( \frac{2\pi}{3} \right) \right)$$
+    por lo que
+    $$c_1 \left( - \frac{1}{2} + \frac{\sqrt{3}}{2} \right) + c_2 \left( - \frac{1}{2} - \frac{\sqrt{3}}{2} \right)$$
+    de donde se sigue que
+    $$(c_1 + c_2) \left( - \frac{1}{2} \right) + i (c_1 - c_2) \frac{\sqrt{3}}{2}.$$
+    Sea $k_1 = c_1 + c_2$ y $k_2 = i(c_1 - c_2)$, se sigue el siguiente sistema
+    $$\left. \begin{array}{rl}
+        \displaystyle - \frac{1}{2} k_1 + k_2 \frac{\sqrt{3}}{2} = & \!\!\!\! 0 \\[2mm]
+        \displaystyle \frac{1}{2}k_1 + k_2 \frac{\sqrt{3}}{2} = & \!\!\!\! 1
+    \end{array} \right\}$$
+    Es claro que $\displaystyle k_2 = \frac{1}{\sqrt{3}}$ y $k_1 = 1$. Finalmente, obtenemos la solución:
+    $$a_n = b^{n} \left( (c_1 + c_2) \cos \left( \frac{n\pi}{3} \right) + i(c_1 - c_2) \sen \left( \frac{n\pi}{3} \right) \right),$$
+    o bien
+    $$a_n = b^{n} \left( \cos \left( \frac{n\pi}{3} \right) + \frac{1}{\sqrt{3}} \sen \left( \frac{n\pi}{3} \right) \right), \text{ con } n \geq 3.$$
+\end{myexample}
+
+\section*{Caso C: Raíces reales repetidas}
+
+\begin{myexample}
+    Resolver la relación de recurrencia
+    $$a_{n+2} = 4_{n+1} - 4a_n, \text{ donde } n \geq 0, \, a_0 = 1 \text{ y } a_1 = 3.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Resolvamos
+    $$a_{n+2} - 4a_{n+1} + 4a_n = 0.$$
+    Sea $a_n = cr^n$ con $c$, $r \neq 0$. Al sustituir en la relación, obtenemos
+    $$cr^{n+2} - 4cr^{n+1} + 4cr^{n} = 0,$$
+    y dividiendo entre $cr^{n}$ se sigue que
+    $$r^2 - 4r + 4 = 0,$$
+    donde sus raíces están dadas por $r_1 = 2 = r_2$. Por desgracia, no tenemos dos soluciones linealmente independientes: $2^n$ y $2^n$ son definitivamente múltiplos una de la otra. Necesitamos otra solución (independiente). Intentemos con $a_n = n(2^n)$, al sustituir en la relación, se obtiene que
+    $$(n + 2)2^{n+2} - 4(n+1)2^{n+1} + 4n2^n = 0.$$
+    Veamos si $n(2^n)$ es la solución deseada:
+    \begin{align*}
+        (n + 2)2^{n+2} & = 4(n+1)2^{n+1} - 4n2^n \\
+        & = 2(n + 1)2^{n + 2} - n 2^{n+2} \\
+        & = (2n+2)2^{n+2} - n2^{n+2} \\
+        & = (2n + 2 - n)2^{n+2} \\
+        & = (n + 2)2^{n+2},
+    \end{align*}
+    por lo que $n(2^n)$ es la solución independiente deseada. Así, formamos la solución
+    $$a_n = c_1 (2^n) + c_2 n(2^n).$$
+    Al aplicar las condiciones iniciales, se sigue que
+    $$a_0 = 1 = c_1$$
+    por lo que $c_1 = 1$ y luego,
+    $$a_1 = 3 = 2 + 2c_2$$
+    por lo que $c_2 = 1/2$. Así, finalmente obtenemos que
+    $$a_n = 2^n + n2^{n-1}.$$
+\end{myexample}
+
+\begin{BOX}
+    En general, si
+    $$C_na_n + C_{n-1}a_{n-1} + \cdots + C_{n-k}a_{n-k} = 0$$
+    con $C_i \neq 0$ para $i = n, \, \dots, \, n-k$ constantes reales, y $r$ es una raíz característica de multiplicidad $m$, donde $2 \leq m \leq k$, entonces la parte de la solución general relacionada con la raíz $r$ tiene la forma
+    $$A_0r^n + A_1nr^n + A_2n^2r^n + \cdots + A_{m-1}n^{m-1}r^n = \left( A_0 + A_1n + A_2n^2 + \cdots + A_{m-1}n^{m-1} \right)r^n,$$
+    donde $A_0$, $A_1$, $A_2$, $\dots$, $A_{m-1}$ son constantes arbitrarias.
+\end{BOX}
+
+\section{La relación de recurrencia no homogénea}
+
+Ahora, es de nuestro interés estudiar las relaciones de recurrencia
+\begin{equation}
+    a_n + C_{n-1}a_{n-1} = f(n), \; n \geq 1 \label{JAJSJSJSKKSKKSKSKS}
+\end{equation}
+y
+\begin{equation}
+    a_n + C_{n-1}a_{n-1} + C_{n-2}a_{n-2} = f(n), \; n \geq 2 \label{JAKAKAJAJJKKOOQIWIKJ}
+\end{equation}
+donde $C_{n-1}$ y $C_{n-2}$ son constantes, $C_{n-1} \neq 0$ en la ecuación \eqref{JAJSJSJSKKSKKSKSKS}, $C_{n-2} \neq 0$, y $f(n)$ no es idéntico a cero. Aunque no existe un método general para resolver todas las relaciones no homogéneas, existe una técnica útil cuando la función $f(n)$ tiene una cierta forma.
+
+Comenzamos con el caso particular de la ecuación \eqref{JAJSJSJSKKSKKSKSKS} cuando $C_{n-1}=-1$. Para la relación no homogénea $a_n-a_{n-1}=f(n)$, tenemos
+\begin{align*}
+    a_1 & = a_0+f(1) \\
+    a_2 & = a_1+f(2)=a_0+f(1)+f(2) \\
+    a_3 & = a_2+f(3)=a_0+f(1)+f(2)+f(3) \\
+    & \vdots \\
+    a_n & = a_0+f(1)+\cdots+f(n)=a_0+\sum_{i=1}^n f(i) .
+\end{align*}
+
+Podemos resolver este tipo de relación en términos de $\displaystyle \sum_{i=1}^n f(i)$, si podemos encontrar una formula adecuada mediante nuestro trabajo anterior.
+
+\begin{myexample}
+    Resolver
+    $$a_n - a_{n-1} = 3n^2, \text{ donde } n \geq 1 \text{ y } a_0 = 7.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} En este caso, $f(n) = 3n^2$, por lo que
+    \begin{align*}
+        \sum_{i=1}^n f(i) & = \sum_{i=1}^n 3i^2 \\
+        & = 3 \sum_{i=1}^n i^2
+    \end{align*}
+    pero, por el ejemplo \ref{EX:APUDJSKS}.2 visto en el \hyperref[ch:induccion]{Ápendice A}, obtenemos que
+    \begin{align*}
+        a_n & = 7 + 3 \sum_{i=1}^n i^2 \\
+        & = 7 + 3 \left[ \frac{n(n+1)(2n+1)}{6} \right] \\
+        & = 7 + \frac{n(n+1)(2n+1)}{2}, \; n \geq 1.
+    \end{align*}
+\end{myexample}
+
+\begin{BOX}
+    Cuando no se conoce una fórmula para la suma, el siguiente procedimiento nos permitirá trabajar la ecuación \eqref{JAJSJSJSKKSKKSKSKS} para ciertas funciones $f(n)$, independientemente del valor de $C_{n-1} \neq 0$; también funciona para la relación no homogénea de segundo orden de la ecuación \eqref{JAKAKAJAJJKKOOQIWIKJ}; de nuevo, para ciertas funciones $f(n)$. Este método se conoce como el método de coeficientes indeterminados y se basa en la relación homogénea asociada que se obtiene al reemplazar $f(n)$ con 0. Para cualquiera de las ecuaciones \eqref{JAJSJSJSKKSKKSKSKS} o \eqref{JAKAKAJAJJKKOOQIWIKJ}, sea $a_n^{(h)}$ la solución general de la relación homogénea asociada, y sea $a_n^{(p)}$ una solución de la relación no homogénea dada. El término $a_n^{(p)}$ es una solución particular. Entonces $a_n=a_n^{(h)}+a_n^{(p)}$ es la solución general de la relación dada. Para obtener $a_n^{(p)}$ usamos la forma de $f(n)$ para sugerir una forma de $a_n^{(p)}$.
+\end{BOX}
+
+\newpage
+
+\begin{myexample}
+    Resuelva la relación de recurrencia
+    $$a_n-3 a_{n-1}=5\left(7^n\right), \text{ donde } n \geq 1 \text{ y } a_0=2.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Primero, resolvamos la relación de recurrencia homogénea asociada, es decir,
+    $$a_n^{(h)} - 3a_{n-1}^{(h)} = 0, \text{ donde } n \geq 1 \text{ y } a_0 = 2.$$
+    Sea $a_n = cr^n$, sustituyendo en la relación, se obtiene que
+    $$cr^n - 3cr^{n-1} = 0,$$
+    y dividiendo entre $cr^{n-1}$, se sigue que
+    $$r-3 = 0$$
+    Por lo que la solución particular está dada por
+    $$a_n^{(h)}= c(3^n).$$
+    Puesto que $f(n)=5\left(7^n\right)$, buscamos una solución particular $a_n^{(p)}$ de la forma $A\left(7^n\right)$. Como $a_n^{(p)}$ debe ser una solución de la relación no homogénea dada, sustituimos $a_n^{(p)}=A\left(7^n\right)$ en la relación dada y vemos que
+    $$A\left(7^n\right)-3 A\left(7^{n-1}\right)=5\left(7^n\right), \text{ donde } n \geq 1.$$
+    Si dividimos entre $7^{n-1}$, vemos que $7 A-3 A=5(7)$, por lo que $A=35 / 4$ y
+    $$a_n^{(p)}=(35 / 4) 7^n=(5 / 4) 7^{n+1}, \text{ donde } n \geq 0.$$
+    La solución general es
+    $$a_n=c\left(3^n\right)+(5 / 4) 7^{n+1}.$$
+    Si $2=a_0=c+(5 / 4) 7$, entonces $c=-27 / 4$ y
+    $$a_n=(5 / 4)\left(7^{n+1}\right)-(1 / 4)\left(3^{n+3}\right), \text{ donde } n \geq 0.$$
+\end{myexample}
+
+\begin{BOX}
+    Consideremos la relación no homogénea de primer orden
+    $$a_n+C_{n-1} a_{n-1}=k r^n$$
+    donde $k$ es una constante y $n \in \mathbb{Z}^{+}$. Si $r^n$ no es una solución de la relación homogénea asociada
+    $$a_n+C_{n-1} a_{n-1}=0$$
+    entonces $a_n^{(p)}=A r^n$, donde $A$ es una constante. Si $r^n$ es una solución de la relación homogénea asociada, entonces $a_n^{(p)}=B n r^n$, con $B$ constante. Consideremos ahora el caso de la relación no homogénea de segundo orden
+    $$a_n+C_{n-1} a_{n-1}+C_{n-2} a_{n-2}=k r^n$$
+    donde $k$ es una constante. En este caso,
+    \begin{enumerate}[label=\alph*)]
+        \item $a_n^{(p)}=A r^n$, $A$ constante, si $r^n$ no es una solución de la relación homogénea asociada;
+        \item $a_n^{(p)}=B n r^n$, $B$ constante, si $a_n^{(h)}=c_1 r^n+c_2 r_1^n$, donde $r_1 \neq r$, y
+        \item $a_n^{(p)}=C n^2 r^n$, $C$ constante, cuando $a_n^{(h)}=\left(c_1+c_2 n\right) r^n$.
+    \end{enumerate}
+\end{BOX}
+
+\newpage
+
+\begin{myexample}
+    Consideremos $n$ discos circulares (con diferentes diámetros) y agujeros en su centro. Estos discos pueden apilarse en cualquiera de las espigas que se muestran en la figura \ref{fig:HANOI}. En la figura, $n = 5$ y los discos se apilan en la espiga 1, sin que ningún disco quede sobre otro más pequeño.
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[line width=2mm, SteelBlue3!80] (3,0) -- (3,5);
+            \draw[line width=2mm, SteelBlue3!80] (7,0) -- (7,5);
+            \draw[line width=2mm, SteelBlue3!80] (11,0) -- (11,5);
+            \draw[line width=4mm, SteelBlue3] (0,0) -- (14,0);
+
+            \draw[line width=4mm, line cap=round, SteelBlue1] (0.5,0.5) -- (5.5,0.5);
+            \draw[line width=4mm, line cap=round, SteelBlue3] (1,1) -- (5,1);
+            \draw[line width=4mm, line cap=round, SteelBlue1] (1.5,1.5) -- (4.5,1.5);
+            \draw[line width=4mm, line cap=round, SteelBlue3] (2,2) -- (4,2);
+            \draw[line width=4mm, line cap=round, SteelBlue1] (2.5,2.5) -- (3.5,2.5);
+        \end{tikzpicture}
+        \captionof{figure}{Las Torres de Hanoi para el caso de cinco discos} \label{fig:HANOI}
+    \end{center}
+    El objetivo es pasar los discos, de uno en uno, de modo que la pila original termine en la espiga 3. Cada una de las espigas 1, 2 y 3 puede usarse para ubicar en forma temporal los discos, pero no se permite que un disco más grande quede sobre otro más pequeño. ¿Cuál es el número mínimo de movimientos necesarios para hacer esto con $n$ discos?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Para $n \geq 0$, sea $a_n$ el número mínimo de movimientos necesarios para pasar los $n$ discos de la espiga 1 a la espiga 3 de la forma descrita. Entonces, para $n + 1$ discos, hacemos lo siguiente:
+    \begin{enumerate}[label=\alph*)]
+        \item Pasamos los $n$ discos de arriba, de la espiga 1 a la espiga 2, con las indicaciones dadas. Esto se realiza en $a_n$ pasos.
+        \item Pasamos el disco más grande de la espiga 1 a la 3. Esto se hace en un paso.
+        \item Por último, pasamos los $n$ discos de la espiga 2 sobre el disco mayor que ahora está en la espiga 3, de nuevo, con las instrucciones dadas. Esto requiere otros $a_n$ movimientos.
+    \end{enumerate}
+    Esto produce la relación
+    $$a_{n+1}=2 a_n+1, \text{ donde } n \geq 0 \text{ y } a_0=0.$$
+    Para $a_{n+1}-2 a_n=1$,
+    $$a_n^{(n)}=c\left(2^n\right).$$
+    Como $f(n)=1$ no es solución de $a_{n+1}-2 a_n=0$, sea
+    $$a_n^{(p)}=A(1)^n=A;$$
+    de la relación anterior vemos que $A=2 A+1$, por lo que $A=-1$ y $a_n=$ $c\left(2^n\right)-1$. De
+    $$a_0 = 0 = c - 1,$$
+    concluimos que $c=1$ y que
+    $$a_n=2^n-1, \text{ donde } n \geq 0.$$
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    \begin{minipage}[l]{0.78\textwidth}
+        En 1904, el matemático sueco Helge von Koch (1870-1924) creó la interesante curva conocida ahora como curva ``copo de nieve'' de Koch. La construcción de esta curva se inicia con un triángulo equilátero, como se muestra en la parte (a) de la figura \ref{fig:KOCH}, donde el triángulo tiene lado 1, perímetro 3 y área $\sqrt{3} / 4$. El triángulo se transforma entonces en la estrella de David de la figura \ref{fig:KOCH}(b) quitando el tercio medio de cada lado (del triángulo equilátero original) y añadiendo un nuevo triángulo equilátero cuyo lado tiene longitud de $1 / 3$. Así, cuando pasamos de la parte (a) a la parte (b) de esta figura, cada lado de longitud 1 se transforma en 4 lados de longitud $1 / 3$ y obtenemos un polígono de 12 lados de área $(\sqrt{3} / 4)+(3)(\sqrt{3} / 4)(1 / 3)^2=\sqrt{3} / 3$. Si continuamos este proceso, transformamos la figura de la parte (b) en la de la parte (c) quitando el tercio medio de cada uno de los 12 lados de la estrella de David y añadiendo un triángulo equilátero de lado $1 / 9 =(1 / 3)^2$. Ahora tenemos [en la figura \ref{fig:KOCH}(c)] un polígono de $4^2(3)$ lados cuya área es
+        $$\frac{\sqrt{3}}{3} + 4 \cdot 3 \cdot \frac{\sqrt{3}}{4} \left(\frac{1}{3}\right)^2 = \frac{10\sqrt{3}}{27}.$$
+        
+        \hspace*{6mm}Para $n \geq 0$, sea $a_n$ el área del polígono $P_n$ obtenida a partir del triángulo equilátero original después de aplicar $n$ transformaciones del tipo descrito arriba [la primera, de $P_0$ en la figura \ref{fig:KOCH}(a) a $P_1$ en la figura \ref{fig:KOCH}(b) y la segunda de $P_1$ en la figura \ref{fig:KOCH}(b) a $P_2$ en la figura \ref{fig:KOCH}(c)]. Al ir de $P_n$ (con $4^n(3)$ lados) a $P_{n+1}\left(\operatorname{con} 4^{n+1}(3)\right.$ lados), vemos que
+        \begin{equation}
+            a_{n+1} = a_n + 4^n \cdot 3 \cdot \frac{\sqrt{3}}{4} \left(\frac{1}{3^{n+1}}\right)^2 = a_n + \frac{1}{4\sqrt{3}} \left(\frac{4}{9}\right)^n \label{JAKAKAKAKLAOPPQKKA}
+        \end{equation}
+        puesto que al transformar $P_n$ en $P_{n+1}$ eliminamos el tercio medio de cada uno de los $4^n(3)$ lados de $P_n$ y agregamos un triángulo equilátero de lado $\left(1 / 3^{n+1}\right)$.
+
+        \hspace*{6mm}La parte homogénea de la solución de esta relación de recurrencia no homogénea de primer orden es $a_n^{(h)}=A(1)^n=A$. Puesto que $(4 / 9)^n$ no es una solución de la relación homogénea asocia$\mathrm{da}$, la componente particular de la solución está dada por $a_n^{(p)}=B(4 / 9)^n$, donde $B$ es una constante.
+    \end{minipage}\hspace{-0.2cm}
+    \begin{minipage}[c]{0.25\textwidth}
+        \begin{center}
+            \begin{tikzpicture}[decoration=Koch snowflake]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (3,0);
+                \coordinate (C) at (60:3);
+                
+                \draw[SteelBlue3, thick] (A) -- (B) -- (C) --cycle;
+                %\draw[transform canvas={shift={(3.2,0)}}]  decorate{ (C) -- (B) -- (A) --cycle};
+                %\draw[transform canvas={shift={(6.4,0)}}]  decorate{ decorate{ (C) -- (B) -- (A) --cycle} };
+            \end{tikzpicture}
+            
+            (a)\\
+            \,\\
+
+            \begin{tikzpicture}[decoration=Koch snowflake]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (3,0);
+                \coordinate (C) at (60:3);
+                
+                %\draw[] (A) -- (B) -- (C) --cycle;
+                \draw[SteelBlue3, thick] decorate{ (C) -- (B) -- (A) --cycle};
+                %\draw[transform canvas={shift={(6.4,0)}}]  decorate{ decorate{ (C) -- (B) -- (A) --cycle} };
+            \end{tikzpicture}
+            
+            (b)\\
+            \,\\
+
+            \begin{tikzpicture}[decoration=Koch snowflake]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (3,0);
+                \coordinate (C) at (60:3);
+                
+                %\draw[] (A) -- (B) -- (C) --cycle;
+                %\draw[transform canvas={shift={(3.2,0)}}]  decorate{ (C) -- (B) -- (A) --cycle};
+                \draw[SteelBlue3, thick] decorate{ decorate{ (C) -- (B) -- (A) --cycle} };
+            \end{tikzpicture}
+            
+            (c)
+
+            \captionof{figure}{~}\label{fig:KOCH}
+        \end{center}
+    \end{minipage}\\[-0.1cm]
+    
+    Al sustituir esto en la relación de recurrencia \eqref{JAKAKAKAKLAOPPQKKA}, vemos que
+    $$B \left(\frac{4}{9}\right)^{n+1} = B \left(\frac{4}{9}\right)^n + \frac{1}{4 \sqrt{3}} \left(\frac{4}{9}\right)^n$$
+    por lo que
+    $$B\left(\frac{4}{9}\right) = B + \frac{1}{4 \sqrt{3}} \quad \text{ y } \quad B = -\frac{9}{5} \cdot \frac{1}{4 \sqrt{3}}.$$
+    En consecuencia,
+    $$a_n = A - \frac{9}{5} \cdot \frac{1}{4 \sqrt{3}} \cdot \left(\frac{4}{9}\right)^n = A - \frac{1}{5 \sqrt{3}} \cdot \left(\frac{4}{9}\right)^{n-1}, \text{ donde } n \geq 0.$$
+    Como $\sqrt{3} / 4 = a_0$, se sigue que $A = 6 /(5 \sqrt{3})$
+    y
+    $$a_n = \frac{6}{5 \sqrt{3}} - \frac{1}{5 \sqrt{3}} \cdot \left(\frac{4}{9}\right)^{n-1} = \frac{1}{5 \sqrt{3}} \left[6 - \left(\frac{4}{9}\right)^{n-1}\right], \text{ donde } n \geq 0.$$
+    Observemos que cuando $n$ crece, $(4/9)^{n-1}$ tiende a 0, por lo que $a_n$ tiende al valor $6 /(5 \sqrt{3})$.
+\end{myexample}

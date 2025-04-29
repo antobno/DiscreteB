@@ -1,0 +1,1142 @@
+\chapterimage{blue9.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{RELACIONES Y FUNCIONES}\label{chap:5}
+
+
+En el apasionante universo de las Matemáticas Discretas, el concepto de relaciones y funciones juega un papel central. Estas ideas fundamentales constituyen la base de muchas ramas de las matemáticas y tienen aplicaciones prácticas en diversas disciplinas, desde la informática hasta la teoría de grafos y la ciencia de datos. En este capítulo, exploraremos minuciosamente el concepto de relaciones y funciones, desentrañando sus propiedades, aplicaciones y conexiones con otros temas dentro de las Matemáticas Discretas.
+
+
+En esencia, una relación es una conexión entre elementos de dos conjuntos, mientras que una función es una relación especial que asigna de manera única un elemento de un conjunto a otro. Estos conceptos pueden parecer abstractos al principio, pero en realidad, están presentes en la vida cotidiana. Desde las redes sociales que conectan a las personas hasta las operaciones matemáticas que relacionan números, las relaciones y funciones desempeñan un papel esencial en nuestra comprensión del mundo que nos rodea.
+
+
+A lo largo de este capítulo, exploraremos una variedad de temas importantes, tales como:
+
+\begin{enumerate}
+    \item Tipos de relaciones: Aprenderemos acerca de relaciones reflexivas, simétricas y transitivas, así como relaciones de equivalencia y orden parcial.
+    \item Funciones: Analizaremos en detalle qué es una función, sus propiedades, dominio, codominio y la importancia de las funciones biyectivas.
+    \item Composición de funciones: Descubriremos cómo combinar funciones para crear nuevas funciones y entenderemos la noción de funciones inversas.
+    %\item Aplicaciones en la vida real: Exploraremos aplicaciones prácticas de relaciones y funciones en áreas como la informática, la criptografía y la teoría de bases de datos.
+\end{enumerate}
+
+Al finalizar este capítulo, habrá desarrollado habilidades sólidas en la identificación y manipulación de relaciones y funciones. También comprenderá cómo estas ideas desempeñan un papel vital en la resolución de problemas complejos y en la modelización de sistemas del mundo real.\\
+
+
+Este capítulo servirá como base sólida para abordar temas posteriores en Matemáticas Discretas, como la teoría de conjuntos, la teoría de números y la teoría de grafos. Además, proporcionará una base esencial para aquellos que buscan aplicar estas ideas en disciplinas relacionadas con la informática, la ingeniería y las ciencias exactas.
+
+\newpage
+
+\section{Productos cartesianos y relaciones}
+
+\begin{definicion}{}{}
+    Sean $A$ y $B$ conjuntos. Si $A \neq \phi$ y $B \neq \phi$, se define el producto cartesiano de $A$ y $B$, denotado por $A \times B$, como el conjunto
+    $$A \times B = \{(a, \, b) \mid a \in A \text { y } b \in B\}$$
+    y si $A = \phi$ o $B = \phi$, se define $A \times B = \phi$. La expresión $A \times B$ se lee: $A$ cruz $B$ o el producto cartesiano de $A$ y $B$.
+\end{definicion}
+
+\begin{BOX}
+    Si $A$, $B$ son finitos, se sigue de la regla del producto que $|A \times B| = |A| \cdot |B| = |B \times A|$.
+\end{BOX}
+
+\begin{myexample}
+    Sean $U = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6, \, 7 \}$, $A = \{ 2, \, 3, \, 4 \}$, $B = \{ 4, \, 5 \}$. Entonces
+    \begin{enumerate}[label=\alph*)]
+        \item $A \times B = \{ (2, \, 4), \, (2, \, 5), \, (3, \, 4), \, (3, \, 5), \, (4, \, 4), \, (4, \, 5) \}$.
+        \item $B \times A = \{ (4, \, 2), \, (4, \, 3), \, (4, \, 4), \, (5, \, 2), \, (5, \, 3), \, (5, \, 4) \}$.
+        \item $B \times B = \{ (4, \, 4), \, (4, \, 5), \, (5, \, 4), \, (5, \, 5) \}$.
+    \end{enumerate}
+\end{myexample}
+
+\begin{obs}{}{}
+    Del ejemplo anterior se sigue que, en general, $A \times B \neq B \times A$.
+\end{obs}
+
+\begin{definicion}{}{}
+    Sean $A_1, \, A_2, \, \dots, \, A_n$ conjuntos. Si $A_i \neq \phi, \, \forall i=1, \, 2, \, \dots, \, n$, se define el producto cartesiano de $A_1, \, A_2, \, \dots, \, A_n$, denotado por $A_1 \times A_2 \times \dots \times A_n$, como el conjunto
+    $$A_1 \times A_2 \times \cdots \times A_n=\left\{\left(a_1, \, a_2, \, \dots, \, a_n\right) \mid a_i \in A_i, \, \forall i=1, \, \dots, \, n\right\}.$$
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sean $A_1, \, A_2, \, \dots, \, A_n$ conjuntos. Si $A_i=\phi$, para algún $i=1, \,2, \, \dots, \, n$, se define
+    $$A_1 \times A_2 \times \cdots \times A_n=\phi.$$
+\end{definicion}
+
+\begin{definicion}{}{}
+    Si $A$ es un conjunto y $n \in \mathbb{N}$, definimos $A^n$ como
+    $$A^n=\underbrace{A \times A \times \cdots \times A}_{n-\text{veces}}.$$
+\end{definicion}
+
+\begin{myexample}
+    Si $A$ es un conjunto distinto del vacío, entonces: $A^2=A \times A$ y $A^3=A \times A \times A$.
+\end{myexample}
+
+\begin{definicion}{}{KANSKKUSJS}
+    Para los conjuntos $A$, $B \subseteq U$, cualquier subconjunto $A \times B$ es una \textbf{relación} de $A$ en $B$. Cualquier subconjunto de $A \times A$ es una \textbf{relación binaria} en $A$. Dicha relación la denotaremos por $\mathcal{R}$.
+\end{definicion}
+
+\newpage
+
+\begin{myexample}
+    Si $U = \RR$, se define a $\RR \times \RR = \RR[2] = \{ (x, \, y) \mid x, \, y \in \RR \}$. A este conjunto se le  reconoce como el plano real de la geometría con coordenadas. Geométricamente se representa como sigue:
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[step=1.0,gray,very thin,dash pattern=on 3pt off 2pt] (0,0) grid (4,4);
+            
+            \draw[thick,arrows = {-Stealth[scale width=1]}] (-0.5,0) -- (4.4,0);
+            \draw[thick,arrows = {-Stealth[scale width=1]}] (0,-0.5) -- (0,4.4);
+            \foreach \x in {1,2,3,4} \draw (\x,0.3) -- (\x,0) node[below] {$\x$};
+            \foreach \x in {1,2,3,4} \draw (0.3,\x) -- (0,\x) node[left] {$\x$};
+        \end{tikzpicture}
+        \captionof{figure}{Representación de $\RR[2] = \{ (x, \, y) \mid x, \, y \in \RR \}$}
+    \end{center}
+\end{myexample}
+
+\begin{myexample}
+    Sean $U = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6, \, 7 \}$, $A = \{ 2, \, 3, \, 4 \}$, $B = \{ 4, \, 5 \}$. Las siguientes son relaciones de $A$ en $B$
+    \begin{tasks}(3)
+        \task $\phi$
+        \task $\{ (2, \, 4) \}$
+        \task $\{ (2, \, 4), \, (2, \, 5) \}$
+        \task $\{ (2, \, 4), \, (3, \, 4), \, (4, \, 4) \}$
+        \task $\{ (2, \, 4), \, (3, \, 4), \, (4, \, 5) \}$
+        \task $A \times B$
+    \end{tasks}
+    Como $|A \times B| = 6$, se sigue de la definición \ref{definicion:KANSKKUSJS} que existen $2^6$ posibles relaciones de $A$ en $B$.
+\end{myexample}
+
+\begin{BOX}
+    En general, para conjuntos finitos $A$, $B$ con $|A| = m$ y $|B| = n$, existen $2^{mn}$ relaciones de $A$ en $B$, incluyendo la relación vacía y la propia relación $A \times B$.
+\end{BOX}
+
+\begin{myexample}
+    Con $A = U = \ZZ[+]$, podemos definir una relación binaria en el conjunto $A$ como $\{ (x, \, y) \mid x \leq y \}$. Geométricamente se representa como sigue:
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[step=1.0,gray,very thin,dash pattern=on 3pt off 2pt] (0,0) grid (4,4);
+            
+            \draw[thick,arrows = {-Stealth[scale width=1]}] (-0.5,0) -- (4.4,0);
+            \draw[thick,arrows = {-Stealth[scale width=1]}] (0,-0.5) -- (0,4.4);
+
+            \foreach \x in {1,2,3,4} \filldraw (1,\x) circle (2pt);
+            \foreach \x in {2,3,4} \filldraw (2,\x) circle (2pt);
+            \foreach \x in {3,4} \filldraw (3,\x) circle (2pt);
+            \foreach \x in {4} \filldraw (4,\x) circle (2pt);
+            \foreach \x in {1,2,3,4} \draw (\x,0.3) -- (\x,0) node[below] {$\x$};
+            \foreach \x in {1,2,3,4} \draw (0.3,\x) -- (0,\x) node[left] {$\x$};
+        \end{tikzpicture}
+        \captionof{figure}{Representación de $\{ (x, \, y) \mid x \leq y \}$}
+    \end{center}
+    De la figura precedente, tenemos que $(7, \, 7)$, $(7, \, 11) \in \mathcal{R}$, pero $(8, \, 2) \notin \mathcal{R}$.
+\end{myexample}
+
+\newpage
+
+\begin{BOX}
+    Cuando un compilador (lenguaje de programación) traduce un programa fuente al lenguaje maquina, este elabora una tabla de símbolos que contiene los siguientes conjuntos:
+    \begin{enumerate}
+        \item $S$: El conjunto de nombres simbólicos; como variables, constantes y tipos.
+        \item $A$: El conjunto de posibles atributos para los elementos de $S$; como entero, real, booleano, carácter, etc.
+        \item $L$: El conjunto de posiciones, o direcciones de la memoria en donde se almacena los elementos de $S$.
+    \end{enumerate}
+\end{BOX}
+
+Para concluir esta sección, consideremos los siguientes incisos: Dados $A$, $B$, $C \subseteq U$
+\begin{tasks}(2)
+    \task $A \times (B \cup C) = (A \times B) \cap (A \times C)$
+    \task $A \times (B \cup C) = (A \times B) \cup (A \times C)$
+    \task $(A \cap B) \times C = (A \times C) \cap (B \times C)$
+    \task $(A \cup B) \times C = (A \times C) \cup (B \times C)$
+\end{tasks}
+
+\section{Funciones: en general e inyectivas}
+
+\begin{definicion}{}{}
+    Para los conjuntos no vacíos $A$, $B$, una función, o transformación, $f$ de $A$ hacia $B$, que se denota con $f: A \longrightarrow B$, es una relación de $A$ hacia $B$ en la que cada elemento de $A$ \textbf{aparece exactamente una vez} como la primera componente de un par ordenado en la relación.
+\end{definicion}
+
+\begin{myexample}
+    \label{jhbhdchsdfbj}
+    Si $A = \{1, \, 2, \, 3 \}$ y $B = \{ w, \, x, \, y, \, z \}$, $f = \{ (1, \, w), \, (2, \, x), \, (3, \, x) \}$ es una función, y en consecuencia una relación, de $A$ en $B$. $\mathcal{R}_1 = \{ (1, \, w), \, (2, \, x) \}$ y $\mathcal{R}_2 = \{ (1, \, w), \, (2, \, w), \, (2, \, x), \, (3, \, 2) \}$ son relaciones, pero no funciones, de $A$ en $B$.
+\end{myexample}
+
+\begin{definicion}{}{}
+    Para la función $f: A \longrightarrow B$, $A$ es el dominio de $f$ y $B$ es el codominio de $f$. El subconjunto de $B$ formado por aquellos elementos que aparecen como segundas componentes de los pares ordenados de $f$ se conoce como la imagen de $f$ y se denota también como $f(A)$ ya que es el conjunto de imágenes (de los elementos de $A$) mediante $f$.
+\end{definicion}
+
+\begin{myexample}
+    En el ejemplo anterior, el dominio de $f$ es $\{1, \, 2, \, 3\}$, el codominio de $f$ es $\{w, \, x, \, y, \, z\}$ y la imagen de $f$ es $f(A) = \{w, \, x\}$.\\
+    Una representación gráfica de estas ideas aparecen en la figura \ref{KSKSKKSKSKSKKDND}. Este diagrama sugiere que $a$ puede verse como una entrada que es transformada por $f$ en la salida correspondiente, $f(a)$.
+    \begin{center}
+        \begin{tikzpicture}[x=0.75pt,
+        y=0.75pt,
+        yscale=-1,
+        xscale=1,
+        scale=0.55
+        ]
+            %Shape: Polygon Curved [id:ds23961530607472992] 
+            \draw  [draw opacity=0][fill=SteelBlue1,fill opacity=1 ] (96.5,87) .. controls (158,2) and (223,84) .. (229.5,119) .. controls (236,154) and (237.5,191) .. (208.5,196) .. controls (179.5,201) and (173.5,154) .. (140.5,153) .. controls (107.5,152) and (35,172) .. (96.5,87) -- cycle ;
+            
+            %Shape: Polygon Curved [id:ds5434810466865279] 
+            \draw  [draw opacity=0][fill=SteelBlue1,fill opacity=1 ] (343.5,136) .. controls (326.5,93) and (352.5,59) .. (400.5,64) .. controls (448.5,69) and (443.5,145) .. (473,155) .. controls (502.5,165) and (422,212) .. (427.5,186) .. controls (433,160) and (360.5,179) .. (343.5,136) -- cycle ;
+            
+            %Shape: Circle [id:dp23072888295227378] 
+            \draw [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (134,103) .. controls (134,96.37) and (139.37,91) .. (146,91) .. controls (152.63,91) and (158,96.37) .. (158,103) .. controls (158,109.63) and (152.63,115) .. (146,115) .. controls (139.37,115) and (134,109.63) .. (134,103) -- cycle ;
+            
+            %Shape: Circle [id:dp6011767330027358] 
+            \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (359,97) .. controls (359,90.37) and (364.37,85) .. (371,85) .. controls (377.63,85) and (383,90.37) .. (383,97) .. controls (383,103.63) and (377.63,109) .. (371,109) .. controls (364.37,109) and (359,103.63) .. (359,97) -- cycle ;
+            
+            %Curve Lines [id:da8892360866490041] 
+            \draw [color=DodgerBlue4,draw opacity=1,-latex][line width=1.5]    (163,97) .. controls (202.4,67.45) and (307.29,68.95) .. (354.39,89.07) ;
+            
+            % Text Node
+            \draw (117,163.4) node [anchor=north west][inner sep=0.75pt] [font=\large] {$A$};
+            
+            % Text Node
+            \draw (458,76.4) node [anchor=north west][inner sep=0.75pt] [font=\large] {$B$};
+            
+            % Text Node
+            \draw (259,37.4) node [anchor=north west][inner sep=0.75pt] [font=\large] {$f$};
+        \end{tikzpicture}
+        \captionof{figure}{~}\label{KSKSKKSKSKSKKDND}
+    \end{center}
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    En las ciencias de la computación aparecen muchas funciones interesantes.
+    \begin{enumerate}[label=\alph*)]
+        \item Una de las funciones que aparece en el estudio de las estructuras de datos y el análisis de algoritmos es la \textit{función parte entera}, o \textit{función suelo}. Esta función $f:\RR \longrightarrow \ZZ$ está dada por
+        $$f(x) = \lfloor x \rfloor = \text{el mayor entero menor o igual a $x$}.$$
+        En el lenguaje de programación C++, esta función se implanta mediante la función predefinida \textbf{\texttt{\color{blue}floor}}. Con esta función vemos que
+        $$\textbf{\texttt{\color{blue}floor}}(5.3) = 5 = \textbf{\texttt{\color{blue}floor}}(5) \quad \text{y} \quad \textbf{\texttt{\color{blue}floor}}(-7.8) = -8 = \textbf{\texttt{\color{blue}floor}} (-8).$$
+        Nótese que la anterior función también podemos definirla como sigue:
+        $$ \textbf{\texttt{\color{blue}floor}} = \left\{ \begin{array}{ll}
+            x & \text{si } x \in \ZZ \\
+            z \in \ZZ & \text{tal que } z = \max \left\{ q \in \ZZ \mid q \leq x \right\}
+        \end{array} \right.$$
+        \item Una segunda función, relacionada con la función suelo de la parte a) y que cumple un papel en el estudio de las ciencias de la computación es la \textit{función techo}. Esta función $g: \RR \longrightarrow \ZZ$ está definida por
+        $$f(x) = \lceil x \rceil = \text{el menor entero mayor o igual a $x$}.$$
+        En el lenguaje de programación C++, esta función se implanta mediante la función predefinida \textbf{\texttt{\color{blue}ceil}}. Con esta función vemos que
+        $$\textbf{\texttt{\color{blue}ceil}}(3.01) = 4 = \textbf{\texttt{\color{blue}ceil}}(3.7) \quad \text{y} \quad \textbf{\texttt{\color{blue}ceil}}(-3.01) = -3 = \textbf{\texttt{\color{blue}ceil}} (-3.7).$$
+        Nótese que la anterior función también podemos definirla como sigue:
+        $$ \textbf{\texttt{\color{blue}ceil}} = \left\{ \begin{array}{ll}
+            x & \text{si } x \in \ZZ \\
+            z \in \ZZ & \text{tal que } z = \min \left\{ q \in \ZZ \mid q \geq x \right\}
+        \end{array} \right.$$
+        \item Al guardar una matriz en una tabla unidimensional, muchos lenguajes de programación lo hacen por filas, con el método de la fila principal. En este caso, si $A = (a_{ij})_{n \times n}$ es una matriz $n \times n$, la primera fila de $A$ se guarda en los lugares 1, 2, 3, $\dots$, $n$ de la tabla si comenzamos con $a_{11}$ en el lugar 1. Para verlo de manera más clara, tomemos la matriz $A$:
+        $$A = \begin{bmatrix}
+            a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
+            a_{21} & a_{22} & a_{23} & \cdots & a_{2n}\\
+            a_{31} & a_{32} & a_{33} & \cdots & a_{3n}\\
+            \vdots & & & \ddots & \\
+            a_{n1} & a_{n2} & a_{n3} & \cdots & a_{nn}
+        \end{bmatrix}$$
+        entonces $a_{11}$ está en la posición 1, $a_{21}$ en la posición $n + 1$ y $a_{32}$ en la posición $2n + 2$. Esto por
+        \begin{center}
+            \begin{tabular}{lcccccccccccc}
+                Posición: & \cellcolor{DodgerBlue3!40}{1} & 2 & 3 & $ \cdots$ & $n$ & \cellcolor{DodgerBlue3!40}{$n+1$} & $n+2$ & $\cdots$ & $2n$ & $2n+1$ & \cellcolor{DodgerBlue3!40}{$2n+2$} & $\cdots$ \\
+                Elemento: & \cellcolor{DodgerBlue3!40}{$a_{11}$} & $a_{12}$ & $a_{13}$ & $\cdots$ & $a_{1n}$ & \cellcolor{DodgerBlue3!40}{$a_{21}$} & $a_{22}$ & $\cdots$ & $a_{2n}$ & $a_{31}$ & \cellcolor{DodgerBlue3!40}{$a_{32}$} & $\cdots$
+            \end{tabular}
+        \end{center}
+        A fin de determinar el lugar de cualquier elemento $a_{ij}$ de $A$, donde $1 \leq i, \, j \leq n$, se define la función de acceso $f$ de los elementos de $A$ en las posiciones 1, 2, 3, $\dots$, $n^2$ de la tabla. Una fórmula para la función de acceso es $f(a_{ij}) = (i - 1)n+j$.
+    \end{enumerate}
+\end{myexample}
+
+\newpage
+
+En el ejemplo \ref{jhbhdchsdfbj}.1, existen $2^{(3)(4)} = 2^{12} = 4096$ relaciones de $A$ en $B$. Hemos examinado una función entre todas estas relaciones; ahora queremos contar el número total de funciones de $A$ en $B$.
+
+\begin{BOX}
+    Para el caso general sean $A$, $B$ conjuntos no vacíos con $|A| = m$, $|B| = n$. En consecuencia, si $A = \{a_1, \, a_2, \, \dots, \, a_m \}$ y $B = \{b_1, \, b_2, \, \dots, \, b_n \}$, entonces una función $f: A \longrightarrow B$ puede escribirse como $f = \{ (a_1, \, x_1), \, (a_2, \, x_2), \, \dots, \, (a_1, \, x_1) \}$. Podemos seleccionar cualquiera de los $n$ elementos de $B$ como $x_1$ y después hacer lo mismo con $x_2$. Continuamos con este proceso de selección hasta que finalmente seleccionamos uno de los $n$ elementos de $B$ como $x_m$. Es decir,
+    \begin{align*}
+        \text{La componente } x_1 \text{ puede ocuparse de } & n \text{ formas distintas} \\
+        \text{La componente } x_2 \text{ puede ocuparse de } & n \text{ formas distintas} \\
+        \text{La componente } x_3 \text{ puede ocuparse de } & n \text{ formas distintas} \\
+        & \vdots \\
+        \text{La componente } x_m \text{ puede ocuparse de } & n \text{ formas distintas}
+    \end{align*}
+    De esta forma, utilizando regla del producto, existen
+    $$\underbrace{n \cdot n \cdot n \cdots n}_{m-\text{veces}} = n^m = |B|^{|A|} \text{ funciones de $A$ hacia $B$.}$$
+\end{BOX}
+
+\begin{myexamples}
+    \begin{enumerate}[label=\alph*)]
+        \item Si $A = \{1, \, 2, \, 3 \}$ y $B = \{w, \, x, \, y, \, z \}$, sabemos que $|A| = 3$ y $|B| = 4$. Entonces
+        \begin{enumerate}[label=\roman*)]
+            \item Hay $|B|^{|A|} = 4^3 = 64$ funciones de $A$ hacia $B$.
+            \item Hay $|A|^{|B|} = 3^4 = 81$ funciones de $B$ hacia $A$.
+        \end{enumerate}
+        \item Si $C = \{a, \, b \}$ y $D = \{1, \, 2, \, 3 \}$, sabemos que $|C| = 2$ y $|D| = 3$. Entonces hay $|D|^{|C|} = 3^2 = 9$ funciones de $C$ hacia $D$.
+    \end{enumerate}
+\end{myexamples}
+
+%\subsection{Funciones inyectivas}
+
+\begin{definicion}{}{}
+     Una función $f: A \longrightarrow B$ se denomina \textit{uno a uno}, o \textit{inyectiva} si cada elemento de $B$ aparece como máximo una vez como la imagen de un elemento de $A$.
+ \end{definicion}
+
+ \begin{BOX}
+     Si $f: A \longrightarrow B$ es una función uno a uno, con $A$ y $B$ finitos, debemos tener que $| A | \leq | B |$. Para conjuntos arbitrarios $A$ y $B$, si $f: A \longrightarrow B$ es una función uno a uno, entonces para $a_1$, $a_2 \in A$, $f(a_1) = f(a_2) \Longrightarrow a_1 = a_2$.
+ \end{BOX}
+
+ \begin{myexample}
+     Sean $A = \{1, \, 2, \, 3\}$ y $B = \{1, \, 2, \, 3, \, 4, 5\}$. Sabemos que $|A| = 3$ y $|B| = 5$, entonces $|A| \leq |B|$ y hay $2^{|A||B|} = 2^{(3)(5)} = 2^{15}$ funciones de $A$ en $B$. La función
+     $$f=\{(1, \, 1), \, (2, \, 3), \, (3, \, 4)\}$$
+     es una función uno a uno de $A$ en $B$;
+     $$g=\{(1, \, 1), \, (2, \, 3), \, (3, \, 3)\}$$
+     es una función de $A$ en $B$, pero no es uno a uno, ya que $g(2) = g(3)$ pero $2 \neq 3$.
+ \end{myexample}
+
+ \newpage
+
+\begin{BOX}
+     Si $A = \{a_1, \, a_2, \, \dots, \, a_m \}$ y $B = \{b_1, \, b_2, \, \dots, \, b_n \}$, y $m \leq n$, una función inyectiva $f: A \longrightarrow B$ tiene la forma $\{(a_1, \, x_1), \, (a_2, \, x_2), \, (a_3, \, x_3), \, \dots, \, (a_m, \, x_m)\}$. donde existen $n$ opciones para $x_1$, (es decir, cualquier elemento de $B$), $n - 1$ opciones para $x_2$ (es decir, cualquier elemento de $B$ excepto el elegido como $x_1$), $n- 2$ opciones para $x_3$, y así sucesivamente, hasta terminar con $n - (m- 1) =n - m + 1$ opciones para $x_m$. Por la regla del producto, el número de funciones inyectivas de $A$ en $B$ es
+     $$n(n-1)(n-2) \cdots (n-m+1) = \frac{n!}{(n-m)!} = P(n, \, m) = P(|B|, \, |A|).$$
+\end{BOX}
+
+\begin{definicion}{}{}
+    Si $f: A \longrightarrow B$ y $A_1 \subseteq A$, entonces
+    $$f(A_1) = \left\{b \in B \mid b = f(a), \text{ para algún } a \in A_1 \right\},$$
+    y $f(A_1)$ se conoce como la imagen de $A$, mediante $f$.
+\end{definicion}
+
+\begin{myexample}
+    Sea $g: \RR \longrightarrow \RR$ dada por $g(x) = x^2$. La imagen de $\RR$ mediante $g$ es $g(\RR) = [0, \, + \infty)$. Geométricamente, tenemos
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick,arrows = {stealth-stealth[scale width=1]}] (-3.2,0) -- (3.2,0);
+            \draw[thick,arrows = {-stealth[scale width=1]}] (0,-0.5) -- (0,4.2);
+            \draw[thick, jblueleft, domain=-2:2, smooth] plot (\x,{(\x)^2});
+        \end{tikzpicture}
+        \captionof{figure}{Gráfica de $g(\RR)$}
+    \end{center}
+    La imagen de $\ZZ$ mediante $g$ es $g(\ZZ) = \{0, \, 1, \, 4, \, 9, \, 16, \, \dots \}$. Geométricamente, tenemos
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick,arrows = {stealth-stealth[scale width=1]}] (-3.2,0) -- (3.2,0);
+            \draw[thick,arrows = {-stealth[scale width=1]}] (0,-0.5) -- (0,4.2);
+            
+            \foreach \A [count=\i] in {RoyalBlue1,RoyalBlue2,RoyalBlue3,RoyalBlue4,Cyan4}
+            {\filldraw[color=\A] (\i-3,{(\i-3)^2}) circle (2pt);
+            }
+        \end{tikzpicture}
+        \captionof{figure}{Gráfica de $g(\ZZ)$}
+    \end{center}
+    Y para $A_1 = [-2, \, 1]$ obtenemos $g(A_1)= [0, \, 4]$.
+\end{myexample}
+
+\begin{theorem}{}{}
+    Sea $f: A \longrightarrow B$ con $A_1$, $A_2 \subseteq A$. Entonces
+    \begin{enumerate}[label=\alph*)]
+        \item $f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$.
+        \item $f(A_1 \cap A_2) \subseteq f(A_1) \cap f(A_2)$.
+        \item $f(A_1 \cap A_2) = f(A_1) \cap f(A_2)$ cuando $f$ es inyectiva.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definicion}{}{}
+    Si $f: A \longrightarrow B$ y $A_1$, $A_2 \subseteq A$, entonces $\left. f \right|_{A_1}: A_1 \longrightarrow B$ es la \textbf{restricción} de $f$ a $A_1$, donde $\left. f \right|_{A_1}(a) = f(a)$ para todo $a \in A_1$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sea $A_1 \subseteq A$ y $f: A_1 \longrightarrow B$. Si $g: A \longrightarrow B$ y $g(a) = f(a)$ para todo $a \in A_1$, entonces $g$ es una \textbf{extensión} de $f$ en $A$.
+\end{definicion}
+
+\begin{myexample}
+    Sean $A = \{w, \, x, \, y, \, z\}$, $B = \{1, \, 2, \, 3, \, 4, \, 5\}$ y $A_1 = \{w, \, y, \, z\}$. Sean $f: A \longrightarrow B$, $g_1: A_1 \longrightarrow B$ las funciones representadas por los diagramas de la figura \ref{JSJSJSJSBDJDJ}. Entonces $g = \left. f \right|_{A_1}$, y $f$ es una extensión de $g$ de $A_1$ a A. Observemos que para la función dada $g: A_1 \longrightarrow B$, existen cinco formas de extender $g$ de $A_1$ a $A$.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \foreach \q [count=\i] in {z,y,x,w} {
+            \filldraw (0,\i+0.5) circle (2pt) node[left] {\q};
+            }
+            
+            \foreach \j [count=\i] in {5,4,3,2,1} {
+            \filldraw (3,\i) circle (2pt) node[right] {\j};
+            }
+            
+            \filldraw (6,4.5) circle (2pt) node[left] {w};
+            \filldraw (6,2.5) circle (2pt) node[left] {y};
+            \filldraw (6,1.5) circle (2pt) node[left] {z};
+            
+            \foreach \l [count=\i] in {5,4,3,2,1} {
+            \filldraw (9,\i) circle (2pt) node[right] {\l};
+            }
+
+            \draw[-{latex[length=1cm]}, thick] (0,1.5) -- (3,2);
+            \draw[-{latex[length=1cm]}, thick] (0,2.5) -- (3,1);
+            \draw[-{latex[length=1cm]}, thick] (0,3.5) -- (3,3);
+            \draw[-{latex[length=1cm]}, thick] (0,4.5) -- (3,5);
+
+            \draw[-{latex[length=1cm]}, thick] (6,1.5) -- (9,2);
+            \draw[-{latex[length=1cm]}, thick] (6,2.5) -- (9,1);
+            \draw[-{latex[length=1cm]}, thick] (6,4.5) -- (9,5);
+
+            \node at (1.5,5.5) [above] {$f:A \longrightarrow B$};
+            \node at (7.5,5.5) [above] {$g:A_1 \longrightarrow B$};
+        \end{tikzpicture}
+        \captionof{figure}{~}\label{JSJSJSJSBDJDJ}
+    \end{center}
+\end{myexample}
+
+\section{Funciones sobreyectivas: Números de Stirling de segundo tipo}
+
+\begin{definicion}{}{}
+    Una función $f:A \longrightarrow B$ es \textit{sobre}, o \textit{sobreyectiva}, si $f(A) = B$; es decir, si para todo $b \in B$ existe al menos un $a \in A$ con $f(a) = b$.
+\end{definicion}
+
+\begin{myexample}
+    Consideremos la función $f: \ZZ \longrightarrow \ZZ$ tal que $f(x) = 3x + 1$ para cualquier $x \in \ZZ$. En este caso, la imagen de $f$ es $\{ \dots , \, -8, \, -5, \, -2, \, 1, \, 4, \, 7, \, \dots \}$ y $f$ no es una función sobre. Si analizamos con cuidado esta situación, veremos que, por ejemplo, el entero 8 no está en la imagen de $f$ aunque la ecuación $3x + 1 = 8$ se pueda resolver con facilidad para obtener $x =7/3$. Pero ese es el problema ya que el número racional $7/3$ no es \textit{entero}; así, no existe $x$ en el dominio $\ZZ$ tal que $f(x) = 8$.
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    La función $f: \RR \longrightarrow \RR$ definida como $f(x) = x^3$ es una función sobre, ya que en este caso vemos que si $r$ es un número real del codominio de $f$, entonces el número real $r$ está en el dominio de $f$ y $f\left(\sqrt[3]{x}\right) = \left( \sqrt[3]{x}\right)^3$. Por lo tanto, el codominio de $f$ es $\RR$, que es igual a la imagen de $f$ y la función $f$ resulta ser sobre. Vea la gráfica de $f$:
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick,arrows = {stealth-stealth[scale width=1]}] (-4.2,0) -- (4.2,0);
+            \draw[thick,arrows = {stealth-stealth[scale width=1]}] (0,-4.2) -- (0,4.2);
+            \draw[thick, jblueleft, domain=-1.58:1.58, smooth] plot (\x,{(\x)^3});
+        \end{tikzpicture}
+        \captionof{figure}{Gráfica de $f(x) = x^3$}
+    \end{center}
+    La función $g: \RR \longrightarrow \RR$, donde $g(x) = x^2$ para cada número real $x$, no es una función sobre. En este caso, ningún número real negativo aparece en la imagen de $g$. Vea la gráfica de $g$:
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick,arrows = {stealth-stealth[scale width=1]}] (-4.2,0) -- (4.2,0);
+            \draw[thick,arrows = {-stealth[scale width=1]}] (0,-1) -- (0,4.2);
+            \draw[thick, jblueleft, domain=-2:2, smooth] plot (\x,{(\x)^2});
+        \end{tikzpicture}
+        \captionof{figure}{Gráfica de $g(x) = x^2$}
+    \end{center}
+    Por ejemplo, para que $-9$ esté en la imagen de $g$, tendríamos que poder encontrar un número real $r$ tal que $g(r) = r^2 = - 9$. Por desgracia, $r^2 = - 9 \Longrightarrow r= 3i$ o $r=- 3i$, donde $3i$, $-3i \in \CC$, pero $3i$, $-3i \notin \RR$. Así, tenemos que la imagen $g(\RR) = [0, \, + \infty) \subset \RR$ y la función $g$ no es sobre. Sin embargo, debemos observar que la función $h: \RR \longrightarrow [0, + \infty)$ definida por $h(x) = x^2$ sí es una función sobre.
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    Sean $A = \{ 1, \, 2, \, 3, \, 4 \}$, $B = \{ x, \, y, \, z \}$, entonces
+    $$f_1 = \{ (1, \, z), \, (2, \, y), \, (3, \, x), \, (4, \, y) \} \quad \text{y} \quad f_2 = \{ (1, \, x), \, (2, \, x), \, (3, \, y), \, (4, \, z) \}$$
+    son, ambas, funciones sobre de $A$ sobre $B$, pues $f_1(A) = \{ x, \, y, \, z \} = B$ y $f_2(A) = \{ x, \, y, \, z \} = B$. Sin embargo, la función $g = \{ (1, \, x), \, (2, \, x), \, (3, \, y), \, (4, \, y) \}$ no es sobre, pues $g(A) = \{x, \, y \} \subset B$.
+\end{myexample}
+
+\begin{myexample}
+    Si $A = \{x, \, y, \, z\}$ y $B = \{ 1, \, 2 \}$, entonces todas las funciones $f: A \longrightarrow B$ son sobre excepto $f_1 = \{(x, \, 1), \, (y, \, 1), \, (z, \, 1)\}$ y $f_2 = \{(x, \, 2), \, (y, \, 2), \, (z, \, 2) \}$, las funciones constantes. Por lo tanto, existen $|B|^{|A|} - 2 = 2^3 - 2 = 6$ funciones sobre de $A$ en $B$. Dichas funciones sobre están dadas por:
+    \begin{align*}
+        f_3 & = \{ (x, \, 1), \, (y, \, 1), \, (z, \, 2) \} & f_5 & = \{ (x, \, 2), \, (y, \, 1), \, (z, \, 1) \} & f_7 & = \{ (x, \, 2), \, (y, \, 1), \, (z, \, 2) \} \\
+        f_4 & = \{ (x, \, 1), \, (y, \, 2), \, (z, \, 1) \} & f_6 & = \{ (x, \, 2), \, (y, \, 2), \, (z, \, 1) \} & f_8 & = \{ (x, \, 1), \, (y, \, 2), \, (z, \, 2) \}
+    \end{align*}
+\end{myexample}
+
+\begin{BOX}
+    En general, si $|A| = m$ y $|B| = 2$, entonces hay $|B|^{|A|} - 2 = 2^m -2$ funciones suprayectivas de $A$ hacia $B$.
+\end{BOX}
+
+\begin{myexample}
+    Sean $A = \{ w, \, x, \, y, \, z \}$, $B = \{ 1, \, 2, \, 3 \}$. Hay $|B|^{|A|} = 3^4$ funciones de $A$ hacia $B$. Consideremos los subconjuntos de $B$ con dos elementos, es decir, $\{ 1, \, 2 \}$, $\{ 1, \, 3 \}$, $\{ 2, \, 3 \}$. Entonces para $1 \leq i \leq 2^4$
+    \begin{gather*}
+        f_{1_i} : A  \longrightarrow \{1, \, 2\}, \text{ hay $2^4$ funciones} \quad \quad f_{2_i} : A \longrightarrow \{1, \, 3\}, \text{ hay $2^4$ funciones} \\
+        f_{3_i} : A \longrightarrow \{2, \, 3\}, \text{ hay $2^4$ funciones}
+    \end{gather*}
+    Por lo tanto, tenemos $3^4 - 3(2^4)$ funciones de $A$ en $B$ que no son sobre, pero este número es el total, pues hay repetición ya que se restan dos veces. Para las
+    $$f_{1_i} :A \longrightarrow \{1, \, 2 \}$$
+    se eliminan entre otros: $\{ (w, \, 2), \, (x, \, 2), \, (y, \, 2), \, (z, \, 2) \}$. Para las
+    $$f_{3_i}:A \longrightarrow \{ 2, \, 3\}$$
+    se eliminan entre otros: $\{ (w, \, 2), \, (x, \, 2), \, (y, \, 2), \, (z, \, 2) \}$. Para las
+    $$f_{2_i}:A \longrightarrow \{ 1, \, 3\}$$
+    se eliminan entre otros: $\{ (w, \, 3), \, (x, \, 3), \, (y, \, 3), \, (z, \, 3) \}$. Para las
+    $$f_{3_i}:A \longrightarrow \{2, \, 3\}$$
+    se eliminan entre otros: $\{ (w, \, 3), \, (x, \, 3), \, (y, \, 3), \, (z, \, 3) \}$. Para las
+    $$f_{1_i}:A \longrightarrow \{1, \, 2\}$$
+    se eliminan entre otros: $\{ (w, \, 1), \, (x, \, 1), \, (y, \, 1), \, (z, \, 1) \}$. Para las
+    $$f_{2_i}:A \longrightarrow \{1, \, 3\}$$
+    se eliminan entre otros: $\{ (w, \, 1), \, (x, \, 1), \, (y, \, 1), \, (z, \, 1) \}$. Así, obtenemos el número de funciones suprayecticas de $A$ hacia $B$ con $|A| = 4$ y $|B| = 3$, que es: $3^4 - 3(2^4) + 3 = 36$.
+\end{myexample}
+
+\newpage
+
+\begin{BOX}
+    Para generalizar, se expresa con los coeficientes binomiales. Es decir, para $|A| = 4$ y $|B| = 3$,
+    $$3^4 - 3 (2^4) + 3 = \binom{3}{3} 3^4 - \binom{3}{2} 2^4 + \binom{3}{1} 1^4.$$
+\end{BOX}
+
+\begin{BOX}
+    En general, si $|A| = m \geq n = |B|$, entonces expresemos el número de funciones suprayectivas de $A$ hacia $B$ como sigue:\label{JEDHFHDJKHJFHGJGB}
+    \begin{align*}
+        \binom{n}{n} n^m - \binom{n}{n-1} (n-1)^m + \binom{n}{n-2}(n-2)^m - \binom{n}{n-3} (n-3)^m + \cdots \\
+        & \hspace{-3cm} \cdots + (-1)^{n-2} \binom{n}{2} 2^m + (-1)^{n-1} \binom{n}{1} 1^m \\
+        & \hspace{-6cm} = \sum_{j=0}^{n-1} (-1)^j \binom{n}{n-j} (n-j)^m \\
+        & \hspace{-6cm} = \sum_{j=0}^{n} (-1)^j \binom{n}{n-j} (n-j)^m
+    \end{align*}
+\end{BOX}
+
+\begin{importante}
+    Si $A$ y $B$ son conjuntos finitos, entonces para que exista una función sobre $f:A \longrightarrow B$ se debe cumplir que $|A| \geq |B|$.
+\end{importante}
+
+\begin{myexample}\label{JAJSJJSJJDJUHBJDJ}
+    Sean $A = \{1, \, 2, \, 3, \, 4, \, 5, \, 6, _, 7\}$ y $B = \{w, \, x, \, y, \, z\}$. Si aplicamos la fórmula general con $m = 7$ y $n = 4$, vemos que existen
+    \begin{align*}
+        \sum_{k=0}^4 (-1)^k \binom{4}{4-k} (4-k)^7 & = \binom{4}{4} 4^7 - \binom{4}{3} 3^7 + \binom{4}{2} 2^7 - \binom{4}{1} 1^7 \\
+        & = 8 \, 400 \text{ funciones de $A$ sobre $B$.}
+    \end{align*}
+\end{myexample}
+
+\begin{myexample}
+    Hallar el número de distribuciones diferentes que se pueden hacer al colocar 7 objetos distintos en 4 recipientes diferentes, sin dejar alguno vacío.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Sea $A$ el conjunto de objetos diferentes y $B$ el conjunto de recipientes. Es decir, $A = \{1, \, 2, \, 3, \, 4, \, 5, \, 6, _, 7\}$ y $B = \{w, \, x, \, y, \, z\}$. Si aplicamos la fórmula general con $m = 7$ y $n = 4$, vemos que existen
+    \begin{align*}
+        \sum_{k=0}^4 (-1)^k \binom{4}{4-k} (4-k)^7 & = \binom{4}{4} 4^7 - \binom{4}{3} 3^7 + \binom{4}{2} 2^7 - \binom{4}{1} 1^7 \\
+        & = 8 \, 400 \text{ distribuciones diferentes.}
+    \end{align*}
+    Un ejemplo sería $f = \{ (1, \, w), \, (2, \, w), \, (3, \, x), \, (4, \, x), \, (5, \, y), \, (6, \, y), \, (7, \, z) \}$.
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    Una matriz $m \times n$ de ceros y unos con $m$ filas y $n$ columnas con $i \in \{1, \, 2, \, \dots, \, m\}$ y $j \in \{1, \, 2, \, \dots, \, n\}$, el registro $a_{ij}$ presentado es cero o uno. ¿Cuántas matrices de 7 por 4 de ceros y unos tiene exactamente un uno en cada fila; y como mínimo un uno en cada columna?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Si aplicamos la fórmula general con $m = 7$ y $n = 4$, vemos que existen
+    \begin{align*}
+        \sum_{k=0}^4 (-1)^k \binom{4}{4-k} (4-k)^7 & = \binom{4}{4} 4^7 - \binom{4}{3} 3^7 + \binom{4}{2} 2^7 - \binom{4}{1} 1^7 \\
+        & = 8 \, 400 \text{ matrices con las condiciones anteriores.}
+    \end{align*}
+\end{myexample}
+
+\begin{myexample}
+    La directora de una empresa tiene una secretaria y otras 3 auxiliares administrativas. Si hay que procesar 7 cuentas, ¿de cuántas formas se pueden distribuir las cuentas para que cada auxiliar trabaje al menos una cuenta y el trabajo de la secretaria, incluya aunque solo haga eso la cuenta más elevada?
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} En primer lugar, la respuesta no es 8\,400 como en el ejemplo \ref{JAJSJJSJJDJUHBJDJ}.6. Aquí debemos considerar dos subcasos disjuntos y después aplicar la regla de la suma.
+    \begin{enumerate}[label=\alph*)]
+        \item Si la secretaria solamente trabaja con la cuenta más cara, entonces hay que distribuir las otras seis cuentas entre las tres asistentes administrativos de
+        $$\sum_{k=0}^3 (-1)^k \binom{3}{3-k} (3-k)^6= 540 \text{ formas.}$$
+        \item Si la secretaria trabaja con otras cuentas además de la más cara, la asignación de tareas puede hacerse de
+        $$\sum_{k=0}^4 (-1)^k \binom{4}{4-k} (4-k)^6= 1\, 560 \text{ formas.}$$
+    \end{enumerate}
+    En consecuencia, la asignación de trabajo puede hacerse en las condiciones dadas de $540 + 1\, 560 = 2\, 100$ formas.
+\end{myexample}
+
+\begin{myexample}
+    Si $A = \{a, \, b, \, c, \, d\}$ y $B = \{1, \, 2, \, 3\}$; entonces existen $\displaystyle \sum_{k=0}^3 (-1)^k \binom{3}{3-k} (3-k)^4 = 36$ funciones sobre de $A$ en $B$ o, en forma equivalente, 36 formas de distribuir cuatro objetos diferentes en tres recipientes distinguibles, sin que alguno quede vacío. Entre estas 36 distribuciones nos fijamos en la siguiente colección de seis (una de las seis posibles colecciones de seis):
+    \begin{tasks}[style=enumerate](3)
+        \task $\{ a, \, b \}_1$ \quad $\{ c \}_2$ \quad $\{ d \}_3$
+        \task $\{ a, \, b \}_1$ \quad $\{ d \}_2$ \quad $\{ c \}_3$
+        \task $\{ c \}_1$ \quad $\{ a, \, b \}_2$ \quad $\{ d \}_3$
+        \task $\{ c \}_1$ \quad $\{ d \}_2$ \quad $\{ a, \, b \}_3$
+        \task $\{ d \}_1$ \quad $\{ a, \, b \}_2$ \quad $\{ c \}_3$
+        \task $\{ d \}_1$ \quad $\{ c \}_2$ \quad $\{ a, \, b \}_3$
+    \end{tasks}
+    donde, por ejemplo, la notación $\{ c \}_2$ indica que $c$ está en el segundo recipiente. Ahora bien, si no hacemos distinción entre los recipientes, estas $6 = 3!$ distribuciones se vuelven idénticas, de modo que hay $36/(3!) = 6$ formas de distribuir los objetos distintos $a$, $b$, $c$, $d$ entre tres recipientes idénticos, sin dejar alguno vacío.
+\end{myexample}
+
+\newpage
+
+\begin{BOX}
+    Para $m \geq n$, existen $\displaystyle \sum_{k=0}^n (-1)^k \binom{n}{n-k} (n-k)^m$ formas de distribuir $m$ objetos diferentes en $n$ recipientes numerados (pero idénticos por lo demás), sin que quede algún recipiente vacío. Si eliminamos los números de los recipientes, de modo que ahora tengan una apariencia idéntica, vemos que una distribución en estos $n$ recipientes idénticos (no vacíos) corresponde con $n!$ de estas distribuciones en los recipientes numerados. Así, el número de formas en que podemos distribuir los $m$ objetos distintos en $n$ recipientes idénticos, sin que quede alguno vacío, es
+    $$\frac{1}{n!} \sum_{k=0}^n (-1)^k \binom{n}{n-k}(n-k)^m.$$
+    Esta suma se denota como $S(m, \, n)$ y se denomina \textbf{número de Stirling} del segundo tipo. Observemos que si $|A|= m \geq n=|B|$, existen $n! \cdot S(m, \, n)$ funciones sobre de $A$ en $B$. Además, si $m = n$, entonces $S(m, \, n) = 1$.
+\end{BOX}
+
+La siguiente tabla enumera algunos números de Stirling del segundo tipo.
+\begin{center}
+    \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccccc}
+    \CodeBefore
+    \rowcolor{jblueleft!80}{1}
+    \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+    \Body
+    \RowStyle[color=white]{}
+        \diagbox{\color{white}$m$}{\color{white}$n$} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+        1 & 1 & & & & & & & \\
+        2 & 1 & 1 & & & & & & \\
+        3 & 1 & 3 & 1 & & & & & \\
+        4 & 1 & 7 & 6 & 1 & & & & \\
+        5 & 1 & 15 & 25 & 10 & 1 & & & \\
+        6 & 1 & 31 & 90 & 65 & 15 & 1 & & \\
+        7 & 1 & 63 & 301 & 350 & 140 & 21 & 1 & \\
+        \hspace{0.2cm}8\hspace{0.2cm} & 1 & 127 & 966 & 1701 & 1050 & 266 & 28 & 1
+    \end{NiceTabular}
+    \captionof{table}{Números de Stirling}\label{JDHDJDKDJYGHBSJOODJK}
+\end{center}
+
+\begin{myexample}
+    Para $m \geq n$, $\displaystyle \sum_{i=0}^n S(m, \, i)$ es el número de formas posibles de distribuir $m$ objetos diferentes en $n$ recipientes idénticos sin que queden recipientes vacíos. De la cuarta fila de la tabla \ref{JDHDJDKDJYGHBSJOODJK} vemos que existen $1 + 7 + 6 = 14$ formas de distribuir los objetos $a$, $b$, $c$, $d$ entre tres recipientes idénticos.
+\end{myexample}
+
+\begin{theorem}{}{}
+    Sean $m$, $n$ enteros positivos tales que $1 < n \leq m$. Entonces
+    $$S(m + 1, \, n) = S(m, \, n-1) + nS(m, \, n).$$
+\end{theorem}
+
+\section{Composición de funciones y funciones inversas}
+
+\begin{definicion}{}{}
+    Si $f: A \longrightarrow B$, entonces se dice que $f$ es biyectiva, o es una correspondencia biyectiva, si $f$ es inyectiva y sobre.
+\end{definicion}
+
+\newpage
+
+\begin{myexample}
+    Si $A = \{ 1, \, 2, \, 3, \, 4\}$ y $B = \{w, \, x, \, y, \, z\}$, entonces $f= \{(1, \, w), \, (2, \, x), \, (3, \, y), \, (4, \, z)\}$ es una correspondencia biyectiva de $A$ (en) a $B$, y $g = \{(w, \, 1), \, (x, \, 2), \, (0, \, 3), \, (z, \, 4)\}$ es una correspondencia biyectiva de $B$ en (sobre) $A$.
+\end{myexample}
+
+\begin{definicion}{}{}
+    La función $1_A: A \longrightarrow A$, definida como $1_A (a) = a$ para todo $ a \in A$, es la \textit{función identidad} para $A$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Si $f$, $g: A \longrightarrow B$, decimos que $f$ y $g$ son iguales y escribimos $f = g$, si $f(a) = g(a)$ para todo $a \in A$.
+\end{definicion}
+
+\begin{myexample}
+    Consideremos las funciones $f$, $g: \RR \longrightarrow \ZZ$ definidas como sigue:
+    $$f(x) = \left\{ \begin{array}{ll}
+        x, & \text{si } x \in \ZZ \\
+        \lfloor x \rfloor + 1, & \text{si } x \in \RR - \ZZ
+    \end{array}\right. \quad g(x) = \lceil x \rceil, \text{ para todo $x \in \RR$}$$
+    Si $x \in \ZZ$, entonces $f(x) = x = \lceil x \rceil = g(x)$. Para $x \in \RR - \ZZ$, escribimos $x = n + r$ donde $n \in \ZZ$ y $0 < r < 1$. Entonces
+    $$f(x) = \lfloor x \rfloor + 1 = n + 1 = \lceil x \rceil = g(x).$$
+    De manera gráfica, se tiene
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[stealth-stealth,thick] (-6,0) -- (6,0);
+            \foreach \i in {-3,-2,-1,1,2,3}
+            {
+            \ifnum \i<0
+                \draw (1.5*\i, 0) -- (1.5*\i, -0.3) node[below] {$n \i$};
+            \else
+                \draw (1.5*\i, 0) -- (1.5*\i, -0.3) node[below] {$n + \i$};
+            \fi
+            }
+            \draw (0, 0) -- (0, -0.3) node[below] {$n$};
+            \draw[jblueleft] (0.7, 0.3) node[above] {$n+r$} -- (0.7, -0.3) node[below] {$x$};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+    En consecuencia, aunque las funciones $f$, $g$ están definidas por fórmulas diferentes, nos damos cuenta de que son la misma función, ya que tienen el mismo dominio, el mismo codominio y $f(x) = g(x)$ para todo $x$ del dominio $\RR$.
+\end{myexample}
+
+\begin{definicion}{}{}
+    Si $f:A \longrightarrow B$ y $g:B \longrightarrow C$, definimos la función compuesta, que se denota $g \circ f:A \longrightarrow C$, como $(g \circ f)(a) = g \big( f(a) \big)$, para cada $a \in A$.
+\end{definicion}
+
+\begin{myexample}
+    Sea $A = \{ 1, \, 2, \, 3, \, 4 \}$, $B = \{ a, \, b, \, c \}$ y $C = \{ w, \, x, \, y, \, z \}$ con $f: A \longrightarrow B$ y $g: B \longrightarrow C$ dadas por $f = \{ (1, \, a), \, (2, \, a), \, (3, \, b), \, (4, \, c) \}$ y $g = \{ (a, \, x), \, (b, \, y), \, (c, \, z) \}$. Para cada elemento de $A$ encontraremos que:
+    \begin{align*}
+        (g \circ f)(1) & = g\big( f(1) \big) = x & (g \circ f)(3) & = g\big( f(3) \big) = y \\
+        (g \circ f)(2) & = g\big( f(2) \big) = x & (g \circ f)(4) & = g\big( f(4) \big) = z
+    \end{align*}
+    Por lo que
+    $$g \circ f = \{(1, \, x), \, (2, \, x), \, (3, \, y), \, (4, \, z) \}.$$
+\end{myexample}
+
+\newpage
+
+\begin{myexample}
+    Sean $f: \RR \longrightarrow \RR$, $g: \RR \longrightarrow \RR$ definidas por $f(x) = x^2$, $g(x) = x + 5$. Entonces
+    $$(g \circ f)(x) = g\big( f(x) \big) = g\left( x^2 \right) = x^2+5,$$
+    mientras que
+    $$(f \circ g)(x) = f\big( g(x) \big) = f(x+5) = (x+5)^2 = x^2 + 10x + 25.$$
+    Aquí $g \circ f: \RR \longrightarrow \RR$ y $f \circ g: \RR \longrightarrow \RR$, pero $(g \circ f)(1) = 6 \neq 36 = (f \circ g)(1)$; así, aunque podemos formar ambas composiciones $f \circ g$ y $g \circ f$, no ocurre que $f \circ g = g \circ f$. En consecuencia, la composición de funciones no es, en general, una operación conmutativa.
+\end{myexample}
+
+\begin{theorem}{}{}
+    Sean $f: A \longrightarrow B$ y $g:B \longrightarrow C$.
+    \begin{enumerate}[label=\alph*)]
+        \item Si $f$, $g$ son inyectivas, entonces $f \circ g$ es inyectiva.
+        \item Si $f$, $g$ son sobre, entonces $f \circ g$ es sobre.
+    \end{enumerate}
+\end{theorem}
+
+\begin{myexample}
+    Sea $f: \RR \longrightarrow \RR$, $g: \RR \longrightarrow \RR$ y $h: \RR \longrightarrow \RR$, donde $f(x) = x^2$, $g(x) = x+5$ y $h(x) = \sqrt{x^2+2}$. Entonces
+    \begin{align*}
+        \big( (h \circ g) \circ f \big)(x) & = (h \circ g)\big( f(x) \big) \\
+        & = (h \circ g)\left(x^2\right) \\
+        & = h\big(g\left(x^2\right)\big) \\
+        & = h\left(x^2+5\right) \\
+        & = \sqrt{\left(x^2+5\right)^2+2} \\
+        & = \sqrt{x^4+10x^2+27}.
+    \end{align*}
+    Por otro lado, vemos que
+    \begin{align*}
+        \big(h \circ (g \circ f) \big)(x) & = h \big( (g \circ f)(x) \big) \\
+        & = h \Big( g \big( f(x) \big) \Big) \\
+        & = h \big( g\left(x^2\right) \big) \\
+        & = h\left(x^2+5\right) \\
+        & = \sqrt{\left(x^2+5\right)^2+2} \\
+        & = \sqrt{x^4+10x^2+27},
+    \end{align*}
+    que es justo como antes. Así, en este caso particular, $(h \circ g) \circ f$ y $h \circ (g \circ f)$ son dos funciones con el mismo dominio y codominio, y para todo $x \in \RR$,
+    $$\big((h \circ g) \circ f\big)(x) = \sqrt{x^4+10x^2+27} = \big(h \circ (g \circ f) \big)(x).$$
+    En consecuencia, $(h \circ g) \circ f= h \circ (g \circ f)$.
+\end{myexample}
+
+\newpage
+
+\begin{importante}
+    La definición y los ejemplos de la composición de funciones requieren que el codominio de $f$ sea igual al dominio de $g$. Si la imagen de $f$ es subconjunto del dominio de $g$, esto será suficiente para obtener la composición $g \circ f:A \longrightarrow B$.
+\end{importante}
+
+\begin{theorem}{}{}
+    Si $f:A \longrightarrow B$, $g:B \longrightarrow C$ y $h: C \longrightarrow D$, entonces
+    $$(h \circ f) \circ f = h \circ (g \circ f).$$
+\end{theorem}
+
+\begin{definicion}{}{}
+    Si $f:A \longrightarrow A$, definimos $f^1 = f$, y para $n \in \ZZ[+]$, $f^{n+1} = f \circ f^n$.
+\end{definicion}
+
+\begin{myexample}
+    Si $A = \{ 1, \, 2, \, 3, \, 4 \}$, y $f:A \longrightarrow A$ está dada por $f = \{ (1, \, 2), \, (2, \, 2), \, (3, \, 1), \, (4, \, 3) \}$, tenemos que
+    \begin{align*}
+        f^2(1) & = (f \circ f)(1) & f^3(1) & = \left(f \circ f^2\right)(1) & f^4(1) & = \left(f \circ f^3\right)(1) \\
+        & = f\big(f(1)\big) & & = f\big(f^2(1)\big) & & = f\big(f^3(1)\big) \\
+        & = f(2) & & = f(2) & & = f(2) \\
+        & = 2 & & = 2 & & = 2 \\
+        \\
+        f^2(2) & = (f \circ f)(2) & f^3(2) & = \left(f \circ f^2\right)(2) & f^4(2) & = \left(f \circ f^3\right)(2) \\
+        & = f\big(f(2)\big) & & = f\big(f^2(2)\big) & & = f\big(f^3(2)\big) \\
+        & = f(2) & & = f(2) & & = 2 \\
+        & = 2 & & = 2 & & = 2 \\
+        \\
+        f^2(3) & = (f \circ f)(3) & f^3(3) & = \left(f \circ f^2\right)(3) & f^4(3) & = \left(f \circ f^3\right)(3) \\
+        & = f\big(f(3)\big) & & = f\big(f^2(3)\big) & & = f\big(f^3(3)\big) \\
+        & = f(3) & & = f(2) & & = f(2) \\
+        & = 2 & & = 2 & & = 2 \\
+        \\
+        f^2(4) & = (f \circ f)(4) & f^3(4) & = \left(f \circ f^2\right)(4) & f^4(4) & = \left(f \circ f^3\right)(4) \\
+        & = f\big(f(4)\big) & & = f\big(f^2(4)\big) & & = f\big(f^3(4)\big) \\
+        & = f(3) & & = f(1) & & = f(2) \\
+        & = 1 & & = 2 & & = 2
+    \end{align*}
+    Por tanto,
+    \begin{gather*}
+        f^2 = f \circ f = \{ (1, \, 2), \, (2, \, 2), \, (3, \, 2), \, (4, \, 1) \}, \quad \quad f^3 = f \circ f^2 = \{ (1, \, 2), \, (2, \, 2), \, (3, \, 2), \, (4, \, 2) \} \\[7pt]
+        f^4 = f \circ f^3 = \{ (1, \, 2), \, (2, \, 2), \, (3, \, 2), \, (4, \, 2) \}.
+    \end{gather*}
+    Nótese que la función se vuelve constante a partir de $n = 3$, es decir, para $n = 3$ la función $f^n$ está dada por
+    $$f^n = \{ (1, \, 2), \, (2, \, 2), \, (3, \, 2), \, (4, \, 2) \}.$$
+\end{myexample}
+
+\newpage
+
+\begin{definicion}{}{}
+    Para los conjuntos $A$, $B \subseteq U$, si $\mathcal{R}$ es una relación de $A$ en $B$, entonces la \textit{inversa} de $\mathcal{R}$, denotada por $\mathcal{R}^C$, es la relación de $B$ hacia $A$ definida por
+    $$\mathcal{R}^C = \{ (b, \, a) \mid (a, \, b) \in \mathcal{R} \}.$$
+\end{definicion}
+
+\begin{BOX}
+    Para obtener $\mathcal{R}^C$ a partir de $\mathcal{R}$, basta cambiar las componentes del par ordenado. Así pues, sea $A = \{ 1, \, 2, \, 3, \, 4 \}$, $B = \{ w, \, x, \, y \}$ y $f: A \longrightarrow B$ dada por $f = \{ (1, \, w), \, (2, \, x), \, (3, \, y), \, (4, \, x) \}$. Entonces $f^C = \{ (w, \, 1), \, (x, \, 2), \, (y, \, 3), \, (x, \, 4) \}$.
+\end{BOX}
+
+\begin{myexample}
+    Sea $A = \{ 1, \, 2, \, 3 \}$, $B = \{ w, \, x, \, y \}$ y $f: A \longrightarrow B$ dada por $f = \{ (1, \, w), \, (2, \, x), \, (3, \, y) \}$. Entonces $f(A) = \{ w, \, x, \, y \} = B$, por lo que la función es uno a uno y sobre, es decir, la función es biyectiva. Calculando la composición de ambas funciones, obtenemos que:
+    \begin{align*}
+        \left(f \circ f^{C}\right)(w) & = f\left(f^{C}(w)\right) & \left(f^{C} \circ f\right)(w) & = f^{C}\big(f(w)\big) \\
+        & = f(1) & & = f^{C}(w) \\
+        & = w & & = 1 \\
+        \\
+        \left(f \circ f^{C}\right)(x) & = f\left(f^{C}(x)\right) & \left(f^{C} \circ f\right)(x) & = f^{C}\big(f(x)\big) \\
+        & = f(2) & & = f^{C}(x) \\
+        & = x & & = 2 \\
+        \\
+        \left(f \circ f^{C}\right)(y) & = f\left(f^{C}(y)\right) & \left(f^{C} \circ f\right)(y) & = f^{C}\big(f(y)\big) \\
+        & = f(3) & & = f^{C}(y) \\
+        & = y & & = 3
+    \end{align*}
+    Así pues, observamos que $f^{C} \circ f = 1_A$ y $f \circ f^{C} = 1_B$.
+\end{myexample}
+
+\begin{myexample}
+    \begin{minipage}[c]{0.5\textwidth}
+        Sean $f$, $g: \RR \longrightarrow \RR$ definidas por $f(x) = 2x + 5$, $\displaystyle g(x) = \frac{1}{2} (x - 5)$. Entonces
+        \begin{align*}
+            (f \circ g)(x) & = f\big(g(x)\big) \\
+            %& = g\left(2x + 5\right) \\
+            & = 2 \left[ \frac{1}{2} (x - 5) \right] + 5 \\
+            & = x \\[10pt]
+            (g \circ f)(x) & = g\big(f(x)\big) \\
+            %& = f\left(1/2 (x - 5)\right) \\
+            & = \frac{1}{2} \big[ (2x + 5) - 5 \big] + 5 \\
+            & = x
+        \end{align*}
+        Por lo que $f \circ g = 1_{\RR}$ y $g \circ f = 1_{\RR}$.
+    \end{minipage}
+    %\hfill
+    \begin{minipage}[l]{0.3\textwidth}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    axis lines = center,
+                    legend pos = north west,
+                    legend cell align={left},
+                    axis line style={stealth-stealth}
+                    ]
+                \addplot[
+                    domain=-3.9:3.9, 
+                    samples=100, 
+                    color=jblueleft,
+                    ]
+                {2*x + 5};
+                \addlegendentry{\(f(x) = 2x + 5\)}
+                \addplot[
+                    domain=-3.9:3.9, 
+                    samples=100, 
+                    color=DeepSkyBlue1,
+                    ]
+                {0.5*x - 2.5};
+                \addlegendentry{\(\displaystyle g(x) = 1/2 (x - 5)\)}
+            \end{axis}
+        \end{tikzpicture}
+        \captionof{figure}{~\hspace{-2.3cm}~}
+    \end{minipage}
+\end{myexample}
+
+\newpage
+
+\begin{definicion}{}{}
+    Si $f:A \longrightarrow B$, entonces se dice que $f$ es \textit{invertible} si existe una función $g: B \longrightarrow A$ tal que $g \circ f = 1_A$ y $f \circ g = 1_B$.
+\end{definicion}
+
+\begin{theorem}{}{}
+    Si una función $f:A \longrightarrow B$ es invertible y una función $g:B \longrightarrow A$ satisface $g \circ f = 1_A$ y $f \circ g = 1_B$, entonces esta función $g$ es única.
+
+    \tcblower
+    \textbf{\color{jblueleft}Demostración:} Si $g$ no es única, entonces existe otra función $h:B \longrightarrow A$ con $h \circ f = 1_A$ y $f \circ h = 1_B$. En consecuencia
+    \begin{align*}
+        h & = h \circ (1_B) \\
+        & = h \circ (f \circ g) \\
+        & = (h \circ f) \circ g \\
+        & = 1_A \circ g \\
+        & = g.
+    \end{align*}
+\end{theorem}
+
+\begin{notation*}{}
+    Como resultado de este teorema, llamaremos a la función $g$ la inversa de $f$ y adoptaremos la notación $g = f^{-1}$. El teorema anterior también implica que $f^C = f^{-1}$.
+\end{notation*}
+
+\begin{theorem}{}{IDKDNDKDKDDBD}
+    Una función $f:A \longrightarrow B$ es invertible si y solo si es inyectiva y sobre.
+\end{theorem}
+
+\begin{myexample}
+    Sea la función $f_1: \RR \longrightarrow \RR$ dada por $f_1(x) = x^2$. Por el teorema \ref{theorem:IDKDNDKDKDDBD}, la función $f_1$ no es invertible, pues no es inyectiva ni sobre. Sin embargo, si consideramos la función $f_2:[0, \, + \infty) \longrightarrow [0, \, +\infty)$ dada por $f_2(x) = x^2$, dicha función es invertible, pues es inyectiva y sobre, además de que $f_2^{-1}(x) = \sqrt{x}$. Vea la siguiente gráfica:
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    axis lines = center,
+                    legend pos = north west,
+                    legend cell align={left},
+                    axis line style={-stealth}
+                    ]
+                \addplot[
+                    domain=0:2.9, 
+                    samples=100, 
+                    color=jblueleft,
+                    ]
+                {x*x};
+                \addlegendentry{\(f_2(x) = x^2\)}
+                \addplot[
+                    domain=0:2.9, 
+                    samples=100, 
+                    color=DeepSkyBlue1,
+                    ]
+                {sqrt(x)};
+                \addlegendentry{\(\displaystyle f_2^{-1}(x) = \sqrt{x}\)}
+            \end{axis}
+        \end{tikzpicture}
+        \captionof{figure}{~}\label{JAJSJJSJSJUJYBBNKOIJD}
+    \end{center}
+\end{myexample}
+
+\newpage
+
+\begin{obs}{}{}
+    Debemos notar que lo que sucede en la figura \ref{JAJSJJSJSJUJYBBNKOIJD} sucede en general. Es decir, las gráficas de $f$ y $f^{-1}$ son simétricas respecto a la recta $y = x$.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+            \node[right] at (4,4) {$y=x$};
+            \draw[dashed] (-4,-4)--(4,4);
+            
+            \draw[domain=-1.9:1.9,smooth,variable=\x, DeepSkyBlue1] plot ({\x},{0.6*\x*\x*\x });
+            \node[above,DeepSkyBlue1] at (1.9,4.1) {$f(x)$};
+            \node[right,jblueleft] at (4,1.9) {$f^{-1}(x)$};
+            \draw[domain=0.0001:4,smooth,variable=\x, jblueleft, samples=100] plot ({\x},{exp(ln(\x/0.6)/3) });
+            \draw[domain=0.0001:4,smooth,variable=\x, jblueleft, samples=100, rotate=180] plot ({\x},{exp(ln(\x/0.6)/3) });
+
+            \draw[stealth-stealth, very thick] (-4.3,0)--(4.3,0);
+            \draw[stealth-stealth, very thick] (0,-4.3)--(0,4.3);
+            \node at (4.6,0) {$x$};
+            \node at (0,4.6) {$y$};
+        \end{tikzpicture}
+        \captionof{figure}{~}
+    \end{center}
+\end{obs}
+
+\begin{theorem}{}{}
+    Si $f:A \longrightarrow B$, $g: B \longrightarrow C$ son funciones invertibles, entonces $g \circ f:A \longrightarrow C$ es invertible y
+    $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}.$$
+\end{theorem}
+
+\begin{myexample}
+    Para $m$, $b \in \RR$, donde $m \neq 0$; la función $f: \RR \longrightarrow \RR$ definida por
+    $f = \left\{ (x, \, y) \mid y = mx + b \right\},$
+    es una función invertible, ya que es inyectiva y sobre. Para obtener $f^{-1}$ notamos que
+    \begin{align*}
+        f^{-1} & = \left\{ (x, \, y) \mid y = mx + b \right\}^{-1} = \left\{ (y, \, x) \mid y = mx + b \right\} \\
+        & = \left\{ (x, \, y) \mid x = my + b \right\} = \left\{ (x, \, y) \mid y = \frac{1}{m} (x-b) \right\}.
+    \end{align*}
+    Comprobemos que la función obtenida, en efecto, sea la inversa de $f$:
+    \begin{align*}
+        (f \circ f^{-1})(x) & = f\big( f^{-1}(x)\big) & (f^{-1} \circ f)(x) & = f^{-1}\big( f(x)\big) \\
+        & = f\left( \frac{1}{m} (x-b) \right) & & = f^{-1}(mx+b) \\
+        & = x - b + b & & = \frac{1}{m} (mx +b - b) \\
+        & = x & & = x
+    \end{align*}
+\end{myexample}
+
+\begin{myexample}
+    Sea $f: \RR \longrightarrow \RR[+]$ definida por $f(x) = e^x$, donde $e \approx 2.7183$ es la base del logaritmo natural. De la gráfica de la figura \ref{UJJUIYHJUYHKOISPPOA} vemos que f es inyectiva y sobre, por lo que $f^{-1}:\RR[+] \longrightarrow \RR$ existe y
+    \begin{align*}
+        f^{-1} & = \left\{ (x, \, y) \mid y = e^x \right\}^{-1} = \left\{ (y, \, x) \mid y = e^x \right\} \\
+        & = \left\{ (x, \, y) \mid x = e^y \right\} = \left\{ (x, \, y) \mid y = \ln(x) \right\}.
+    \end{align*}
+    Nótese que se obtuvo dicho resultado, pues si se tiene
+    $$x = e^y,$$
+    y si se aplica logaritmo natural a ambos lados de la igualdad, se obtiene
+    \begin{align*}
+        \ln(x) & = \ln \left(e^y\right) \\
+        & = y \ln(e) \\
+        & = y.
+    \end{align*}
+    Así pues
+    $f^{-1} = \left\{ (x, \, y) \mid y = \ln(x) \right\},$
+    y es claro que
+    $$(f \circ f^{-1}) = x = (f^{-1} \circ f).$$
+    Como ya habíamos dicho, las funciones $f$ y $f^{-1}$ siempre son simétricas respecto a la recta $y=x$. Por ejemplo, el segmento de recta que conecta los puntos $(1, \, e)$ y $(e, \, 1)$ es bisecado por la recta $y = x$ Esto vale para cualquier par de puntos correspondientes $\big(x, f(x)\big)$ y $\big(f(x), \, f^{-1}(f(x)\big)\big)$.
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    axis lines = center,
+                    legend pos = north east,
+                    legend cell align={left},
+                    axis line style={-stealth},
+                    width=7cm,height=7cm,
+                    %xtick=\empty,
+                    %ytick=\empty,
+                    ]
+                \addplot[
+                    domain=-1.35:2, 
+                    samples=100, 
+                    color=jblueleft,
+                    ]
+                {e^x};
+                \addlegendentry{\(f=e^x\)}
+                \addplot[
+                    domain=0.3:5.99, 
+                    samples=100, 
+                    color=DeepSkyBlue1,
+                    ]
+                {ln(x)};
+                \addlegendentry{\(f^{-1}=\ln(x)\)}
+                \addplot[
+                    domain=-1.1:5.99, 
+                    samples=100, 
+                    dashed
+                    ]
+                {x};
+                \addplot[
+                    color=jblueleft,
+                    mark=*,
+                    only marks
+                    ]
+                coordinates {
+                (0,1)
+                }node[above left] {$(0, \, 1)$};
+                \addplot[
+                    color=DeepSkyBlue1,
+                    mark=*,
+                    only marks
+                    ]
+                coordinates {
+                (1,0)
+                }node[below] {$(1, \, 0)$};
+                \addplot[
+                    color=DeepSkyBlue1,
+                    mark=*,
+                    only marks
+                    ]
+                coordinates {
+                (e,1)
+                }node[above] {$(e, \, 1)$};
+                \addplot[
+                    color=jblueleft,
+                    mark=*,
+                    only marks
+                    ]
+                coordinates {
+                (1,e)
+                }node[right] {$(1, \, e)$};
+            \end{axis}
+        \end{tikzpicture}
+        \captionof{figure}{~}\label{UJJUIYHJUYHKOISPPOA}
+    \end{center}
+    Este ejemplo también produce las siguientes fórmulas:
+    \begin{align*}
+        x & = 1_{\RR}(x) = (f^{-1} \circ f)(x) = \ln\left(e^x\right), \text{ para todo } x \in \RR \\
+        x & = 1_{\RR[x]}(x) = (f \circ f^{-1})(x) = e^{\ln(x)}, \text{ para todo } x > 0.
+    \end{align*}
+\end{myexample}
+
+\begin{definicion}{}{}
+    Si $f:A \longrightarrow B$ y $B_1 \subseteq B$, entonces
+    $$f^{-1}(B_1) = \left\{ x \in A \mid f(x) \in B_1 \right\}.$$
+    Al conjunto $f^{-1}(B_1)$ se le conoce como la preimagen de $B_1$ mediante $f$.
+\end{definicion}
+
+\begin{myexample}
+    Sea $f: \RR \longrightarrow \RR$ dada por
+    $$f(x) = \left\{ \begin{array}{rl}
+        3x-5, & x>0 \\
+        -3x+1, & x \leq 0
+    \end{array} \right.$$
+    \begin{enumerate}[label=\alph*)]
+        \item Determine $f(0)$, $f(1)$, $f(-1)$, $f(5/3)$, $f(-5/3)$, $f(2)$ y $f(-2)$.
+        \item Encuentre $f^{-1}(0)$, $f^{-1}(1)$, $f^{-1}(-1)$, $f^{-1}(2)$, $f^{-1}(-2)$, $f^{-1}(3)$, $f^{-1}(-3)$ y $f^{-1}(-6)$.
+        \item ¿Cuáles son los conjuntos $f^{-1}([-5, \, 5])$ y $f^{-1}([-6, \, 5])$?
+    \end{enumerate}
+    \textbf{\color{jblueleft}Solución:}
+    \begin{enumerate}[label=\alph*)]
+        \item Tenemos pues: $f(0) = -3(0) + 1 = 1$, $f(1) = 3(1) - 5 = -2$, $f(-1) = -3(-1) + 1 = 4$, $f(5/3) = 3(5/3) - 5 = 0$, $f(-5/3) = -3(-5/3) + 1 = 6$, $f(2) = 3(2) - 5 = 1$, $f(-2) = -3(-2) + 1 = 7$.
+        \item De la figura \ref{ISNDKSJIJUSUJJJJIOOSOO} y de (a), se obtiene que: $f^{-1}(0) = 5/3$, $f^{-1}(1) = \{0, \, 2\}$, $f^{-1}(-1) = 4/3$, $f^{-1}(2) = \{-1/3, \, 7/3 \}$, $f^{-1}(-2) = 1$, $f^{-1}(3) = \{-2/3, \, 8/3\}$, $f^{-1}(-3) = 2/3$, $f^{-1}(6) = \phi$.
+        \item Tenemos que $f^{-1}([-5, \, 5]) = \{ x \mid -5 \leq f(x) \leq 5 \}$. Procedamos por casos:
+        \begin{enumerate}[label=\roman*)]
+            \item Si $x>0$, entonces $-5 \leq 3x-5 \leq 5 \Longrightarrow 0 \leq 3x \leq 10 \Longrightarrow 0 \leq x \leq 10/3$.
+            \item Si $x \leq 0$, entonces $-5 \leq -3x + 1 \leq 5 \Longrightarrow 0 \leq -6 \leq -3x \leq 4 \Longrightarrow -4/3 \leq x \leq 0$.
+        \end{enumerate}
+        Encontrando la unión, obtenemos que $f^{-1}([-5, \, 5]) = \{ x \mid -4/3 \leq x \leq 0 \text{ o } 0 < x \leq 10/3 \} = [-4/3, \, 10/3]$. Como no hay puntos $(x, \, y)$ tales que $y \leq -5$, se sigue que $f^{-1}([-6, \, 5]) = [-4/3, \, 10/3] = f^{-1}([-5, \, 5])$.
+    \end{enumerate}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.75]
+            \draw[thick,stealth-stealth] (-7,0) -- (7,0);
+            \draw[thick,stealth-stealth] (0,-7) -- (0,7);
+            \draw[dash pattern=on 3pt off 3pt] (-6,1) -- (6,1) node[right] {$y = 1$};
+            \draw[jblueleft] (-5/3,6) -- (0,1);
+            \draw[jblueleft] (0,-5) -- (11/3,6);
+            \foreach \i in {-6,-5,-4,-3,-2,-1,1,4,5,6}
+            {
+            \ifnum \i<0
+                \draw (\i,0.3) -- (\i,0);
+                \node at (\i-0.15,0) [below] {$\i$};
+            \else
+                \draw (\i,0.3) -- (\i,0) node[below] {$\i$};
+            \fi
+            }
+            \foreach \j in {-6,-5,-4,-3,-2,-1,2,3,4,5,6}
+            {
+            \ifnum \j<0
+                \draw (0.3,\j) -- (0,\j) node[left] {$\j$};
+            \else
+                \draw (0,\j) -- (0.3,\j) node[right] {$\j$};
+            \fi
+            }
+            \filldraw[jblueleft] (-4/3,5) circle (2.5pt) node[left] {$(-4/3, \, 5)$};
+            \filldraw[jblueleft] (-1,4) circle (2.5pt) node[left] {$(-1, \, 4)$};
+            \filldraw[jblueleft] (-1/3,2) circle (2.5pt) node[left] {$(-1/3, \, 2)$};
+            \filldraw[jblueleft] (0,1) circle (2.5pt) node[above right] {$(0, \, 1)$};
+            \filldraw[jblueleft] (5/3,0) circle (2.5pt) node[below right] {$(5/3, \, 0)$};
+            \filldraw[jblueleft] (2,1) circle (2.5pt) node[above right] {$(2,1)$};
+            \filldraw[jblueleft] (7/3,2) circle (2.5pt) node[right] {$(7/3, \, 2)$};
+            \filldraw[jblueleft] (3,4) circle (2.5pt) node[right] {$(3, \, 4)$};
+            \filldraw[jblueleft] (10/3,5) circle (2.5pt) node[right] {$(10/3, \, 5)$};
+            \draw (2,0.3) -- (2,0);
+            \draw (3,0.3) -- (3,0);
+            \filldraw[white] (0,-5) circle (2.5pt);
+            \draw[jblueleft] (0,-5) circle (2.5pt);
+            \node[right] at (0.3,-5) {$(0, \, -5)$};
+        \end{tikzpicture}
+        \captionof{figure}{~}\label{ISNDKSJIJUSUJJJJIOOSOO}
+    \end{center}
+\end{myexample}
+
+\begin{myexample}
+    Sea $A$, $B \subseteq \ZZ[+]$ donde $A = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6 \}$ y $B = \{ 6, \, 7, \, 8, \, 9, \, 10 \}$. Si $f:A \longrightarrow B$ con $f = \{ (1, \, 7), \, (2, \, 7), \, (3, \, 8), \, (4, \, 6), \, (5, \, 9), \, (6, \, 9) \}$, entonces se obtienen los siguientes resultados:
+    \begin{enumerate}[label=\alph*)]
+        \item En el caso de $B_1 = \{6, \, 8 \} \subseteq B$, tenemos que $f^{-1}(B_1) = \{3, \, 4\}$, ya que $f(3)=8$ y $f(4)=6$, y para cualquier $a \in A$, $f(a) \notin B_1$ a menos que $a=3$ o $a=4$. También notemos que $\left|f^{-1}(B_1) \right| = 2 = |B_1|$.
+        \item En el caso de $B_2 = \{7, \, 8\} \subseteq B$, como $f(1) = 7 = f(2)$ y $f(3)=8$, encontramos que la preimagen de $B_2$ mediante $f$ es $\{1, \, 2, \, 3\}$. Aquí, $\left|f^{-1}(B_2)\right|=3 > 2 = |B_2|$.
+        \item Ahora consideremos $B_3 = \{8, \, 9\} \subseteq B$. Para este caso se sigue que $f^{-1}(B_3) = \{3, \, 5, \, 6\}$, ya que $f(3) = 8$ y $f(5) = 9 = f(6)$. También notemos que $\left|f^{-1}(B_3) \right| = 3 > 2 = |B_3|$.
+        \item Finalmente, si $B_4 = \{8, \, 9, \, 10\} \subseteq B$, entonces, con $f(3) = 8$ y $f(5) = 9 = f(6)$, tenemos que $f^{-1}(B_4) = \{3, \, 5, \, 6\}$. Así, $f^{-1}(B_4) = f^{-1}(B_3)$ aún cuando $B_4 \supset B_3$. Este resultado se sigue del hecho de que no hay ningún elemento $a$ en $A$ tal que $f(a) = 10$, es decir, $f^{-1}(\{10\}) = \phi$.
+    \end{enumerate}
+\end{myexample}
+
+\begin{myexample}
+    \begin{enumerate}
+        \item Sea $f: \ZZ \longrightarrow \RR$ definida por $f(x) = x^2+ 5$. La tabla \ref{JJSJJKIAUHBNNNSJB} enumera $f^{-1}(B)$ para varios subconjuntos B del codominio $\RR$.
+        \item Si $g: \RR \longrightarrow \RR$ se define como $g(x) = x^2+ 5$, los resultados de la tabla \ref{JAJJSJJSJKUJIOPOIDKKOPD} muestran cómo un cambio en el dominio (de $\ZZ$ a $\RR$) afecta las preimágenes (de la tabla \ref{JJSJJKIAUHBNNNSJB}).
+    \end{enumerate}
+    \begin{center}
+        \begin{minipage}[c]{0.4\textwidth}
+            \begin{center}
+                \NiceMatrixOptions{cell-space-limits = 1.5pt}
+                \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cc}
+                \CodeBefore
+                \rowcolor{jblueleft!80}{1}
+                \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+                \Body
+                \RowStyle[color=white]{}
+                    $B$ & $f^{-1}(B)$ \\\hline
+                    $\{6\}$ & $\{-1, \, 1\}$ \\\hline
+                    $[6, \, 7]$ & $\{-1, \, 1\}$ \\\hline
+                    $[6, \, 10]$ & $\{-2, \, -1, \, 1, \, 2\}$ \\\hline
+                    $[-4, \, 5)$ & $\phi$ \\\hline
+                    $[-4, \, 5]$ & $\{0\}$ \\\hline
+                    $[5, \, \infty)$ & $\ZZ$ \\\hline
+                \end{NiceTabular}
+                \captionof{table}{~}\label{JJSJJKIAUHBNNNSJB}
+            \end{center}
+        \end{minipage} \hspace{0.5cm}
+        \begin{minipage}[c]{0.4\textwidth}
+            \begin{center}
+                \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cc}
+                \CodeBefore
+                \rowcolor{jblueleft!80}{1}
+                \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+                \Body
+                \RowStyle[color=white]{}
+                    $B$ & $f^{-1}(B)$ \\\hline
+                    $\{6\}$ & $\{-1, \, 1\}$ \\\hline
+                    $[6, \, 7]$ & $[-\sqrt{2}, \, -1] \cup [1, \, \sqrt{2}]$ \\\hline
+                    $[6, \, -10]$ & $[-\sqrt{5}, \, -1] \cup [1, \, \sqrt{5}]$ \\\hline
+                    $[-4, \, 5)$ & $\phi$ \\\hline
+                    $[-4, \, 5]$ & $\{0\}$ \\\hline
+                    $[5, \, \infty)$ & $\RR$ \\\hline
+                \end{NiceTabular}
+                \captionof{table}{~}\label{JAJJSJJSJKUJIOPOIDKKOPD}
+            \end{center}
+        \end{minipage}
+    \end{center}
+\end{myexample}
+
+\begin{theorem}{}{}
+    Si $f: A \longrightarrow B$, $B_1$, $B_2 \subseteq B$. Entonces
+    \begin{enumerate}[label=\alph*)]
+        \item $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$.
+        \item $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$.
+        \item $f^{-1}\left(\overline{B_1}\right) = \overline{f^{-1}(B_1)}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{BOX}
+    Utilizando la notación de preimagen. Una función $f:A \longrightarrow B$ es inyectiva si y solo si
+    $$\left| f^{-1}(b) \right| \leq 1, \; \forall b \in B.$$
+\end{BOX}

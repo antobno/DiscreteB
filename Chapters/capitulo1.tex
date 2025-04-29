@@ -1,0 +1,329 @@
+\chapterimage{blue22.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{FUNDAMENTOS DE LÓGICA}\label{chap:1}
+
+En el contexto de Matemáticas Discretas, la lógica es el estudio formal de los principios y reglas que gobiernan el razonamiento válido y la inferencia. Se centra en el análisis de cómo se pueden combinar proposiciones o afirmaciones para obtener conclusiones válidas a partir de ellas. La lógica se utiliza para estructurar el pensamiento y garantizar que nuestras deducciones sean sólidas y coherentes.
+
+En Matemáticas Discretas, la lógica es esencial para establecer una base sólida para la argumentación y la resolución de problemas. Hay dos aspectos clave de la lógica que se estudian:
+
+\begin{enumerate}
+    \item Lógica Proposicional: También conocida como lógica de enunciados, se centra en el análisis de proposiciones individuales y cómo se pueden combinar utilizando conectivos lógicos como la negación, conjunción, disyunción, implicación y bicondicional. La lógica proposicional se utiliza para construir expresiones lógicas complejas y analizar su valor de verdad bajo diferentes combinaciones de valores de verdad para las proposiciones individuales.
+    \item Lógica de Predicados: Esta rama de la lógica permite expresar relaciones y propiedades entre objetos utilizando cuantificadores como \emph{para todo} ($\forall$) y \emph{existe} ($\exists$). La lógica de predicados es más expresiva y permite hablar sobre conjuntos de objetos y sus propiedades en un nivel más profundo.
+\end{enumerate}
+
+En clase, los estudiantes de Matemáticas Discretas aprenden a construir tablas de verdad para evaluar expresiones lógicas, aplicar reglas y propiedades de la lógica para simplificar y demostrar proposiciones, y utilizar la lógica para establecer argumentos válidos en diversas situaciones. En última instancia, el estudio de la lógica en Matemáticas Discretas proporciona habilidades fundamentales para resolver problemas de manera estructurada, identificar errores en el razonamiento y construir argumentos sólidos basados en reglas bien definidas. Estas habilidades son esenciales en la informática, las matemáticas y muchos otros campos donde se requiere análisis lógico y razonamiento riguroso.
+
+
+\section{Proposiciones}
+
+Con el estudio de la Lógica se persigue llegar a ser preciso y cuidadoso. La Lógica tiene un lenguaje exacto. Pero aunque así sea, vamos a intentar construir un vocabulario para este lenguaje preciso utilizando el lenguaje cotidiano algunas veces un tanto confuso. Es necesario redactar un conjunto de reglas que sean perfectamente claras y definidas y que estén libres de las vaguedades que pueden hallarse en nuestro lenguaje corriente. Para realizar este trabajo se utilizarán proposiciones en lengua castellana, de la misma manera que se usa la lengua castellana para explicar las reglas precisas de un juego a alguien que no ha jugado a ese juego. Por supuesto, la lógica es algo más que un juego. Puede ayudarnos a aprender una forma de razonar que es exacta y a la vez muy útil. En el desarollo de cualquer teoría matemática se hacen afirmaciones en forma de frases, las cuales se denominan \emph{enunciados} o \emph{proposiciones} que pueden ser falsos o verdaderos.
+
+\begin{myexamples}
+    \begin{enumerate}
+        \item El número $\pi$ es entero.
+        \item La división entre cero no está definida.
+        \item 13 es un número primo.
+    \end{enumerate}
+\end{myexamples}
+
+
+\section{Simbolización de proposiciones}
+
+Generalmente se cree que las proposiciones son proposiciones cortas, pero también algunas de las proposiciones del lenguaje corriente son largas, resultando por ello pesadas y de difícil manejo. En lógica se afronta este problema utilizando símbolos en lugar de las proposiciones completas. Los símbolos que usaremos en lógica para representar proposiciones, son letras mayúsculas tales como $P$, $Q$, $R$, $S$, $A$, y $B$.
+
+\begin{myexamples}
+    Tomando los ejemplos anteriores
+    \begin{enumerate}
+        \item $P=\text{El número } \pi \text{ es entero.}$
+        \item $Q=\text{La división entre cero no está definida.}$
+        \item $R=13 \text{ es un número primo.}$
+    \end{enumerate}
+\end{myexamples}
+
+
+\section{Términos de enlace o conectivos}
+
+En lógica, los conectivos son términos que se utilizan para combinar proposiciones simples y crear proposiciones más complejas. Estos conectivos permiten construir expresiones lógicas al conectar declaraciones individuales de diversas maneras. Las proposiciones primitivas no pueden descomponerse en partes más simples y son utilizadas con los conectivos lógicos para formar enunciados compuestos. Algunos ejemplos comunes de conectivos incluyen:
+
+\begin{enumerate}
+	\item Negación ($\neg$): Este conectivo cambia el valor de verdad de una proposición. Si una proposición es verdadera, su negación será falsa, y viceversa.
+	\item Conjunción ($\land$): Este conectivo se utiliza para combinar dos proposiciones, y la proposición resultante es verdadera solo si ambas proposiciones individuales son verdaderas.
+	\item Disyunción ($\lor$): La disyunción se utiliza para combinar dos proposiciones, y la proposición resultante es verdadera si al menos una de las proposiciones individuales es verdadera.
+    \item Disyunción exclusiva ($\veebar$): La disyunción exclusiva se utiliza para combinar dos proposiciones en donde la proposición resultante es verdadera si exactamente una de las dos proposiciones individuales es verdadera, mientras que si ambas son verdaderas o ambas son falsas, la proposición resultante es falsa.
+	\item Implicación ($\rightarrow$): Este conectivo establece una relación condicional entre dos proposiciones. La proposición “$P \rightarrow Q$” se lee como “Si $P$, entonces $Q$”. Es falsa solo cuando $P$ es verdadera y $Q$ es falsa.
+	\item Equivalencia ($\leftrightarrow$): La equivalencia se utiliza para expresar que dos proposiciones son verdaderas o falsas al mismo tiempo. La proposición “$P \leftrightarrow Q$” se lee como “Si $P$ entonces $Q$, si $Q$ entonces $P$”.
+\end{enumerate}
+
+Estos conectivos son fundamentales para construir expresiones lógicas más complejas y realizar razonamientos basados en reglas lógicas.
+
+\begin{myexample}
+    Tomando las proposiciones $Q$ y $R$ del ejemplo anterior, podemos formar lo siguiente:
+    \begin{center}
+        (La división entre cero no está definida) \textcolor{jblueleft}{y} (13 es un número primo)
+
+        (La división entre cero no está definida) \textcolor{jblueleft}{o} (13 es un número primo)
+    \end{center}
+\end{myexample}
+
+\begin{importante}
+    Algunos libros y/o autores denotan la negación de una proposición $P$ con $\overline{P}$.
+\end{importante}
+
+
+\section{Tablas de verdad}
+
+Las tablas de verdad son especialmente útiles para analizar y comprender el comportamiento de conectivos lógicos y expresiones complejas. Ayudan a visualizar cómo cambian los valores de verdad a medida que las proposiciones individuales varían y cómo esos cambios afectan el valor de verdad de la expresión global.
+
+Las tablas que mostraremos a continuación, usaran al 0 para decir que la proposición es falsa y el 1 para decir que la proposición es verdadera.
+
+\begin{center}
+\begin{minipage}[c]{0.2\textwidth}
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $P$ & $\neg P$ \\
+            0 & 1 \\
+            1 & 0 \\ 
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+\end{minipage}
+\hspace{1cm}
+\begin{minipage}[c]{0.6\textwidth}
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $P$ & $Q$ & $P \land Q$ & $P \lor Q$ & $P \veebar Q$ & $P \rightarrow Q$ & $P \leftrightarrow Q$ \\
+            0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+            0 & 1 & 0 & 1 & 1 & 1 & 0 \\ 
+            1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+            1 & 1 & 1 & 1 & 0 & 1 & 1 \\ 
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+\end{minipage}
+\end{center}
+
+Si agregamos una proposición $R$, tenemos la siguiente tabla de verdad:
+
+\begin{center}
+    \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+        $P$ & $Q$ & $R$ & $\neg R$ & $R \rightarrow P$ & $Q \land \left( \neg R \rightarrow P \right)$ \\ 
+        0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 1 & 0 \\ 
+        0 & 1 & 0 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 0 & 1 & 1 \\
+        1 & 0 & 0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 0 & 1 & 1
+    \end{NiceTabular}
+    \captionof{table}{~}
+\end{center}
+
+\begin{definicion}{}{}
+    Sean $S_1$ y $S_2$ dos proposiciones. Se dice que $S_1$ y $S_2$ son lógicamente equivalentes cuando sus tablas de verdad tienen los mismos valores y lo denotaremos como $S_1 \Leftrightarrow S_2$.
+\end{definicion}
+
+\begin{myexample}
+    De las siguientes tablas de verdad \\
+
+    
+    \hspace{-1cm}
+    %\begin{center}
+        \begin{minipage}[c]{0.4\textwidth}
+            \begin{center}
+                \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccc}
+                \CodeBefore
+                \rowcolor{jblueleft!80}{1}
+                \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+                \Body
+                \RowStyle[color=white]{}
+                    $P$ & $Q$ & $\overline{P}$ & $\overline{P} \lor Q$ & $P \rightarrow Q$ \\
+                    0 & 0 & 1 & 1 & 1 \\
+                    0 & 1 & 1 & 1 & 1 \\
+                    1 & 0 & 0 & 0 & 0 \\
+                    1 & 1 & 0 & 1 & 1
+                \end{NiceTabular}
+                \captionof{table}{~}
+            \end{center}
+        \end{minipage}
+        \hspace{-0.5cm}
+        \begin{minipage}[c]{0.60\textwidth}
+            \begin{center}
+                \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cccccc}
+                \CodeBefore
+                \rowcolor{jblueleft!80}{1}
+                \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+                \Body
+                \RowStyle[color=white]{}
+                    $P$ & $Q$ & $P \rightarrow Q$ & $Q \rightarrow P$ & $(P \rightarrow Q) \land (Q \rightarrow P)$ & $P \leftrightarrow Q$ \\
+                    0 & 0 & 1 & 1 & 1 & 1 \\
+                    0 & 1 & 1 & 0 & 0 & 0 \\
+                    1 & 0 & 0 & 1 & 0 & 0 \\
+                    1 & 1 & 1 & 1 & 1 & 1
+                \end{NiceTabular}
+                \captionof{table}{~}
+            \end{center}
+        \end{minipage}
+    %\end{center}
+
+    \,\\
+    \noindent
+    se obtienen estas equivalencias lógicas
+    \begin{enumerate}
+        \item $(P \leftrightarrow Q) \Leftrightarrow \left[ (P \rightarrow Q) \land (Q \rightarrow P) \right]$.
+        \item $(P \leftrightarrow Q) \Leftrightarrow \left[ \left( \overline{P} \lor Q \right) \land \left( \overline{Q} \lor P \right) \right]$.
+    \end{enumerate}
+\end{myexample}
+
+\begin{myexample}
+    De la siguiente tabla de verdad
+    
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $P$ & $Q$ & $P \veebar Q$ & $P \lor Q$ & $P \land Q$ & $\overline{P \land Q}$ & $(P \lor Q) \land \overline{(P \land Q)}$ \\
+            0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 & 0 & 1 & 1 \\
+            1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+            1 & 1 & 0 & 1 & 1 & 0 & 0
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+    se obtiene la equivalencia lógica
+    $$(P \veebar Q) \Leftrightarrow (P \lor Q) \land \overline{(P \land Q)}.$$
+\end{myexample}
+
+\begin{obs}{}{}
+    Al considerar la siguiente tabla de verdad
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $P$ & $\overline{P}$ & $Q$ & $P \lor Q$ & $P \rightarrow (P \lor Q)$ & $\overline{P} \land Q$ & $P \land \left( \overline{P} \land Q \right)$ \\
+            0 & 1 & 0 & 0 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+            1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+            1 & 0 & 1 & 1 & 1 & 0 & 0 
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+    se deduce que el enunciado $P \rightarrow (P \lor Q)$ siempre es verdadero, pero el enunciado $P \land \left( \overline{P} \land Q \right)$ siempre es falso.
+\end{obs}
+
+\newpage
+
+\begin{definicion}{}{}
+    Una proposición que siempre es verdadera se denomina tautología y la denotaremos por $T_0$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Una proposición que siempre es falsa se denomina contradicción y la denotaremos por $F_0$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Si para las proposiciones $S_1$ y $S_2$ resulta que $S_1 \leftrightarrow S_2$ es una tautología, entonces $S_1$ y $S_2$ deben tener los mismos valores en la tabla de verdad, de modo que se cumple la equivalencia lógica $S_1 \Leftrightarrow S_2$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Si para las proposiciones $S_1$ y $S_2$ resulta que $S_1 \rightarrow S_2$ es una tautología, se dice que $S_1$ implica lógicamente a $S_2$ y lo denotaremos como $S_1 \Rightarrow S_2$.
+\end{definicion}
+
+\section{Reglas de inferencia}
+
+Las reglas de inferencia son un conjunto de principios lógicos que se utilizan para justificar o validar argumentos y razonamientos en lógica formal. Estas reglas proporcionan un marco estructurado y coherente para determinar si una conclusión dada puede deducirse lógicamente a partir de un conjunto de premisas o proposiciones dadas. En esencia, las reglas de inferencia ayudan a determinar si un argumento es válido o no.\\
+
+
+El propósito fundamental de las reglas de inferencia es permitirnos llevar a cabo inferencias lógicas válidas, lo que significa que si todas las premisas son verdaderas, entonces la conclusión derivada también debe ser verdadera. Esto es crucial en la lógica y el razonamiento formal, ya que garantiza que nuestras conclusiones estén respaldadas por una base lógica sólida.\\
+
+
+Estas reglas son esenciales en una variedad de campos, como la filosofía, las matemáticas, la ciencia de la computación y la inteligencia artificial, donde se requiere el razonamiento lógico para resolver problemas y tomar decisiones informadas. Además, las reglas de inferencia se utilizan en la construcción de pruebas matemáticas y en la demostración de teoremas, lo que las convierte en un componente fundamental de la metodología matemática rigurosa.\\
+
+
+Algunos ejemplos comunes de reglas de inferencia en la lógica proposicional incluyen:
+
+\begin{enumerate}
+    \item Modus Ponens: Si se tiene una proposición “$P \rightarrow Q$” (si $P$, entonces $Q$) y también se sabe que “$P$” es verdadera, entonces se puede inferir que “$Q$” también es verdadera.
+    \item Modus Tollens: Si se tiene una proposición “$P \rightarrow Q$” y se sabe que “$Q$” es falsa, entonces se puede inferir que “$P$” también es falsa.
+    \item Silogismo: Si se tiene una proposición “$P \lor Q$” ($P$ o $Q$) y se sabe que “$P$” es verdadera, se puede inferir que “$Q$” es falsa.
+\end{enumerate}
+
+Estas son solo algunas de las muchas reglas de inferencia que existen en la lógica. Las reglas de inferencia ayudan a formalizar el proceso de razonamiento y garantizan que las conclusiones extraídas sean válidas y consistentes según las reglas lógicas establecidas.
+
+\newpage
+
+\section{Leyes de la lógica}
+
+Las leyes de la lógica son principios fundamentales que rigen el razonamiento válido y la inferencia en el ámbito de la lógica formal. Estas leyes establecen reglas y relaciones entre proposiciones y conectivos lógicos, y son esenciales para garantizar que los argumentos sean coherentes y las deducciones sean sólidas. Las leyes de la lógica se derivan de la estructura misma de las proposiciones y los conectivos, y proporcionan la base para el análisis lógico y la construcción de argumentos válidos.\\
+
+
+Con los conceptos de equivalencia lógica, tautología y contradicción, enunciamos la siguiente tabla de leyes de la lógica:
+
+\begin{center}
+    \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ll}
+        \CodeBefore
+        %\rowcolor{jblueleft!80}{1}
+        \rowcolors{1}{DodgerBlue3!40}{jblueinner}
+        \Body
+        %\RowStyle[color=white]{}
+            Ley de la doble negación & $\begin{array}{l}\overline{\overline{P}} \Leftrightarrow P \end{array}$ \\
+            Leyes de De Morgan & $\begin{array}{l}
+                \overline{P \lor Q} \Leftrightarrow \overline{P} \land \overline{Q} \\
+                \overline{P \land Q} \Leftrightarrow \overline{P} \lor \overline{Q}
+            \end{array}$ \\
+            Leyes conmutativas & $\begin{array}{l}
+                P \lor Q \Leftrightarrow Q \lor P \\
+                P \land Q \Leftrightarrow Q \land P
+            \end{array}$ \\
+            Leyes asociativas & $\begin{array}{l}
+                P \lor (Q \lor R) \Leftrightarrow (P \lor Q) \lor R \\
+                P \land (Q \land R) \Leftrightarrow (P \land Q) \land R
+            \end{array}$ \\
+            Leyes distributivas & $\begin{array}{l}
+                P \lor (Q \land R) \Leftrightarrow (P \lor Q) \land (P \lor R) \\
+                P \land (Q \lor R) \Leftrightarrow (P \land Q) \lor (P \land R)
+            \end{array}$ \\
+            Leyes idempotentes & $\begin{array}{l}
+                P \lor P \Leftrightarrow P \\
+                P \lor P \Leftrightarrow P
+            \end{array}$ \\
+            Leyes del inverso & $\begin{array}{l}
+                P \lor F_0 \Leftrightarrow P \\
+                P \land T_0 \Leftrightarrow P
+            \end{array}$ \\
+            Leyes de dominación & $\begin{array}{l}
+                P \lor T_0 \Leftrightarrow T_0 \\
+                P \land F_0 \Leftrightarrow F_0
+            \end{array}$ \\
+            Leyes de absorción & $\begin{array}{l}
+                P \lor (P \land Q) \Leftrightarrow P \\
+                P \land (P \lor Q) \Leftrightarrow P
+            \end{array}$
+    \end{NiceTabular}
+    \captionof{table}{Leyes de la lógica}\label{table1}
+\end{center}

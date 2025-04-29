@@ -1,0 +1,575 @@
+\chapterimage{blue13.jpeg} % Imagen de encabezado de capítulo
+\chapterspaceabove{6.75cm} % Espacio en blanco desde la parte superior de la página hasta el título del capítulo en las páginas del capítulo
+\chapterspacebelow{7.25cm} % Cantidad de espacio en blanco vertical desde el margen superior hasta el comienzo del texto en las páginas de los capítulos
+
+%------------------------------------------------
+
+\chapter{TEORÍA DE CONJUNTOS}\label{chap:3}
+
+Partimos del supuesto de que la palabra conjunto es primitiva, y aceptamos que tenemos la idea de lo que es un conjunto. Para uniformizar dicha idea, diremos que los objetos que componen un conjunto son de cualquier especie y están bien determinados, esto último en el sentido de que dado un objeto arbitrario, se puede decidir si es o no del conjunto. Así por ejemplo, las mujeres bonitas no forman un conjunto; en cambio, los números pares sí. A los objetos que componen un conjunto se les llama elementos del conjunto. Para nombrar conjuntos, generalmente se emplean letras mayúsculas $A, \, B, \, C, \, \dots$, y para nombrar a los elementos de un conjunto, si es el caso, se emplean usualmente letras minúsculas $a, \, b, \, c, \, \dots$. Para decir que un objeto $x$ es elemento de un conjunto $A$, escribiremos $x \in A$ y leemos: $x$ es elemento de $A$ o $x$ está en $A$ o $x$ pertenece a $A$. Para decir que un objeto $x$ no es elemento de un conjunto $A$, escribiremos $x \notin A$, y leemos: $x$ no es elemento de $A$ o $x$ no está en $A$ o $x$ no pertenece a $A$.
+
+Idealmente, nos gustaría que con cada enunciado o propiedad $P$ (con solo una variable libre) se asociara un conjunto $A$, consistiendo de todos los objetos que satisfacen a $P$. Bajo esta situación escribiríamos
+$$A = \left\{x \mid P(x) \right\}$$
+(se lee: $A$ es el conjunto de los objetos $x$, tal que $x$ satisface a $P$), donde $P(x)$ es la condición o propiedad que debe satisfacer un objeto $x$ para ser elemento de $A$. En este caso podemos construir los conjuntos
+\begin{align*}
+    A & = \{ x \mid x \text{ es número real y } |x-2|<3 \} \\
+    B & = \left\{ x \mid x=n^2, \text{ para algún número natural } n \right\} \\
+    C &=\{ x \mid x \text{ es número primo}\}
+\end{align*}
+Pero también podríamos construir los conjuntos
+\begin{align*}
+    D & =\{x \mid x=x\} \\ 
+    E & =\{x \mid x \text { es humano}\} \\ 
+    F & = \{x \mid x \text { no es humano}\}
+\end{align*}
+Claramente $D \in D$, $E \notin E$ y $F \in F$. Análogamente podríamos construir los ``conjuntos'':
+$$F=\{x \mid x \text { es conjunto}\} \text { y } G=\{x \mid x \text { no es conjunto}\}$$
+Observemos que en este caso $F \in F$ y $G \notin G$. También podríamos construir el ``conjunto''
+$$X=\{x \mid x \text { es conjunto y } x \notin x\}$$ En este caso se tendría que $ X \in X \Longrightarrow X \notin X$, y también que $ X \notin X \Longrightarrow X \in X$; que son contradicciones evidentes. A este ejemplo se le conoce como \textbf{Paradoja de Russell}, en honor al filósofo inglés Bertrand Russell quien la formuló. De la exposición precedente, pudiera concluírse que la construcción de conjuntos en la forma $\left\{x \mid P(x) \right\}$, debe abandonarse, lo que no ha ocurrido; más bien se han hecho ciertas restricciones, a través del desarrollo de la teoría axiomática de conjuntos. En ese contexto, una propuesta es que hay dos tipos de colecciones, las clases que son conjuntos y las clases que no son conjuntos: cualquier colección de objetos especificados por alguna propiedad $P$, es una clase; mientras que un conjunto es una clase que es miembro de otra clase. Así que
+$$A = \{x \mid x \text { es conjunto y } x \notin x\}$$
+es una clase que no es conjunto, con lo que se evita la paradoja de Russell.\\
+
+
+Por otro lado, la expresión
+$$A=\left\{2, \, \sqrt{2}, \, \pi \right\} $$
+denota al conjunto
+$$ A=\left\{x \mid x=2 \text { o } x=\sqrt{2} \text { o } x=\pi \right\}$$
+Análogamente, las expresiones
+$$ A=\{2,\, 4,\, 6, \, \dots, 100\} $$
+y
+$$B=\{2,\, 4, \, 6, \, \dots\}$$
+son casos particulares de notación para los conjuntos
+$$A=\{x \mid x \text { es número par menor o igual que } 100\}$$
+y
+$$B=\{x \mid x \text { es número par}\}$$
+respectivamente.\\
+
+
+Observemos que una persona de nombre Juan, no es elemento del conjunto
+$$A=\{\text {Juan, Luis, silla, mesa, venus, tierra}\}$$
+lo que es elemento del conjunto $A$, es la palabra (nombre) Juan. En este caso, $A$ es un conjunto de palabras (nombres).\\
+
+
+El otro modo de construir conjuntos es por medio del axioma de elección, el cual enunciaremos posteriormente. Para tener idea de esta construcción, veamos el ejemplo siguiente. Clasifiquemos a los números reales en diferentes conjuntos, de manera que: Dos números reales $x$ y $y$ estan en un mismo conjunto, si y solo si, $x-y$ es número racional. Digamos que $\Omega$ es la colección de tales conjuntos. Por ejemplo, para cada número primo $p$, los conjuntos
+$$A_p = \left\{x \mid x=\sqrt{p}+r, \text { con } r \text { número racional} \right\}$$
+y
+$$C = \{x \mid x \text{ es número racional}\}$$
+son elementos de $\Omega$. Claramente $\Omega$ es infinito y también cada $S \in \Omega$ es infinito. Afirmamos que existe un conjunto $T$ el cual posee solo un elemento en común con cada conjunto $S \in \Omega$. El conjunto $T$ no puede construirse en la forma $\{x \mid P(x)\}$.\\
+
+
+En resumen, hay dos maneras de construir conjuntos, una es en la forma $\left\{x \mid P(x) \right\}$, la cual requiere ciertas restricciones, y que se llama construcción por extensión; y la otra construcción es por medio del axioma de elección.
+
+\section{Conjuntos y subconjuntos}
+
+\begin{definicion}{}{}
+    Se define el conjunto universal, denotado por $U$ o $\Omega$, como el conjunto que contiene a todos los elementos en cierto contexto.
+\end{definicion}
+
+\begin{definicion}{}{lalala}
+    Sean $A$ y $B$ conjuntos.
+    \begin{enumerate}[label=\alph*)]
+        \item Decimos que $A$ es subconjunto de $B$, y escribimos $A \subseteq B$, si cada elemento de $A$, es también elemento de $B$.
+        \item Decimos que $A$ es subconjunto propio de $B$, y escribimos $A \subset B$, si existe al menos un elemento de $B$, que no esté en $A$.
+    \end{enumerate}
+\end{definicion}
+
+\begin{definicion}{}{}
+    Al único conjunto que no posee elementos se le llama conjunto vacío (o nulo), y lo denotaremos como $\phi$.
+\end{definicion}
+
+\begin{theorem}{}{}
+    Sean $A$ y $B$ conjuntos. Decimos que $A$ es igual a $B$, y escribimos $A = B$, si $A \subseteq B$ y $B \subseteq A$.
+\end{theorem}
+
+\begin{obs}{}{}
+    Notemos que la definición \ref{definicion:lalala}(b) es equivalente al siguiente enunciado: Sean $A$ y $B$ conjuntos. Decimos que “$A$ es un subconjunto propio de $B$” si y solo si se cumplen dos condiciones
+    \begin{center}
+        \begin{tabular}{llll}
+           1. Todos los elementos de $A$ también son elementos de $B$. & & & 2. $A$ no es igual a $B$.
+        \end{tabular}
+    \end{center}
+\end{obs}
+
+\begin{myexample}
+    Sean $U = \{ 1, \, 2, \, 3, \, 4, \, 5 \}$, $A = \{ 1, \, 2, \, 3 \}$, $B = \{ 3, \, 4 \}$, $C = \{ 1, \, 2, \, 3, \, 4 \}$. Se cumplen las siguientes expresiones:
+    \begin{tasks}(6)
+        \task $A \subseteq C$
+        \task $A \subset C$
+        \task $B \subset C$
+        \task $A \subseteq A$
+        \task $B \nsubseteq A$
+        \task $A \not\subset A$
+    \end{tasks}
+\end{myexample}
+
+\begin{importante}
+    El conjunto $\phi$ es subconjunto de cualquier conjunto, es decir, para cualquier conjunto $A$, $\phi \subseteq A$, de donde también se deduce que $\phi \subset A$. Así que, si $A$ es conjunto no vacío, entonces al menos tiene como subconjuntos a $\phi$ y a $A$ mismo.
+\end{importante}
+
+\newpage
+
+\begin{myexample}
+    Sea $C = \{1, \, 2, \, 3, \, 4 \}$. Hallemos los subconjuntos de $C$: $\{ 1 \}$, $\{ 2 \}$, $\{ 3 \}$, $\{ 4 \}$, $\{ 1, \, 2 \}$, $\{ 1, \, 3 \}$, $\{ 1, \, 4 \}$, $\{ 2, \, 3 \}$, $\{ 2, \, 4 \}$, $\{ 3, \, 4 \}$, $\{1, \, 2, \, 3 \}$, $\{ 1, \, 2, \, 4 \}$, $\{ 2, \, 3, \, 4 \}$, $\{ 1, \, 3, \, 4 \}$, $C$, $\phi$. Aplicando el principio del producto, tenemos que cada elemento de $C$ pertenece o no pertenece a un subconjunto de los mostrados anteriormente, es decir
+    $$(2)(2)(2)(2) = 2^4 = 16.$$
+\end{myexample}
+
+\begin{BOX}
+    En general, si un subconjunto tiene $n$ elementos, entonces se pueden formar $2^n$ subconjuntos.
+\end{BOX}
+
+\begin{definicion}{}{}
+    Sea $A$ un conjunto finito. Se define la cardinalidad de $A$, denotada por $|A|$ o $\card (A)$, como el número de elementos que contiene $A$.
+\end{definicion}
+
+\begin{myexample}
+    Si $A = \{ 2, \, 4, \, 6 \}$, entonces $|A| = 3$.
+\end{myexample}
+
+\begin{definicion}{}{}
+    Sea $A$ un conjunto, se define el conjunto exponencial o conjunto potencia, denotado por $\wp (A)$, como
+    $$\wp(A) = \{B \mid B \subset A\}.$$
+    En otras palabras, $\wp (A)$ consta de todos los subconjuntos de $A$
+\end{definicion}
+
+\begin{myexample}
+    Si $|A| = n$, entonces $|\wp (A)| = 2^n$.
+\end{myexample}
+
+\begin{BOX}
+    Para cualquier $0 \leq k \leq n$, existen $\displaystyle \binom{n}{k}$ subconjuntos de tamaño $k$. Si contamos los subconjuntos de $A$ hasta el número $k$ de elementos de un subconjunto, tenemos la identidad combinatoria
+    $$2^n = \sum_{k=0}^{n} \binom{n}{r}$$
+    del corolario \ref{SIISNKISUSJD}(b).
+\end{BOX}
+
+\begin{myexample}
+    Sea $A = \{ 2, \, 4, \, 6 \}$. Hallar $\wp(A)$.
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Tenemos
+    $$\wp(A) = \big\{ \{ 2 \}, \, \{ 4 \}, \, \{ 6 \}, \{2, \, 4 \}, \, \{ 2, \, 6 \}, \, \{ 4, \, 6 \}, \, A, \, \phi \big\}.$$
+    Además, $|A| = 3$, por lo que $|\wp(A)| = 2^3 = 8$.
+\end{myexample}
+
+\newpage
+
+\section{Operaciones entre conjuntos}
+
+\begin{definicion}{}{}
+    Sean $A$ y $B$ conjuntos. Definimos la unión de $A$ y $B$, denotada por $A \cup B$, como el conjunto
+    $$A \cup B=\{x \mid x \in A \text { o } x \in B\}.$$
+    La expresión $A \cup B$, se lee: $A$ unión $B$ o la unión de $A$ y $B$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sean $A$ y $B$ conjuntos. Definimos la intersección de $A$ y $B$, denotada por $A \cap B$, como el conjunto
+    $$A \cap B=\{x \mid x \in A \text { y } x \in B\}.$$
+    La expresión $A \cap B$, se lee: $A$ intersección $B$ o la intersección de $A$ y $B$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sea $A$ un conjunto. Definimos el complemento de $A$, denotado por $A^C$ o por $\overline{A}$, como el conjunto
+    $$A^C = \overline{A} = \{x \in U\mid x \notin A \}.$$
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sean $A$ y $B$ conjuntos. Definimos la diferencia de $A$ y $B$, denotada por $A - B$, como el conjunto
+    $$A - B = \{x \mid x \in A \text { y } x \notin B\}.$$
+    La expresión $A - B$ se lee: $A$ menos $B$ o la diferencia de $A$ y $B$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sean $A$ y $B$ conjuntos. Definimos la diferencia simétrica de $A$ y $B$, denotada por $A \bigtriangleup B$, como el conjunto
+    $$A \bigtriangleup B = \{x \mid x \in (A \cup B) \text { pero } x \notin (A \cap B)\}.$$
+\end{definicion}
+
+\begin{myexample}
+    Sea $U = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6, \, 7, \, 8, \, 9, \, 10 \}$, $A = \{ 1, \, 2, \, 3, \, 4, \, 5 \}$, $B = \{ 3, \, 4, \, 5, \, 6, \, 7 \}$, $C = \{ 7, \, 8, \, 9 \}$. Obtenga:
+    \begin{tasks}(2)
+        \task $A \cap B$
+        \task $B \cap C$
+        \task $A \bigtriangleup B$
+        \task $A \bigtriangleup C$
+        \task $A \cup B$
+        \task $A \cap C$
+        \task $A \cup C$
+        \task $\overline{A \cap C}$
+        \task $A - B$
+        \task $B - C$
+    \end{tasks}
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:}
+    \begin{tasks}(2)
+        \task $A \cap B = \{ 3, \, 4, \, 5 \}$
+        \task $B \cap C = \{ 7 \}$
+        \task $A \bigtriangleup B = \{ 1, \, 2, \, 6, \, 7 \}$
+        \task $A \bigtriangleup C = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 7, \, 8, \, 9 \}$
+        \task $A \cup B = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6, \, 7 \}$
+        \task $A \cap C = \phi$
+        \task $A \cup C = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 7, \, 8, \, 9 \}$
+        \task $\overline{A \cap C} = \{ 1, \, 2, \, 6, \, 8, \, 9, \, 10 \}$
+        \task $A - B = \{ 1, \, 2 \}$
+        \task $B - C = \{ 3, \, 4, \, 5, \, 6 \}$
+    \end{tasks}
+\end{myexample}
+
+\newpage
+
+\section{Leyes de la teoría de conjuntos}
+
+Las leyes de conjuntos son un conjunto de reglas y propiedades que gobiernan las operaciones y relaciones entre conjuntos en la teoría de conjuntos. Estas leyes son fundamentales en matemáticas y lógica y se utilizan para manipular conjuntos de manera consistente y demostrar teoremas. Ayudan a simplificar expresiones, resolver ecuaciones y establecer relaciones entre conjuntos en una variedad de aplicaciones matemáticas y científicas, incluyendo la probabilidad, la teoría de números, la geometría y la lógica. Las leyes de conjuntos proporcionan un marco lógico y coherente para el estudio de colecciones de objetos y son esenciales en el razonamiento matemático y en la resolución de problemas.\\
+
+
+Así pues, para cualesquiera conjuntos $A$, $B$ y $C$ tomados de un universo $U$, enunciamos las leyes de la teoría de conjuntos en la siguiente tabla:
+
+\begin{center}
+    \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ll}
+        \CodeBefore
+        %\rowcolor{jblueleft!80}{1}
+        \rowcolors{1}{DodgerBlue3!40}{jblueinner}
+        \Body
+        %\RowStyle[color=white]{}
+            Ley del doble complemento & $\begin{array}{l} \overline{\overline{A}} = A \end{array}$ \\
+            Leyes de De Morgan & $\begin{array}{l}
+                \overline{A \cup B} = \overline{A} \cap \overline{B} \\
+                \overline{A \cap B} = \overline{A} \cup \overline{B}
+            \end{array}$ \\
+            Propiedades conmutativas & $\begin{array}{l}
+                A \cup B = B \cup A \\
+                A \cap B = B \cap A
+            \end{array}$ \\
+            Propiedades asociativas & $\begin{array}{l}
+                A \cup (B \cup C) = (A \cup B) \cup C \\
+                A \cap (B \cap C) = (A \cap B) \cap C
+            \end{array}$ \\
+            Propiedades distributivas & $\begin{array}{l}
+                A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \\
+                A \cap (B \cup C) = (A \cap B) \cup (A \cap C)
+            \end{array}$ \\
+            Propiedades idempotentes & $\begin{array}{l}
+                A \cup A = A \\
+                A \cap A = A
+            \end{array}$ \\
+            Propiedades del neutro & $\begin{array}{l}
+                A \cup \phi = A \\
+                A \cap U = A
+            \end{array}$ \\
+            Propiedades del inverso & $\begin{array}{l}
+                A \cup \overline{A} = U \\
+                A \cap \overline{A} = \phi
+            \end{array}$ \\
+            Propiedades de dominación & $\begin{array}{l}
+                A \cup U = U \\
+                A \cap \phi = \phi
+            \end{array}$ \\
+            Propiedades de absorción & $\begin{array}{l}
+                A \cup (A \cap B) = A \\
+                A \cap (A \cup B) = A
+            \end{array}$
+    \end{NiceTabular}
+    \captionof{table}{Leyes de la teoría de conjuntos}\label{table2}
+\end{center}
+
+Las tablas que mostraremos a continuación, usaran al 0 para decir que un elemento no pertenece a un conjunto y el 1 para decir que un elemento sí pertenece a un conjunto.
+
+\begin{center}
+\begin{minipage}[c]{0.3\textwidth}
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $A$ & $\overline{A}$ \\
+            0 & 1 \\
+            1 & 0 \\ 
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[c]{0.5\textwidth}
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $A$ & $B$ & $A \cup B$ & $A \cap B$ \\
+            0 & 0 & 0 & 0 \\
+            0 & 1 & 1 & 0 \\ 
+            1 & 0 & 1 & 0 \\
+            1 & 1 & 1 & 1 \\ 
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+\end{minipage}
+\end{center}
+
+Por medio de las tablas de pertenencia podemos establecer la igualdad de dos conjuntos si comparamos sus columnas respectivas en la tabla. La siguiente tabla demuestra esto para la propiedad distributiva de la unión sobre la intersección.
+
+\begin{center}
+    \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{cccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+        $A$ & $B$ & $C$ & $B \cap C$ & $A \cup (B \cap C)$ & $A \cup B$ & $A \cup C$ & $(A \cup B) \cap (A \cup C)$ \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+        1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 \\
+        1 & 1 & 0 & 0 & 1 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
+    \end{NiceTabular}
+    \captionof{table}{~}
+\end{center}
+
+
+Puesto que la quinta y octava columna son idénticas, concluimos que
+$$A \cup (B \cap C) = (A \cup B) \cap (A \cup C).$$
+\begin{myexample}
+    Ahora, demostremos las leyes de De Morgan como sigue:
+\begin{enumerate}[label=\alph*)]
+    \item Tenemos pues
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $A$ & $B$ & $A \cup B$ & $\overline{A \cup B}$ & $\overline{A}$ & $\overline{B}$ & $\overline{A} \cap \overline{B}$ \\
+            0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+            0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+            1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+            1 & 1 & 1 & 0 & 0 & 0 & 0
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+    Puesto que la cuarta y séptima columna son idénticas, concluimos que $\overline{A \cup B} = \overline{A} \cap \overline{B}$.
+    \item Tenemos pues
+    \begin{center}
+        \begin{NiceTabular}[hvlines-except-borders,rules={color=white,width=1pt}]{ccccccc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+            $A$ & $B$ & $A \cap B$ & $\overline{A \cap B}$ & $\overline{A}$ & $\overline{B}$ & $\overline{A} \cup \overline{B}$ \\
+            0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+            0 & 1 & 0 & 1 & 1 & 0 & 1 \\
+            1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+            1 & 1 & 1 & 0 & 0 & 0 & 0
+        \end{NiceTabular}
+        \captionof{table}{~}
+    \end{center}
+    Puesto que la cuarta y séptima columna son idénticas, concluimos que $\overline{A \cap B} = \overline{A} \cup \overline{B}$.
+\end{enumerate}
+\end{myexample}
+
+\begin{BOX}
+    Los tablas de pertenencia pueden ayudarnos a comprender ciertas situaciones matemáticas, pero cuando el número de conjuntos implicados es mayor de cuatro, la tabla puede ser tediosa y muy larga. Ahora que disponemos de las leyes de la teoría de conjuntos, podemos utilizarlas para simplificar una complicada expresión con conjuntos o para obtener nuevas igualdades entre conjuntos.
+\end{BOX}
+
+\newpage
+
+\begin{myexample}
+    Simplifique la expresión
+    $$\overline{\overline{(A \cup B) \cap C} \cup \overline{B}}.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:}
+    \begin{align*}
+        \overline{\overline{(A \cup B) \cap C} \cup \overline{B}} & = \overline{\overline{\big((A \cup B) \cap C \big)}} \cap \overline{\overline{B}} && \text{ley de De Morgan} \\
+        & = \big((A \cup B) \cap C \big) \cap B && \text{ley del doble complemento} \\
+        & = (A \cup B) \cap (C \cup B) && \text{propiedad asociativa} \\
+        & = (A \cup B) \cap (B \cup C) && \text{propiedad conmutativa} \\
+        & = [(A \cup B) \cap B] \cap C && \text{propiedad asociativa} \\
+        & = B \cap C && \text{ley de absorción}
+    \end{align*}
+    Por tanto, $\overline{\overline{(A \cup B) \cap C} \cup \overline{B}} = B \cap C$.
+\end{myexample}
+
+\begin{myexample}
+    Verifique que
+    $$\overline{A \bigtriangleup B} = A \bigtriangleup \overline{B} = \overline{A} \bigtriangleup B.$$
+
+    \tcblower
+    \textbf{\color{jblueleft}Solución:} Observemos que
+    \begin{align*}
+        A \bigtriangleup B & = (A \cup B) - (A \cap B) = \left\{ x \in U \mid x \in (A \cup B), \; x \notin (A \cap B) \right\} \\
+        A \bigtriangleup B & = (A \cup B) \cap \overline{(A \cap B)} = \left\{ x \in (A \cup B), \; x \notin \overline{(A \cap B)} \right\}
+    \end{align*}
+    Entonces
+    \begin{align*}
+        \overline{A \bigtriangleup B} & = \overline{(A \cup B) \cap \overline{(A \cap B)}} \\
+        & = \overline{(A \cup B)} \cup \overline{\overline{(A \cap B)}} && \text{ley de De Morgan} \\
+        & = \overline{(A \cup B)} \cup (A \cap B) && \text{ley del doble complemento} \\
+        & = (A \cap B) \cup \overline{(A \cup B)} && \text{propiedad conmutativa} \\
+        & = (A \cap B) \cup \left( \overline{A} \cap \overline{B} \right) && \text{ley de De Morgan} \\
+        & = \left[ (A \cap B) \cup \overline{A} \right] \cap \left[ (A \cap B) \cup \overline{B} \right] && \text{propiedad distributiva} \\
+        & = \left[ \left( A \cup \overline{A} \right) \cap \left( B \cup \overline{A} \right) \right] \cap \left[ \left( A \cup \overline{B} \right) \cap \left( B \cup \overline{B} \right) \right] && \text{propiedad distributiva} \\
+        & = \left[ U \cap \left( B \cup \overline{A} \right) \right] \cap \left[ \left( A \cup \overline{B} \right) \cap U \right] && \text{propiedad del inverso} \\
+        & = \left( B \cup \overline{A} \right) \cap \left( A \cup \overline{B} \right) && \text{propiedad del neutro} \\
+        & = \left(\overline{A} \cup B \right) \cap \left( A \cup \overline{B} \right) && \text{propiedad conmutativa} \\
+        & = \left( \overline{A} \cup B \right) \cap \overline{\left( \overline{A} \cap B \right)} && \text{ley de De Morgan} \\
+        & = \overline{A} \bigtriangleup B \\
+        & = \left( A \cup \overline{B} \right) \cap \left( \overline{A} \cup B \right) && \text{propiedad conmutativa} \\
+        & = \left( A \cup \overline{B} \right) \cap \overline{\left( A \cap \overline{B} \right)} && \text{ley de De Morgan} \\
+        & = A \bigtriangleup \overline{B}
+    \end{align*}
+    Por tanto, $\overline{A \bigtriangleup B} = A \bigtriangleup \overline{B} = \overline{A} \bigtriangleup B$.
+\end{myexample}
+
+\newpage
+
+\begin{definicion}{}{}
+    Sea $I$ un conjunto no vacío y $U$ un universo. Para cada $i \in I$, sea $A_i \subseteq U$. Entonces $I$ es conjunto índice (o un conjunto de índices) y cada $i \in I$ es un índice.
+    \begin{tasks}(2)
+        \task $\displaystyle \bigcup_{i \in I} A_i = \left\{ x \mid x \in A_i \text{ para  algún } i \in I \right\}.$
+        \task $\displaystyle \bigcap_{i \in I} A_i = \left\{ x \mid x \in A_i \text{ para toda } i \in I \right\}.$
+    \end{tasks}
+\end{definicion}
+
+\begin{myexample}
+    Si el conjunto de índices $I$ es el conjunto $\ZZ[+]$, podemos escribir
+    $$\bigcup_{i \in \ZZ[+]} A_i = A_1 \cup A_2 \cup A_3 \cup \cdots$$
+    y
+    $$\bigcap_{i \in \ZZ[+]} A_i = A_1 \cap A_2 \cap A_3 \cap \cdots.$$
+\end{myexample}
+
+\begin{myexample}
+    Sea $I = \{ 3, \, 4, \, 5, \, 6, \, 7 \}$ y para cada $i \in I$ sea $A_i = \{ 1, \, 2, \, 3, \, \dots, \, i \} \subseteq U = \ZZ[+]$. Entonces
+    \begin{align*}
+        \bigcup_{i \in I} A_i & = A_3 \cup A_4 \cup A_5 \cup A_6 \cup A_7 \\
+        & = \{ 1, \, 2, \, 3, \, 4, \, 5, \, 6, \, 7 \} \\
+        & = A_7
+    \end{align*}
+    y
+    \begin{align*}
+        \bigcap_{i \in I} A_i & = A_3 \cap A_4 \cap A_5 \cap A_6 \cap A_7 \\
+        & = \{ 1, \, 2, \, 3 \} \\
+        & = A_3.
+    \end{align*}
+\end{myexample}
+
+\begin{myexample}
+    Sea $U = \RR$ e $I = \RR[+]$. Si para cada $r \in \RR[+]$, se define $A_r = [-r, \, r]$ con
+    $$[-r, \, r] = \{ x \in \RR \mid -r \leq x \leq r \},$$
+    entonces $\displaystyle \bigcup_{r \in I} A_r = \RR$ ~y~ $\displaystyle \bigcap_{r \in I} A_r = \{0\}$.
+\end{myexample}
+
+\begin{theorem}{Leyes de De Morgan generalizadas}{}
+    Sea $I$ un conjunto de índices, donde para cada $i \in I$, $A_i \subseteq U$. Entonces
+    \begin{tasks}(2)
+        \task $\displaystyle \overline{\bigcup_{i \in I} A_i} = \bigcap_{i \in I} \overline{A_i}$
+        \task $\displaystyle \overline{\bigcap_{i \in I} A_i} = \bigcup_{i \in I} \overline{A_i}$
+    \end{tasks}
+\end{theorem}
+
+\newpage
+
+\section{Diagramas de Venn-Euler}
+
+\noindent
+\begin{minipage}[c]{0.5\textwidth}
+    \hspace*{5.5mm}En los diagramas de Venn-Euler, a un conjunto no vacío se le representa con una figura cerrada, dentro de un rectángulo que representa el conjunto universal (como en la figura \ref{fig:VENNNNNN}) y se utilizan para comparar, contrastar y analizar la intersección, la unión y la diferencia de dichos conjuntos. Las intersecciones entre las figuras se utilizan para mostrar la relación entre estos conjuntos (como en la figura \ref{fig:OPCONJUNTOS}), ya sea para señalar la presencia de elementos comunes o para evidenciar su exclusividad.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.47\textwidth}
+    \begin{center}
+        \begin{tikzpicture}
+            \coordinate (A) at (-2,0);
+            \coordinate (B) at (2.4,0.5);
+            \coordinate (C) at (0.5,-0.3);
+
+            \draw[thick] (-3.4,-1.7) rectangle (3.5,1.7);
+            \draw[jblueleft] (A) circle (1.2cm) node {$A$};
+            \draw[jblueleft!80] (B) circle (0.9cm) node {$B$};
+            \draw[DodgerBlue3] (C) circle (0.6cm) node {$C$};
+        \end{tikzpicture}
+        \captionof{figure}{Diagrama de Venn}
+        \label{fig:VENNNNNN}
+    \end{center}
+\end{minipage}
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{jblueleft!80}
+\colorlet{circle area}{DodgerBlue3!40}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},outline/.style={draw=circle edge, thick}}
+
+\begin{figure}[h!]
+\centering
+\subfloat[$A \cup B$]{\label{fig.aunionb}
+\begin{tikzpicture}[scale=1.25]
+    \draw[filled] \firstcircle node {$A$}
+                  \secondcircle node {$B$};
+\end{tikzpicture}
+} \hfill
+\subfloat[$A \cap B$]{\label{fig.ainterseccionb}
+\begin{tikzpicture}[scale=1.25]
+\centering 
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+\end{tikzpicture}
+} \\
+%%
+\subfloat[$A-B$]{\label{fig.amenosb}
+\begin{tikzpicture}[scale=1.25]
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$A$}
+                                     \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle
+                   \secondcircle node {$B$};
+\end{tikzpicture}
+}
+\hfill
+\subfloat[$B-A$]{\label{fig.bmenosa}
+\begin{tikzpicture}[scale=1.25]
+    \begin{scope}
+        \clip \secondcircle;
+        \draw[filled, even odd rule] \firstcircle
+                                     \secondcircle node {$B$};
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$}
+                   \secondcircle;
+\end{tikzpicture}
+} \\
+\subfloat[$\overline{A}$]{\label{fig.acomplemento}
+\begin{tikzpicture}[scale=1.25]
+    \begin{scope}
+       \fill[DodgerBlue3!40] (-2.5,-2) rectangle (2.5,2);
+       \draw[thick,jblueleft!80] (-2.5,-2) rectangle (2.5,2);
+       \fill[white] (0,0) circle (1.5cm);
+       \node at (0,0) {$A$};
+       \draw[jblueleft!80,thick] (0,0) circle (1.5cm);
+     \end{scope}
+\end{tikzpicture}
+} \hfill
+\subfloat[$A \subset B$]{\label{fig.asubconjuntob}
+\begin{tikzpicture}[scale=1.25]
+    \begin{scope}
+       \draw[thick,jblueleft] (-2.5,-2) rectangle (2.5,2);
+       \node at (0.8,0.8) {$B$};
+       \draw[jblueleft!80,thick] (0,0) circle (1.5cm);
+       \node at (-0.5,0) {$A$};
+       \draw[DodgerBlue3!80,thick] (-0.5,0) circle (0.6cm);
+     \end{scope}
+\end{tikzpicture}
+}
+\caption{Operaciones de conjuntos en diagramas de Venn}\label{fig:OPCONJUNTOS}
+\end{figure}
