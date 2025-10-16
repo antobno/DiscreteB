@@ -290,7 +290,7 @@ Las técnicas de conteo son más que simples procedimientos matemáticos; son he
     \end{align*}
     Si las tres letras R están juntas, por ejemplo ARRRABAALE, entonces
     \begin{align*}
-        P = \frac{10!}{1!1!1!1!4!} = 1 \, 680.
+        P = \frac{8!}{1!1!1!1!4!} = 1 \, 680.
     \end{align*}
 \end{myexample}
 
@@ -721,7 +721,7 @@ Las técnicas de conteo son más que simples procedimientos matemáticos; son he
     $$x_1 + x_2 + x_3 + x_4 = 7, \quad \text{donde } x_i \geq 0, \quad \text{para toda } 1 \leq i \leq 4.$$
 
     \tcblower
-    \textbf{\color{jblueleft}Solución:} Si tomamos a $x_i$ como el número de monedas entregadas al $i$-ésimo niño, entonces tenemos $n = 4$ que son los niños y $r = 7$ que son las monedas. Así pues, obtenemos
+    \textbf{\color{jblueleft}Solución:} Si tomamos a $x_i$ como el número de monedas entregadas al $i$-ésimo niño, entonces tenemos $n = 4$ que son los niños y $r = 7$ que son las monedas, es decir, esto es equivalente a distribuir $7$ monedas idénticas entre $4$ niños. Así pues, obtenemos
     \begin{align*}
         C(n + r - 1, \, r) & = C(4 + 7 - 1, \, 7) \\
         & = C(10, \, 7) = 120.
@@ -734,7 +734,7 @@ Las técnicas de conteo son más que simples procedimientos matemáticos; son he
         \item El número de soluciones enteras de la ecuación
         $$x_1 + x_2 + \cdots + x_n = r, \quad \text{donde } x_i \geq 0, \quad \text{para toda } 1 \leq i \leq n.$$
         \item El número  de selecciones, con repetición, de tamaño $r$ de una colección de tamaño $n$.
-        \item  El número de formas en que $r$ objetos distintos se pueden distribuir entre $n$ recipientes distintos.
+        \item El número de formas de distribuir $r$ objetos idénticos entre $n$ recipientes distintos.
     \end{enumerate}
 \end{BOX}
 

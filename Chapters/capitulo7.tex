@@ -114,7 +114,7 @@ En todos los casos, $r_1$ y $r_2$ son las \textit{raíces características}.
 
 \begin{myexample}
     Resolver
-    $$a_n + a_{n-1} - 6a_{n-2}, \text{ donde } n \geq 2, \; a_0 = 1 \text{ y } a_1 = 2.$$
+    $$a_n + a_{n-1} - 6a_{n-2} = 0, \text{ donde } n \geq 2, \; a_0 = 1 \text{ y } a_1 = 2.$$
     
     \tcblower
     \textbf{\color{jblueleft}Solución:} Sea $a_n = cr^{n}$ con $n \geq 2$. Al sustituir en la relación, se obtiene
@@ -572,11 +572,11 @@ ya que si $m=0$, cada miembro de la identidad anterior tiene valor 1.
     Así, si $k_1 = c_1 + c_2$ y $k_2 = i(c_1 - c_2)$, obtenemos
     $$k_1 \frac{1}{2} + k_2 \frac{\sqrt{3}}{2} = 1.$$
     Por otro lado,
-    $$a_0 = 0 = b^{2} \left( \cos \left( \frac{2\pi}{3} \right) + i \sen \left( \frac{2\pi}{3} \right) \right) + c_2 b^{2} \left( \cos \left( \frac{2\pi}{3} \right) - i \sen \left( \frac{2\pi}{3} \right) \right)$$
+    $$a_2 = 0 = b^{2} \left( \cos \left( \frac{2\pi}{3} \right) + i \sen \left( \frac{2\pi}{3} \right) \right) + c_2 b^{2} \left( \cos \left( \frac{2\pi}{3} \right) - i \sen \left( \frac{2\pi}{3} \right) \right)$$
     por lo que
-    $$c_1 \left( - \frac{1}{2} + \frac{\sqrt{3}}{2} \right) + c_2 \left( - \frac{1}{2} - \frac{\sqrt{3}}{2} \right)$$
+    $$c_1 \left( - \frac{1}{2} + \frac{\sqrt{3}}{2} \right) + c_2 \left( - \frac{1}{2} - \frac{\sqrt{3}}{2} \right) = 0$$
     de donde se sigue que
-    $$(c_1 + c_2) \left( - \frac{1}{2} \right) + i (c_1 - c_2) \frac{\sqrt{3}}{2}.$$
+    $$(c_1 + c_2) \left( - \frac{1}{2} \right) + i (c_1 - c_2) \frac{\sqrt{3}}{2} = 0.$$
     Sea $k_1 = c_1 + c_2$ y $k_2 = i(c_1 - c_2)$, se sigue el siguiente sistema
     $$\left. \begin{array}{rl}
         \displaystyle - \frac{1}{2} k_1 + k_2 \frac{\sqrt{3}}{2} = & \!\!\!\! 0 \\[2mm]
@@ -592,7 +592,7 @@ ya que si $m=0$, cada miembro de la identidad anterior tiene valor 1.
 
 \begin{myexample}
     Resolver la relación de recurrencia
-    $$a_{n+2} = 4_{n+1} - 4a_n, \text{ donde } n \geq 0, \, a_0 = 1 \text{ y } a_1 = 3.$$
+    $$a_{n+2} = 4a_{n+1} - 4a_n, \text{ donde } n \geq 0, \, a_0 = 1 \text{ y } a_1 = 3.$$
 
     \tcblower
     \textbf{\color{jblueleft}Solución:} Resolvamos
@@ -745,7 +745,7 @@ Podemos resolver este tipo de relación en términos de $\displaystyle \sum_{i=1
     Esto produce la relación
     $$a_{n+1}=2 a_n+1, \text{ donde } n \geq 0 \text{ y } a_0=0.$$
     Para $a_{n+1}-2 a_n=1$,
-    $$a_n^{(n)}=c\left(2^n\right).$$
+    $$a_n^{(h)}=c\left(2^n\right).$$
     Como $f(n)=1$ no es solución de $a_{n+1}-2 a_n=0$, sea
     $$a_n^{(p)}=A(1)^n=A;$$
     de la relación anterior vemos que $A=2 A+1$, por lo que $A=-1$ y $a_n=$ $c\left(2^n\right)-1$. De
@@ -759,7 +759,7 @@ Podemos resolver este tipo de relación en términos de $\displaystyle \sum_{i=1
 \begin{myexample}
     \begin{minipage}[l]{0.78\textwidth}
         En 1904, el matemático sueco Helge von Koch (1870-1924) creó la interesante curva conocida ahora como curva ``copo de nieve'' de Koch. La construcción de esta curva se inicia con un triángulo equilátero, como se muestra en la parte (a) de la figura \ref{fig:KOCH}, donde el triángulo tiene lado 1, perímetro 3 y área $\sqrt{3} / 4$. El triángulo se transforma entonces en la estrella de David de la figura \ref{fig:KOCH}(b) quitando el tercio medio de cada lado (del triángulo equilátero original) y añadiendo un nuevo triángulo equilátero cuyo lado tiene longitud de $1 / 3$. Así, cuando pasamos de la parte (a) a la parte (b) de esta figura, cada lado de longitud 1 se transforma en 4 lados de longitud $1 / 3$ y obtenemos un polígono de 12 lados de área $(\sqrt{3} / 4)+(3)(\sqrt{3} / 4)(1 / 3)^2=\sqrt{3} / 3$. Si continuamos este proceso, transformamos la figura de la parte (b) en la de la parte (c) quitando el tercio medio de cada uno de los 12 lados de la estrella de David y añadiendo un triángulo equilátero de lado $1 / 9 =(1 / 3)^2$. Ahora tenemos [en la figura \ref{fig:KOCH}(c)] un polígono de $4^2(3)$ lados cuya área es
-        $$\frac{\sqrt{3}}{3} + 4 \cdot 3 \cdot \frac{\sqrt{3}}{4} \left(\frac{1}{3}\right)^2 = \frac{10\sqrt{3}}{27}.$$
+        $$\frac{\sqrt{3}}{3} + 4 \cdot 3 \cdot \frac{\sqrt{3}}{4} \left(\frac{1}{3}\right)^4 = \frac{10\sqrt{3}}{27}.$$
         
         \hspace*{6mm}Para $n \geq 0$, sea $a_n$ el área del polígono $P_n$ obtenida a partir del triángulo equilátero original después de aplicar $n$ transformaciones del tipo descrito arriba [la primera, de $P_0$ en la figura \ref{fig:KOCH}(a) a $P_1$ en la figura \ref{fig:KOCH}(b) y la segunda de $P_1$ en la figura \ref{fig:KOCH}(b) a $P_2$ en la figura \ref{fig:KOCH}(c)]. Al ir de $P_n$ (con $4^n(3)$ lados) a $P_{n+1}\left(\operatorname{con} 4^{n+1}(3)\right.$ lados), vemos que
         \begin{equation}
@@ -824,3 +824,37 @@ Podemos resolver este tipo de relación en términos de $\displaystyle \sum_{i=1
     $$a_n = \frac{6}{5 \sqrt{3}} - \frac{1}{5 \sqrt{3}} \cdot \left(\frac{4}{9}\right)^{n-1} = \frac{1}{5 \sqrt{3}} \left[6 - \left(\frac{4}{9}\right)^{n-1}\right], \text{ donde } n \geq 0.$$
     Observemos que cuando $n$ crece, $(4/9)^{n-1}$ tiende a 0, por lo que $a_n$ tiende al valor $6 /(5 \sqrt{3})$.
 \end{myexample}
+
+\newpage
+
+\section*{Resumen y extensión de las técnicas de solución analizadas}
+
+Dada una relación de recurrencia lineal no homogénea (con coeficientes constantes) de la forma:
+$$C_n a_n+C_(n-1) a_(n-1)+ \cdots +C_(n-k) a_(n-k)=f(n)$$
+Donde $C_n$, $C_(n-k) \neq 0$, sea $a_n^{(h)}$ la parte homogénea de la solución $a_n$.
+\begin{enumerate}
+    \item Si $f(n)$ es un múltiplo constante de una de las formas de la primer columna de la tabla siguiente y no es solución de la relación homogénea asociada, entonces $a_{n}^{(p)}$ debe tener la forma que se muestra en la segunda columna de la tabla mencionada. (En este caso $A, B, A_{0}, A_{1}, A_{2}, \ldots, A_{t-1}, A_{t}$, son constantes, determinadas mediante la solución de $a_{n}^{(p)}$ en la relación dada; $t, r, \alpha$, también son constantes.)
+    \item Cuando $f(n)$ es una suma de múltiplos constantes de términos como los de la primer columna de la tabla para el punto (1), $m$ y ninguno de los términos es solución de la relación homogénea asociada, entonces $a_{n}^{(p)}$ se forma como la suma de los términos correspondientes en la columna encabezada por $a_{n}^{(p)}$. Por ejemplo, si $f(n)=n^{2}+3 \sen(2 n)$ y ninguno de los sumandos es solución de la relación homogénea asociada entonces
+    $$a_{n}^{(p)}=\left(A_{2} n^{2}+A_{1} n+A_{0}\right)+(A \sen(2 n)+B \cos (2 n))$$
+\end{enumerate}
+\begin{center}
+    \begin{NiceTabular}[cell-space-limits=4pt,hvlines-except-borders,rules={color=white,width=1pt}]{cc}
+        \CodeBefore
+        \rowcolor{jblueleft!80}{1}
+        \rowcolors{2}{DodgerBlue3!40}{jblueinner}
+        \Body
+        \RowStyle[color=white]{}
+        $f(n)$ es un múltiplo constante de & $a_{n}^{(p)}$ \\
+        $c$, una constante & $A$, una constante \\
+        $n$ & $A_{1} n+A_{0}$ \\
+        $n^{2}$ & $A_{2} n^{2}+A_{1} n+A_{0}$ \\
+        $n^{t}, t \in \ZZ[+]$ & $A_{t} n^{t}+A_{t-1} n^{t-1}+\cdots+A_{1} n+A_{0}$ \\
+        $r^{n}, r \in \RR$ & $A_{r} r^{n}$ \\
+        $\operatorname{sen}(\alpha n)$ & $A \operatorname{sen}(\alpha n)+B \cos (\alpha n)$ \\
+        $\cos (\alpha n)$ & $A \operatorname{sen}(\alpha n)+B \cos (\alpha n)$ \\
+        $n^{t} r^{n}$ & $r^{n}\left(A_{t} n^{t}+A_{t-1} n^{t-1}+\cdots+A_{1} n+A_{0}\right)$ \\
+        $r^{n} \operatorname{sen}(\alpha n)$ & $A r^{n} \operatorname{sen}(\alpha n)+B r^{n} \cos (\alpha n)$ \\
+        $r^{n} \cos (\alpha n)$ & $A r^{n} \operatorname{sen}(\alpha n)+B r^{n} \cos (\alpha n)$
+    \end{NiceTabular}
+    \captionof{table}{~}
+\end{center}

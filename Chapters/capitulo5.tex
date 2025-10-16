@@ -569,7 +569,7 @@ La siguiente tabla enumera algunos números de Stirling del segundo tipo.
 \end{center}
 
 \begin{myexample}
-    Para $m \geq n$, $\displaystyle \sum_{i=0}^n S(m, \, i)$ es el número de formas posibles de distribuir $m$ objetos diferentes en $n$ recipientes idénticos sin que queden recipientes vacíos. De la cuarta fila de la tabla \ref{JDHDJDKDJYGHBSJOODJK} vemos que existen $1 + 7 + 6 = 14$ formas de distribuir los objetos $a$, $b$, $c$, $d$ entre tres recipientes idénticos.
+    Para $m \geq n$, $\displaystyle \sum_{i=0}^n S(m, \, i)$ es el número de formas de distribuir $m$ objetos diferentes en $n$ recipientes idénticos considerando la posibilidad de recipientes vacíos. De la cuarta fila de la tabla \ref{JDHDJDKDJYGHBSJOODJK} vemos que existen $1 + 7 + 6 = 14$ formas de distribuir los objetos $a$, $b$, $c$, $d$ entre tres recipientes idénticos.
 \end{myexample}
 
 \begin{theorem}{}{}
@@ -795,6 +795,14 @@ La siguiente tabla enumera algunos números de Stirling del segundo tipo.
                     ]
                 {0.5*x - 2.5};
                 \addlegendentry{\(\displaystyle g(x) = 1/2 (x - 5)\)}
+                \addplot[
+                    domain=-3.9:3.9,
+                    samples=100, 
+                    color=black,
+                    dashed
+                    ]
+                {x};
+                \addlegendentry{\(y = x\)}
             \end{axis}
         \end{tikzpicture}
         \captionof{figure}{~\hspace{-2.3cm}~}
@@ -853,6 +861,14 @@ La siguiente tabla enumera algunos números de Stirling del segundo tipo.
                     ]
                 {sqrt(x)};
                 \addlegendentry{\(\displaystyle f_2^{-1}(x) = \sqrt{x}\)}
+                \addplot[
+                    domain=0:2.9,
+                    samples=100, 
+                    color=black,
+                    dashed
+                    ]
+                {x};
+                \addlegendentry{\(y = x\)}
             \end{axis}
         \end{tikzpicture}
         \captionof{figure}{~}\label{JAJSJJSJSJUJYBBNKOIJD}
